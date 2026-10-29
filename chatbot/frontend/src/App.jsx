@@ -755,8 +755,9 @@ function App() {
             };
           });
         } else if (data.type === 'project_status') {
-          fetchProjects();
           if (data.status === 'indexed') {
+            setProjects(prev => prev.map(p => p.id === data.project_id ? { ...p, status: 'indexed' } : p));
+            setSelectedProject(prev => prev?.id === data.project_id ? { ...prev, status: 'indexed' } : prev);
             setIndexingState(prev => prev ? {
               ...prev,
               status: 'done',
@@ -767,6 +768,7 @@ function App() {
           } else if (data.status === 'error') {
             setIndexingState(prev => prev ? { ...prev, status: 'error', message: data.message } : prev);
           }
+          fetchProjects();
         } else if (data.type === 'workflow_summary') {
           // ── Workflow completed: show rich conversational summary in Chat ──
           setWorkflowCompleted(true);
@@ -1212,6 +1214,8 @@ function App() {
       });
       if (response.ok) {
         const resData = await response.json();
+        setProjects(prev => prev.map(p => p.id === projectId ? { ...p, status: 'indexed' } : p));
+        setSelectedProject(prev => prev?.id === projectId ? { ...prev, status: 'indexed' } : prev);
         await fetchProjects();
         setIndexingState(prev => prev ? {
           ...prev,
@@ -2312,7 +2316,7 @@ function App() {
             {indexingState.status === 'done' && (
               <div className="indexing-stats">
                 <div className="stat-row">📁 <strong>Project:</strong> {indexingState.projectPath}</div>
-                <div className="stat-row">💾 <strong>Index stored at:</strong> {indexingState.projectPath}\.ticket_to_code\index.db</div>
+                <div className="stat-row">💾 <strong>Index stored at:</strong> {indexingState.projectPath}\.nemoforge\index.db</div>
                 {indexingState.stats && <>
                   <div className="stat-row">📂 <strong>Files scanned:</strong> {indexingState.stats.files_scanned}</div>
                   <div className="stat-row">✅ <strong>Files parsed:</strong> {indexingState.stats.files_parsed}</div>

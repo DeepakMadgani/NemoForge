@@ -307,13 +307,28 @@ def _load_projects() -> Dict[str, "Project"]:
             logger.warning(f"Could not load projects.json: {exc}")
 
     # Reconcile status: if index.db exists on disk, project is indexed
+    changed = False
     for pid, p in loaded.items():
         try:
             p_path = Path(p.local_path or p.path)
-            if (p_path / ".ticket_to_code" / "index.db").exists() or (p_path / ".aviator" / "index.db").exists():
+            if not p_path.is_absolute():
+                repo_root = Path(__file__).resolve().parent.parent.parent
+                candidate = repo_root / p_path
+                if candidate.exists():
+                    p_path = candidate
+            is_indexed = (
+                (p_path / ".nemoforge" / "index.db").exists() or
+                (p_path / ".ticket_to_code" / "index.db").exists() or
+                (p_path / ".aviator" / "index.db").exists()
+            )
+            if is_indexed and p.status != ProjectStatus.INDEXED:
                 p.status = ProjectStatus.INDEXED
+                changed = True
         except Exception:
             pass
+
+    if changed:
+        _save_projects(loaded)
 
     # Auto-register active workspace environment if provided via ENV and no projects loaded
     env_ws = os.getenv("AVIATOR_WORKSPACE_PATH") or os.getenv("WORKSPACE_PATH")

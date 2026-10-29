@@ -53,6 +53,8 @@ credentials/
 *.sqlite3
 .aviator/
 .nemoforge/
+.ticket_to_code/
+*experience.json
 history.json
 projects.json
 chatbot/backend/history.json
