@@ -122,7 +122,7 @@ if exist ".venv\Lib\site-packages" (
 echo [+] Installing backend dependencies in .venv...
 call .venv\Scripts\activate.bat
 python -m pip install --upgrade pip --quiet
-pip install -r chatbot\backend\requirements.txt --quiet
+pip install -r chatbot\backend\requirements.txt
 echo [+] Backend Python dependencies installed successfully.
 
 :: -----------------------------------------------------------------------

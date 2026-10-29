@@ -96,7 +96,7 @@ fi
 echo "[+] Installing backend dependencies in .venv..."
 source .venv/bin/activate
 pip install --upgrade pip --quiet
-pip install -r chatbot/backend/requirements.txt --quiet
+pip install -r chatbot/backend/requirements.txt
 echo "[+] Backend Python dependencies installed successfully."
 
 # -----------------------------------------------------------------------
