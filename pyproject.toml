@@ -1,10 +1,10 @@
 [project]
-name = "nemoforge"
+name = "ticket-to-code"
 version = "1.0.0"
 description = "NemoForge - Autonomous SWE Agent Powered by NVIDIA Nemotron on Nebius Token Factory"
 readme = "README.md"
 authors = [{ name = "Deepak Madgani" }]
-requires-python = ">=3.13"
+requires-python = ">=3.10"
 dependencies = [
     "gitpython>=3.1.59",
     "httpx>=0.27.0",
