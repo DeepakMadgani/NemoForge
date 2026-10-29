@@ -353,6 +353,18 @@ body {
 .index-btn:active {
   transform: translateY(0);
 }
+.index-btn.reindex-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--text-secondary);
+}
+
+.index-btn.reindex-btn:hover {
+  background: rgba(59, 130, 246, 0.2);
+  border-color: rgba(59, 130, 246, 0.4);
+  color: white;
+}
+
 
 .delete-project-btn {
   position: absolute;

@@ -1864,6 +1864,15 @@ function App() {
                       🔍 Index Project
                     </button>
                   )}
+                  {project.status === 'indexed' && (
+                    <button
+                      className="index-btn reindex-btn"
+                      onClick={(e) => handleIndexProject(project.id, e)}
+                      title="Re-run indexing on this project"
+                    >
+                      🔄 Re-index
+                    </button>
+                  )}
                 </div>
                 <button
                   className="delete-project-btn"
