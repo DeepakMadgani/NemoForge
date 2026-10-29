@@ -453,7 +453,7 @@ def test_universal_engineering_invariants_coverage():
         "EXHAUSTIVE MULTI-PART TICKET DECOMPOSITION",
     ]:
         assert title in UNIVERSAL_SOFTWARE_ENGINEERING_INVARIANTS, title
-    # Repository-specific (ContentBridge / CC4E) material must NOT leak into the universal prompt
+    # Repository-specific  material must NOT leak into the universal prompt
     assert "ContractMember" not in UNIVERSAL_SOFTWARE_ENGINEERING_INVARIANTS
     assert "CC4E" not in UNIVERSAL_SOFTWARE_ENGINEERING_INVARIANTS
     assert "HIERARCHICAL RBAC" not in UNIVERSAL_SOFTWARE_ENGINEERING_INVARIANTS
@@ -489,8 +489,8 @@ def test_repo_invariants_loaded_only_with_marker(tmp_path):
     # 3. Workspace override wins over the packaged skill
     override_dir = tmp_path / ".aviator" / "skills"
     override_dir.mkdir(parents=True)
-    (override_dir / "contentbridge_invariants.json").write_text(
-        json.dumps({"id": "contentbridge-invariants", "rules": ["CUSTOM OVERRIDE RULE ONLY"]}),
+    (override_dir / "cloudforge_invariants.json").write_text(
+        json.dumps({"id": "cloudforge-invariants", "rules": ["CUSTOM OVERRIDE RULE ONLY"]}),
         encoding="utf-8",
     )
     rules = SkillLoader(tmp_path).load_repo_invariants()

@@ -164,7 +164,7 @@ class SkillLoader:
         """
         override = self.workspace_path / ".aviator" / "skills" / "cloudforge_invariants.json"
         if not override.is_file():
-            override = self.workspace_path / ".aviator" / "skills" / "contentbridge_invariants.json"
+            override = self.workspace_path / ".aviator" / "skills" / "cloudforge_invariants.json"
         if override.is_file():
             src = override
         elif any((self.workspace_path / m).is_dir() for m in REPO_INVARIANT_MARKERS):

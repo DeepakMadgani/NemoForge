@@ -23,7 +23,7 @@ test.describe('Aviator Application - Core UI Tests', () => {
     await page.goto('/', { waitUntil: 'networkidle' });
     
     // Verify page loads
-    expect(page).toHaveTitle(/Aviator|chatbot|ContentBridge/i);
+    expect(page).toHaveTitle(/NemoForge|chatbot/i);
     
     // Verify main heading is visible
     const heading = page.locator('h1, h2, .app-title');
@@ -189,7 +189,7 @@ test.describe('Aviator Application - Core UI Tests', () => {
     await page.goto('/', { waitUntil: 'domcontentloaded' });
     
     // Page should still load (or show offline message)
-    expect(page).toHaveTitle(/Aviator|chatbot|ContentBridge/i);
+    expect(page).toHaveTitle(/NemoForge|chatbot/i);
     
     // Go back online
     await page.context().setOffline(false);

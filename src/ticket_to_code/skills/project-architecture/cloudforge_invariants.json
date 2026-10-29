@@ -14,3 +14,4 @@
     "CROSS-ENTITY KEY MAPPING FIDELITY (ROSETTA STONE):\n   - In multi-table operations, NEVER assume identical column names across entities.\n   - You MUST inspect the entities, database migrations, or existing `@Query` join definitions to determine the exact join column."
   ]
 }
+

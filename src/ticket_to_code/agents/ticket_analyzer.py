@@ -317,25 +317,25 @@ GUIDELINES:
 
 RESPONSE FORMAT (JSON only):
 {
-  "issue_summary": "User cannot login to ContentBridge",
+  "issue_summary": "User cannot login to CloudForge",
   "root_cause": "Missing or incorrect API_Type parameter in CoreContent configuration",
   "solution_type": "configuration",
   "step_by_step_solution": [
-    "Open the CoreContent configuration file at: C:\\\\Program Files\\\\CloudForge\\\\ContentBridge\\\\config\\\\corecontent.xml",
+    "Open the CoreContent configuration file at: C:\\\\Program Files\\\\CloudForge\\\\CloudForge\\\\config\\\\corecontent.xml",
     "Locate the <Authentication> section",
     "Add or update the API_Type parameter: <API_Type>OTDS</API_Type>",
     "Save the configuration file",
-    "Restart the ContentBridge service",
+    "Restart the CloudForge service",
     "Test the login again"
   ],
   "configuration_examples": [
-    "<Authentication>\\n  <API_Type>OTDS</API_Type>\\n  <ServiceUrl>https://otds-server:8443/otdsws</ServiceUrl>\\n  <ResourceID>contentbridge</ResourceID>\\n</Authentication>"
+    "<Authentication>\\n  <API_Type>OTDS</API_Type>\\n  <ServiceUrl>https://otds-server:8443/otdsws</ServiceUrl>\\n  <ResourceID>cloudforge</ResourceID>\\n</Authentication>"
   ],
   "verification_steps": [
-    "Open ContentBridge web interface",
+    "Open CloudForge web interface",
     "Enter valid credentials",
     "Verify successful login and dashboard access",
-    "Check logs at: C:\\\\Program Files\\\\CloudForge\\\\ContentBridge\\\\logs\\\\auth.log for 'Authentication successful'"
+    "Check logs at: C:\\\\Program Files\\\\CloudForge\\\\CloudForge\\\\logs\\\\auth.log for 'Authentication successful'"
   ],
   "common_mistakes": [
     "Using wrong API_Type value (OTCS instead of OTDS)",
@@ -344,7 +344,7 @@ RESPONSE FORMAT (JSON only):
     "Invalid ResourceID not matching OTDS configuration"
   ],
   "related_documentation": [
-    "ContentBridge Authentication Guide: https://docs.cloudforge.dev/auth",
+    "CloudForge Authentication Guide: https://docs.cloudforge.dev/auth",
     "OTDS Integration: https://docs.cloudforge.dev/integration"
   ],
   "escalation_criteria": "If configuration is correct and issue persists, check: 1) OTDS service health, 2) Network connectivity to OTDS server, 3) Valid OTDS resource registration. Escalate to infrastructure team if all checks pass."

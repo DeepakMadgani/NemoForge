@@ -6,7 +6,7 @@ Automatically detects .NET Framework vs .NET Core and uses appropriate build too
 - .NET Core/.NET 5+ → dotnet build
 
 Supports:
-- ContentBridge (.NET Framework 4.7.2, 78 projects)
+- Enterprise (.NET Framework 4.7.2, 78 projects)
 - DataSlave 2.sln with mixed C# and VB.NET
 - Any .NET project with automatic detection
 
@@ -36,7 +36,7 @@ class DotNetExecutionEngine(ExecutionEngineBase):
     - .NET Core/.NET 5+ → Uses dotnet build
     
     Real-world examples handled:
-    - ContentBridge: .NET Framework 4.7.2, DataSlave 2.sln, 78 projects
+    - Enterprise: .NET Framework 4.7.2, DataSlave 2.sln, 78 projects
     - Modern projects: .NET 6/7/8 with dotnet CLI
     - Mixed C# + VB.NET solutions
     
