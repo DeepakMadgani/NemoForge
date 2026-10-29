@@ -2156,7 +2156,7 @@ FILE: <relative_path>
         try:
             from ticket_to_code.llm_utils import llm_invoke
             from langchain_core.messages import HumanMessage
-            res = llm_invoke(self.llm, [HumanMessage(content=prompt)], max_tokens=2500)
+            res = llm_invoke(self.llm, [HumanMessage(content=prompt)], max_tokens=4096)
             content = getattr(res, "content", str(res))
             usage = getattr(res, "usage_metadata", None) or getattr(res, "response_metadata", {}).get("token_usage") or getattr(res, "response_metadata", {}).get("usage")
             if usage and isinstance(usage, dict):
