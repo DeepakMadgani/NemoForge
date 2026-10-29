@@ -1147,9 +1147,9 @@ function App() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          name: newProject.name,
+          name: newProject.name.trim(),
           type: newProject.type,
-          path: newProject.path
+          path: newProject.path.trim().replace(/^["']|["']$/g, '')
         })
       });
 

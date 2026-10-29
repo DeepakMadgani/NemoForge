@@ -330,20 +330,23 @@ def _load_projects() -> Dict[str, "Project"]:
     if changed:
         _save_projects(loaded)
 
-    # Auto-register active workspace environment if provided via ENV and no projects loaded
+    # Auto-register default workspace (CloudForge-Commerce) or ENV workspace if no projects loaded
+    repo_root = Path(__file__).resolve().parent.parent.parent
     env_ws = os.getenv("AVIATOR_WORKSPACE_PATH") or os.getenv("WORKSPACE_PATH")
-    if not loaded and env_ws and Path(env_ws).exists() and Path(env_ws).is_dir():
-        ws_path = str(Path(env_ws).resolve())
+    candidate_ws = Path(env_ws).resolve() if (env_ws and Path(env_ws).exists()) else (repo_root / "workspace" / "CloudForge-Commerce").resolve()
+    
+    if not loaded and candidate_ws.exists() and candidate_ws.is_dir():
+        ws_path = str(candidate_ws)
         if not any(Path(p.path).resolve() == Path(ws_path) for p in loaded.values()):
-            import uuid
-            auto_id = str(uuid.uuid4())
+            auto_id = "default-cloudforge-commerce"
+            is_idx = (candidate_ws / ".nemoforge" / "index.db").exists() or (candidate_ws / ".ticket_to_code" / "index.db").exists()
             auto_proj = Project(
                 id=auto_id,
-                name=Path(ws_path).name or "Workspace",
+                name="CloudForge-Commerce" if "CloudForge" in candidate_ws.name else (candidate_ws.name or "Workspace"),
                 type=ProjectType.LOCAL,
                 path=ws_path,
                 local_path=ws_path,
-                status=ProjectStatus.READY,
+                status=ProjectStatus.INDEXED if is_idx else ProjectStatus.READY,
             )
             loaded[auto_id] = auto_proj
             _save_projects(loaded)
@@ -467,13 +470,19 @@ async def create_project(request: CreateProjectRequest):
             })
             raise HTTPException(status_code=500, detail=f"Clone failed: {str(e)}")
     else:
-        # Local project - verify path exists and is a directory
-        path_obj = Path(path)
+        # Local project - verify path exists and is a directory (clean quotes & resolve relative paths)
+        clean_path = path.strip().strip('"').strip("'")
+        path_obj = Path(clean_path)
+        if not path_obj.is_absolute():
+            repo_root = Path(__file__).resolve().parent.parent.parent
+            if (repo_root / path_obj).exists():
+                path_obj = repo_root / path_obj
         if not path_obj.exists():
             raise HTTPException(status_code=400, detail=f"Path not found: {path}. Please check if the directory exists.")
         if not path_obj.is_dir():
             raise HTTPException(status_code=400, detail=f"Path is not a directory: {path}")
-        project.local_path = str(path_obj.absolute())
+        project.path = str(path_obj.resolve())
+        project.local_path = str(path_obj.resolve())
         project.status = ProjectStatus.READY
     
     projects[project_id] = project
@@ -601,7 +610,7 @@ async def index_project(project_id: str):
         raise HTTPException(status_code=404, detail="Project not found")
     
     project = projects[project_id]
-    raw_path = project.local_path or project.path
+    raw_path = (project.local_path or project.path or "").strip().strip('"').strip("'")
     repo_path = Path(raw_path)
     if not repo_path.is_absolute():
         repo_root = Path(__file__).resolve().parent.parent.parent
