@@ -4344,7 +4344,22 @@ async def get_workflow_changes(workflow_id: str):
 
         if not file_diff and workspace_path:
             full_p = os.path.join(workspace_path, fp) if not os.path.isabs(fp) else fp
-            if os.path.exists(full_p):
+            # Try git diff HEAD first for clean, real unified diff
+            try:
+                import subprocess
+                res = subprocess.run(
+                    ["git", "diff", "HEAD", "--", fp],
+                    cwd=workspace_path,
+                    capture_output=True,
+                    text=True,
+                    timeout=5
+                )
+                if res.returncode == 0 and res.stdout.strip():
+                    file_diff = res.stdout.strip()
+            except Exception:
+                pass
+
+            if not file_diff and os.path.exists(full_p):
                 try:
                     fcontent = Path(full_p).read_text(encoding="utf-8", errors="ignore")
                     diff_lines = list(difflib.unified_diff(
