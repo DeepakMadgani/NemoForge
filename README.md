@@ -107,6 +107,13 @@ NemoForge replaces "prompt-and-pray" generation with **deterministic AST symbol 
 - API credentials are entered in the client dashboard (`Settings`) and stored strictly in untracked local `.env.local`.
 - Zero credentials or tokens are ever logged, sent to telemetry, or committed to Git.
 
+### 7. Native Model Context Protocol (MCP) Hub
+- Implements the open **Model Context Protocol (MCP)** specification directly inside the agent execution loop.
+- **Dedicated MCP Tools Tab**: A first-class dashboard view allowing developers to monitor active tools, inspect JSON schemas, and trigger live tool runs.
+- **Playwright MCP**: Automates headless Chromium sessions to perform live DOM tree assertions, visual snapshots, and browser console error capture for UI validation.
+- **Figma MCP**: Connects directly to Figma files to inspect design tokens, typography, component hierarchies, and layout frames for pixel-accurate frontend implementations.
+- **Pluggable & Secure Architecture**: MCP servers are registered dynamically via `mcp_servers.json` (starter template in `mcp_servers.example.json`), ensuring individual access tokens (e.g., Figma personal access tokens) stay strictly local and untracked.
+
 ---
 
 ## System Architecture
@@ -118,12 +125,14 @@ flowchart TD
         Sidebar["Project Navigator\n(1-Click Indexing)"]
         ChangesTab["Changes Tab\n(Virtual Buffer Diff & Approval Gate)"]
         FlowTab["Flow Tab\n(Real-Time ReAct Pipeline Visualizer)"]
+        MCPTab["MCP Tools Tab\n(Playwright & Figma Server Hub)"]
     end
 
     subgraph Backend ["NemoForge Orchestration Engine (FastAPI :8002)"]
         Router["WebSocket & REST API Dispatcher"]
         Engine["FastIDEEngine\n(Polyglot Domain Routing)"]
         AST["Tree-sitter Parser &\nSQLite WAL Indexer"]
+        MCPHub["MCP Hub\n(Playwright & Figma Stdio Clients)"]
         PatchEngine["Surgical Search/Replace Engine"]
         CompilerGate["Multi-Zone Compiler Gate\n(Maven / Gradle / NPM Sandbox)"]
     end
@@ -208,6 +217,7 @@ NemoForge provides a purpose-built developer interface running on React 18:
 - **Chat Tab**: Submit Jira-style tickets, bug reports, or feature requests. Real-time streaming status updates keep the engineer informed.
 - **Flow Tab**: Transparent, node-by-node visual representation of every agent stage, tool call, AST lookup, and compiler execution.
 - **Changes Tab**: Rich unified diff view powered by native Git diffs (`git diff HEAD`). Allows single-click file approvals or discards before modifying disk state.
+- **MCP Tools Tab**: Inspect connected Model Context Protocol servers (Playwright DOM testing, Figma design inspection), explore available tools, and execute live queries.
 - **Settings Modal**: Securely configure your Nebius Token Factory API key and model selection without editing source code.
 
 ---
