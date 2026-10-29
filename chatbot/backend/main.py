@@ -586,7 +586,13 @@ async def index_project(project_id: str):
         raise HTTPException(status_code=404, detail="Project not found")
     
     project = projects[project_id]
-    repo_path = Path(project.local_path or project.path)
+    raw_path = project.local_path or project.path
+    repo_path = Path(raw_path)
+    if not repo_path.is_absolute():
+        repo_root = Path(__file__).resolve().parent.parent.parent
+        candidate = repo_root / repo_path
+        if candidate.exists():
+            repo_path = candidate
     
     if not repo_path.exists():
         raise HTTPException(status_code=400, detail=f"Project path not found: {repo_path}")

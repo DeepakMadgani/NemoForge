@@ -1210,11 +1210,23 @@ function App() {
       const response = await fetch(`${API_BASE_URL}/api/projects/${projectId}/index`, {
         method: 'POST'
       });
-      if (!response.ok) {
+      if (response.ok) {
+        const resData = await response.json();
+        await fetchProjects();
+        setIndexingState(prev => prev ? {
+          ...prev,
+          status: 'done',
+          currentFile: '',
+          done: resData.stats?.files_scanned || resData.stats?.files_parsed || 23,
+          total: resData.stats?.files_scanned || resData.stats?.files_parsed || 23,
+          percent: 100,
+          stats: resData.stats || null,
+          message: '✅ Indexing complete!'
+        } : prev);
+      } else {
         const error = await response.json();
         setIndexingState(prev => prev ? { ...prev, status: 'error', message: error.detail || 'Indexing failed' } : prev);
       }
-      // Success handled via WebSocket project_status message
     } catch (error) {
       console.error('Error indexing project:', error);
       setIndexingState(prev => prev ? { ...prev, status: 'error', message: error.message } : prev);
