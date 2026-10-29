@@ -18,7 +18,7 @@
       "labels": ["backend", "api", "bug"],
       "category": "backend_or_service",
       "complexity": "medium",
-      "repo_scope": "C:/Users/dmadgani/Desktop/My_Aviator/aviator-platform",
+      "repo_scope": ".",
       "technology": "java",
       "acceptance_criteria": [
         "Email comparison is case-insensitive",
@@ -37,7 +37,7 @@
       "labels": ["ui", "responsive", "bug"],
       "category": "ui_responsive_or_layout",
       "complexity": "medium",
-      "repo_scope": "C:/Users/dmadgani/Desktop/My_Aviator/aviator-plugin-sample/chatbot/frontend",
+      "repo_scope": "./chatbot/frontend",
       "technology": "angular",
       "acceptance_criteria": [
         "Tabs remain accessible after resize",
@@ -56,7 +56,7 @@
       "labels": [],
       "category": "single_file_bug",
       "complexity": "small",
-      "repo_scope": "C:/Users/dmadgani/Desktop/My_Aviator/aviator-plugin-sample",
+      "repo_scope": ".",
       "technology": "<java|java-maven|java-gradle|dotnet|csharp|nodejs|angular>",
       "acceptance_criteria": ["<fill>"],
       "expected_changed_files": ["<relative/path/file.ext>"],

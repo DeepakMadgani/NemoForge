@@ -18,7 +18,7 @@ from ticket_to_code.agents.runtime_log_analyzer import (
 
 
 def test_extract_error_code_and_entities():
-    analyzer = RuntimeLogAnalyzer(workspace_path="c:/Users/dmadgani/Desktop/My_Aviator/nemoforge")
+    analyzer = RuntimeLogAnalyzer(workspace_path=".")
     
     # 1. Error code extraction
     log_sample = """
@@ -43,13 +43,13 @@ def test_extract_error_code_and_entities():
 
 
 def test_determine_failure_origin_python_vs_java():
-    analyzer = RuntimeLogAnalyzer(workspace_path="c:/Users/dmadgani/Desktop/My_Aviator/nemoforge")
+    analyzer = RuntimeLogAnalyzer(workspace_path=".")
     
     # Python traceback: stack is bottom-up (root failure is last frame in repo)
     py_frames = [
         {"file": "C:/Python313/Lib/site-packages/uvicorn/main.py", "line": 402, "is_repo": False},
-        {"file": "c:/Users/dmadgani/Desktop/My_Aviator/nemoforge/src/ticket_to_code/workflow.py", "line": 150, "is_repo": True},
-        {"file": "c:/Users/dmadgani/Desktop/My_Aviator/nemoforge/src/ticket_to_code/agents/runtime_log_analyzer.py", "line": 95, "is_repo": True},
+        {"file": "./src/ticket_to_code/workflow.py", "line": 150, "is_repo": True},
+        {"file": "./src/ticket_to_code/agents/runtime_log_analyzer.py", "line": 95, "is_repo": True},
     ]
     py_file, py_line = analyzer._determine_failure_origin(py_frames, is_python=True)
     assert py_file.endswith("runtime_log_analyzer.py")

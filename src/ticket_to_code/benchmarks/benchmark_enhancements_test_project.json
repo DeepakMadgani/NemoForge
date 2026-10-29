@@ -18,7 +18,7 @@
       "labels": ["runtime", "logs", "python", "bug"],
       "category": "backend_or_service",
       "complexity": "medium",
-      "repo_scope": "C:/Users/dmadgani/Desktop/My_Aviator/enhancement-test-project",
+      "repo_scope": ".",
       "technology": "python",
       "acceptance_criteria": [
         "Runtime stack trace is mapped to concrete source location",
@@ -42,7 +42,7 @@
       "labels": ["cross-system", "service", "routing"],
       "category": "multi_file_bug",
       "complexity": "medium",
-      "repo_scope": "C:/Users/dmadgani/Desktop/My_Aviator/enhancement-test-project",
+      "repo_scope": ".",
       "technology": "python",
       "acceptance_criteria": [
         "Cross-service endpoint usage is discovered from code and configuration",
@@ -67,7 +67,7 @@
       "labels": ["reasoning", "causal-chain", "backend"],
       "category": "multi_file_bug",
       "complexity": "medium",
-      "repo_scope": "C:/Users/dmadgani/Desktop/My_Aviator/enhancement-test-project",
+      "repo_scope": ".",
       "technology": "python",
       "acceptance_criteria": [
         "Fix addresses root cause, not only symptom",
@@ -93,7 +93,7 @@
       "labels": ["adaptive", "replanner", "config"],
       "category": "config_or_version",
       "complexity": "medium",
-      "repo_scope": "C:/Users/dmadgani/Desktop/My_Aviator/enhancement-test-project",
+      "repo_scope": ".",
       "technology": "python",
       "acceptance_criteria": [
         "Execution shows strategy pivot after failed path",
@@ -118,7 +118,7 @@
       "labels": ["windows", "platform", "powershell"],
       "category": "config_or_version",
       "complexity": "small",
-      "repo_scope": "C:/Users/dmadgani/Desktop/My_Aviator/enhancement-test-project",
+      "repo_scope": ".",
       "technology": "python",
       "acceptance_criteria": [
         "PowerShell script runs without shell syntax errors on Windows",
@@ -142,7 +142,7 @@
       "labels": ["indexing", "workspace", "retrieval"],
       "category": "multi_file_bug",
       "complexity": "small",
-      "repo_scope": "C:/Users/dmadgani/Desktop/My_Aviator/enhancement-test-project",
+      "repo_scope": ".",
       "technology": "python",
       "acceptance_criteria": [
         "Both compose files are discoverable with grounded evidence",
@@ -167,7 +167,7 @@
       "labels": ["runtime", "feedback-loop", "verification"],
       "category": "backend_or_service",
       "complexity": "medium",
-      "repo_scope": "C:/Users/dmadgani/Desktop/My_Aviator/enhancement-test-project",
+      "repo_scope": ".",
       "technology": "python",
       "acceptance_criteria": [
         "Runtime verifier output is captured and used",
@@ -192,7 +192,7 @@
       "labels": ["vision", "screenshot", "ui"],
       "category": "ui_responsive_or_layout",
       "complexity": "small",
-      "repo_scope": "C:/Users/dmadgani/Desktop/My_Aviator/enhancement-test-project",
+      "repo_scope": ".",
       "technology": "python",
       "acceptance_criteria": [
         "Visual signal is incorporated into ticket reasoning",
@@ -217,7 +217,7 @@
       "labels": ["git", "regression", "history"],
       "category": "single_file_bug",
       "complexity": "small",
-      "repo_scope": "C:/Users/dmadgani/Desktop/My_Aviator/enhancement-test-project",
+      "repo_scope": ".",
       "technology": "python",
       "acceptance_criteria": [
         "Regression point is identified from git history",
@@ -241,7 +241,7 @@
       "labels": ["service-prober", "healthcheck", "api"],
       "category": "single_file_bug",
       "complexity": "small",
-      "repo_scope": "C:/Users/dmadgani/Desktop/My_Aviator/enhancement-test-project",
+      "repo_scope": ".",
       "technology": "python",
       "acceptance_criteria": [
         "HTTP probe identifies failing endpoint contract",
@@ -265,7 +265,7 @@
       "labels": ["env", "propagation", "config"],
       "category": "config_or_version",
       "complexity": "medium",
-      "repo_scope": "C:/Users/dmadgani/Desktop/My_Aviator/enhancement-test-project",
+      "repo_scope": ".",
       "technology": "python",
       "acceptance_criteria": [
         "All TAX_RATE definitions are traced",
@@ -292,7 +292,7 @@
       "labels": ["dependency", "resolver", "python"],
       "category": "config_or_version",
       "complexity": "small",
-      "repo_scope": "C:/Users/dmadgani/Desktop/My_Aviator/enhancement-test-project",
+      "repo_scope": ".",
       "technology": "python",
       "acceptance_criteria": [
         "Missing module is mapped to correct package",
@@ -316,7 +316,7 @@
       "labels": ["config", "infra", "yaml", "json", "env"],
       "category": "config_or_version",
       "complexity": "small",
-      "repo_scope": "C:/Users/dmadgani/Desktop/My_Aviator/enhancement-test-project",
+      "repo_scope": ".",
       "technology": "python",
       "acceptance_criteria": [
         "config/settings.json contains a numeric top-level tax_rate field equal to 0.10",
@@ -344,7 +344,7 @@
       "labels": ["multimodal", "vision", "architecture"],
       "category": "config_or_version",
       "complexity": "small",
-      "repo_scope": "C:/Users/dmadgani/Desktop/My_Aviator/enhancement-test-project",
+      "repo_scope": ".",
       "technology": "python",
       "acceptance_criteria": [
         "Visual architecture labels are reflected in project config/index metadata",
@@ -368,7 +368,7 @@
       "labels": ["negative-constraint", "models", "discount", "bug"],
       "category": "single_file_bug",
       "complexity": "small",
-      "repo_scope": "C:/Users/dmadgani/Desktop/My_Aviator/enhancement-test-project",
+      "repo_scope": ".",
       "technology": "python",
       "acceptance_criteria": [
         "src/models.py is modified, NOT deleted or removed",
@@ -392,7 +392,7 @@
       "labels": ["refactoring", "cleanup", "removal", "models", "config"],
       "category": "multi_file_bug",
       "complexity": "small",
-      "repo_scope": "C:/Users/dmadgani/Desktop/My_Aviator/enhancement-test-project",
+      "repo_scope": ".",
       "technology": "python",
       "acceptance_criteria": [
         "config/settings.json no longer contains enable_notifications under features",

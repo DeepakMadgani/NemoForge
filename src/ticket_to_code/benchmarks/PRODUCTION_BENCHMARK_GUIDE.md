@@ -54,24 +54,24 @@ Notes:
 
 ## Run single benchmark
 ```powershell
-"C:/Users/dmadgani/Desktop/My_Aviator/aviator-plugin-sample/run_production_readiness_benchmark.bat" `
-  --workspace "C:/Users/dmadgani/Desktop/My_Aviator/aviator-plugin-sample" `
-  --tickets "C:/Users/dmadgani/Desktop/My_Aviator/aviator-plugin-sample/src/ticket_to_code/benchmarks/benchmark_dataset_template.json" `
-  --report-dir "C:/Users/dmadgani/Desktop/My_Aviator/aviator-plugin-sample/benchmark_reports" `
+"./run_production_readiness_benchmark.bat" `
+  --workspace "." `
+  --tickets "./src/ticket_to_code/benchmarks/benchmark_dataset_template.json" `
+  --report-dir "./benchmark_reports" `
   --execution-mode contract
 ```
 
 Smoke shortcut:
 ```powershell
-"C:/Users/dmadgani/Desktop/My_Aviator/aviator-plugin-sample/run_production_readiness_smoke.bat"
+"./run_production_readiness_smoke.bat"
 ```
 
 ## Run A/B benchmark (experience on vs off)
 ```powershell
-"C:/Users/dmadgani/Desktop/My_Aviator/aviator-plugin-sample/run_production_readiness_benchmark.bat" `
-  --workspace "C:/Users/dmadgani/Desktop/My_Aviator/aviator-plugin-sample" `
-  --tickets "C:/Users/dmadgani/Desktop/My_Aviator/aviator-plugin-sample/src/ticket_to_code/benchmarks/benchmark_dataset_template.json" `
-  --report-dir "C:/Users/dmadgani/Desktop/My_Aviator/aviator-plugin-sample/benchmark_reports" `
+"./run_production_readiness_benchmark.bat" `
+  --workspace "." `
+  --tickets "./src/ticket_to_code/benchmarks/benchmark_dataset_template.json" `
+  --report-dir "./benchmark_reports" `
   --execution-mode contract `
   --lightweight `
   --ab-experience
@@ -81,7 +81,7 @@ Smoke shortcut:
 
 Smoke A/B shortcut:
 ```powershell
-"C:/Users/dmadgani/Desktop/My_Aviator/aviator-plugin-sample/run_production_readiness_ab_smoke.bat"
+"./run_production_readiness_ab_smoke.bat"
 ```
 
 ## Output files

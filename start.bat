@@ -2,7 +2,7 @@
 setlocal
 
 echo =====================================================================
-echo  ⚡ NemoForge: Launching Platform Services
+echo  [NemoForge] Launching Platform Services
 echo =====================================================================
 echo.
 
@@ -29,8 +29,7 @@ start http://localhost:3000
 
 echo.
 echo =====================================================================
-echo  🚀 NemoForge is Running!
+echo  [NemoForge] Running!
 echo  - Frontend Dashboard: http://localhost:3000
 echo  - Backend API:        http://localhost:8002
 echo =====================================================================
-

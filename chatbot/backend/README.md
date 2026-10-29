@@ -1,169 +1,52 @@
-# Ticket-to-Code Chatbot Backend
+# NemoForge Backend Engine
 
-FastAPI backend with **Playwright** for ValueEdge ticket scraping (visual browser with OTP support).
+FastAPI-powered orchestration service for NemoForge, integrating NVIDIA Nemotron on Nebius Token Factory, Tree-sitter AST symbol graphs, and multi-zone compiler verification.
 
-## 🎯 What This Does
+---
 
-- **Fetch ValueEdge Tickets** using Playwright (opens visible browser for OTP)
-- **Extract ticket data** (title, description, comments, attachments, etc.)
-- **WebSocket updates** to frontend in real-time
-- **Project & Knowledge Base management** for autonomous workflows
+## Core Capabilities
 
-## 📦 Where Playwright is Installed
+- **Nebius Token Factory Integration**: Native client targeting `https://api.tokenfactory.nebius.com/v1/` for NVIDIA Nemotron 3 Super (120B MoE) and Nemotron 70B Instruct.
+- **Tree-sitter AST Slicing**: Instant SQLite WAL symbol indexer querying class hierarchies and method call graphs in <1s.
+- **Polyglot Domain Disambiguation**: Language-aware intent classifier separating backend Java Spring Boot exceptions from frontend React TypeScript components.
+- **Surgical Patch Engine**: Fail-closed 3-line search/replace anchors for precise code synthesis.
+- **Multi-Zone Compiler Gate**: Live sandboxed execution of `mvn compile`, `gradle build`, and `npm test` with automated diagnostic repair loops.
+- **Live WebSocket Dispatch**: Real-time event streaming powering the frontend ReAct Flow DAG visualizer.
 
-Playwright is installed in your virtual environment:
-```
-C:\Users\dmadgani\Desktop\My_Aviator\aviator-plugin-sample\.venv\
-```
+---
 
-**Playwright browsers** (Chromium) are stored at:
-```
-%USERPROFILE%\AppData\Local\ms-playwright\chromium-<version>\
-```
+## Key API Endpoints
 
-## 🚀 Quick Start
+### Project & Indexing
+- `GET /api/projects`: List registered projects and indexing status.
+- `POST /api/projects`: Register a new local or git workspace.
+- `POST /api/projects/{id}/index`: Execute instant Tree-sitter AST indexing.
+- `DELETE /api/projects/{id}`: Unregister project and purge `.nemoforge/index.db`.
 
-### 1. Install Dependencies (Already Done!)
+### Intent & Workflows
+- `POST /api/intent/classify`: Classify user prompt intent (`CODE_CHANGE` vs `EXPLAIN`).
+- `POST /api/workflow/start`: Launch autonomous SWE workflow on target ticket.
+- `GET /api/workflow/{id}/events`: Retrieve event stream for ReAct workflow.
+- `GET /api/workflow/transparent/{id}/changes`: Retrieve native Git diff of staged modifications.
+- `POST /api/workflow/transparent/{id}/changes/approve`: Selectively approve or reject staged file hunks before disk flush.
 
-```powershell
-# From aviator-plugin-sample directory
-cd C:\Users\dmadgani\Desktop\My_Aviator\aviator-plugin-sample
+### Real-Time Updates
+- `WS /ws`: WebSocket endpoint broadcasting live ReAct agent lifecycle events.
 
-# Playwright + dependencies already installed via uv:
-uv pip install playwright beautifulsoup4 lxml fastapi uvicorn websockets pydantic gitpython
+---
 
-# Install Chromium browser (if not done):
-.venv\Scripts\playwright.exe install chromium
-```
+## Running Standalone
 
-### 2. Run Server
+From the repository root:
+```bash
+# Windows
+.venv\Scripts\uvicorn.exe main:app --app-dir chatbot\backend --host 0.0.0.0 --port 8002 --reload
 
-```powershell
-# Navigate to backend
-cd chatbot\backend
-
-# Run with uvicorn (auto-reload enabled)
-..\..\.venv\Scripts\uvicorn.exe main:app --host 0.0.0.0 --port 8002 --reload
-```
-
-Server runs at: **http://localhost:8002**
-
-## 🌐 Frontend
-
-React frontend is in `chatbot/frontend/`:
-```powershell
-cd chatbot\frontend
-npm run dev  # Runs on http://localhost:3000
-```
-```
-POST /api/projects - Create project (local or git)
-GET /api/projects - List all projects
-GET /api/projects/{id} - Get project details
-DELETE /api/projects/{id} - Delete project
+# Linux / macOS
+source .venv/bin/activate
+python -m uvicorn main:app --app-dir chatbot/backend --host 0.0.0.0 --port 8002 --reload
 ```
 
-### Knowledge Bases
-```
-POST /api/projects/{id}/knowledge-bases - Create KB
-GET /api/projects/{id}/knowledge-bases - List KBs
-POST /api/knowledge-bases/{id}/upload - Upload files
-POST /api/knowledge-bases/{id}/index - Index files
-```
-
-### ValueEdge Integration
-```
-POST /api/valueedge/fetch-ticket - Fetch ticket using Playwright
-GET /api/valueedge/test - Test connection
-```
-
-### Workflow
-```
-POST /api/workflow/start - Start autonomous workflow
-GET /api/workflow/{id}/events - Get workflow events
-```
-
-### WebSocket
-```
-WS /ws - Real-time updates
-```
-
-## 🎭 Playwright Usage
-
-The backend uses Playwright to automatically scrape ValueEdge tickets:
-
-```python
-# Example: Fetch ticket
-response = await client.post("/api/valueedge/fetch-ticket", json={
-    "ticket_id": "VE-CB-1234",
-    "config": {
-        "url": "https://valueedge.company.com",
-        "username": "user",
-        "password": "pass"
-    }
-})
-
-ticket_data = response.json()["ticket"]
-```
-
-## 📊 WebSocket Events
-
-Subscribe to real-time updates:
-
-```javascript
-const ws = new WebSocket("ws://localhost:8002/ws");
-
-ws.onmessage = (event) => {
-    const data = JSON.parse(event.data);
-    console.log(data.type, data.message);
-};
-```
-
-Event types:
-- `project_status` - Project creation/cloning updates
-- `kb_status` - Knowledge base indexing updates
-- `valueedge_scraping` - Ticket scraping progress
-- `workflow_event` - Autonomous workflow events
-
-## 🛠️ Development
-
-### Run Tests
-```powershell
-pytest tests/
-```
-
-### Enable Debug Mode
-```python
-# In main.py
-app = FastAPI(debug=True)
-```
-
-### View API Docs
-- Swagger UI: http://localhost:8002/docs
-- ReDoc: http://localhost:8002/redoc
-
-## 📝 Notes
-
-- Playwright runs in **headless mode** by default for production
-- Screenshots are saved for debugging: `ticket_{id}.png`, `error_{id}.png`
-- WebSocket broadcasts all events to connected clients
-- Projects and KBs are stored in memory (add DB later)
-
-## 🔧 Troubleshooting
-
-### Playwright Issues
-```powershell
-# Reinstall browsers
-playwright install --force chromium
-
-# Run in non-headless mode for debugging
-# Edit valueedge_scraper.py: headless=False
-```
-
-### Port Already in Use
-```powershell
-# Find process using port 8002
-netstat -ano | findstr :8002
-
-# Kill process
-taskkill /PID <pid> /F
-```
+Interactive API documentation is available at:
+- Swagger UI: `http://localhost:8002/docs`
+- ReDoc: `http://localhost:8002/redoc`

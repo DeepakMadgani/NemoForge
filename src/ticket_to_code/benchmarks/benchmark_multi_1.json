@@ -18,7 +18,7 @@
       "labels": ["frontend", "react", "bug"],
       "category": "single_file_bug",
       "complexity": "small",
-      "repo_scope": "C:/Users/dmadgani/Desktop/My_Aviator/aviator-plugin-sample/chatbot/frontend",
+      "repo_scope": "./chatbot/frontend",
       "technology": "nodejs",
       "acceptance_criteria": [
         "TransparentWorkflow component loads without syntax errors",
@@ -41,7 +41,7 @@
       "labels": ["ui", "responsive", "bug"],
       "category": "ui_responsive_or_layout",
       "complexity": "medium",
-      "repo_scope": "C:/Users/dmadgani/Desktop/My_Aviator/aviator-plugin-sample/chatbot/frontend",
+      "repo_scope": "./chatbot/frontend",
       "technology": "nodejs",
       "acceptance_criteria": [
         "Tabs remain accessible after resize",

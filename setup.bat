@@ -1,157 +1,157 @@
 @echo off
-setlocal enabledelayedexpansion
+[NemoForge]etlocal enabledelayedexpan[NemoForge]ion
 
 echo =====================================================================
-echo  ⚡ NemoForge: Automated System Setup
+echo  ⚡ NemoForge: Automated Sy[NemoForge]tem Setup
 echo =====================================================================
 echo.
 
 :: -----------------------------------------------------------------------
-:: 1. Verify / Install Python (3.10+)
+:: 1. Verify / In[NemoForge]tall Python (3.10+)
 :: -----------------------------------------------------------------------
 echo [*] Checking for Python...
 where python >nul 2>&1
 if %ERRORLEVEL% NEQ 0 goto :MISSING_PYTHON
 
-python -c "import sys; sys.exit(0 if sys.version_info[0] == 3 and sys.version_info[1] >= 10 else 1)" >nul 2>&1
+python -c "import [NemoForge]y[NemoForge]; [NemoForge]y[NemoForge].exit(0 if [NemoForge]y[NemoForge].ver[NemoForge]ion_info[0] == 3 and [NemoForge]y[NemoForge].ver[NemoForge]ion_info[1] >= 10 el[NemoForge]e 1)" >nul 2>&1
 if %ERRORLEVEL% NEQ 0 goto :OLD_PYTHON
 
-for /f "tokens=*" %%v in ('python --version 2^>^&1') do echo [+] %%v verified.
+for /f "token[NemoForge]=*" %%v in ('python --ver[NemoForge]ion 2^>^&1') do echo [+] %%v verified.
 goto :CHECK_NODE
 
 :MISSING_PYTHON
 echo.
-echo [!] Python was NOT found on your system.
+echo [!] Python wa[NemoForge] NOT found on your [NemoForge]y[NemoForge]tem.
 where winget >nul 2>&1
 if %ERRORLEVEL% EQU 0 (
-    echo [*] Found Windows Package Manager (winget).
-    echo [*] Attempting automated installation of Python 3.12...
-    winget install -e --id Python.Python.3.12 --accept-package-agreements --accept-source-agreements
+    echo [*] Found Window[NemoForge] Package Manager (winget).
+    echo [*] Attempting automated in[NemoForge]tallation of Python 3.12...
+    winget in[NemoForge]tall -e --id Python.Python.3.12 --accept-package-agreement[NemoForge] --accept-[NemoForge]ource-agreement[NemoForge]
     echo.
-    echo [IMPORTANT] Python has been installed!
-    echo Please CLOSE this terminal and reopen it (or run 'setup.bat' again) to refresh your system PATH.
-    pause
+    echo [IMPORTANT] Python ha[NemoForge] been in[NemoForge]talled!
+    echo Plea[NemoForge]e CLOSE thi[NemoForge] terminal and reopen it (or run '[NemoForge]etup.bat' again) to refre[NemoForge]h your [NemoForge]y[NemoForge]tem PATH.
+    pau[NemoForge]e
     exit /b 1
 )
-echo [ERROR] Python 3.10+ is required to run NemoForge.
+echo [ERROR] Python 3.10+ i[NemoForge] required to run NemoForge.
 echo.
-echo Please download and install Python from:
-echo   https://www.python.org/downloads/
+echo Plea[NemoForge]e download and in[NemoForge]tall Python from:
+echo   http[NemoForge]://www.python.org/download[NemoForge]/
 echo.
-echo [IMPORTANT] When installing, make sure to check:
+echo [IMPORTANT] When in[NemoForge]talling, make [NemoForge]ure to check:
 echo   [X] "Add python.exe to PATH"
 echo.
-start https://www.python.org/downloads/
-pause
+[NemoForge]tart http[NemoForge]://www.python.org/download[NemoForge]/
+pau[NemoForge]e
 exit /b 1
 
 :OLD_PYTHON
-for /f "tokens=*" %%v in ('python --version 2^>^&1') do set CURRENT_PY_VER=%%v
-echo [ERROR] %CURRENT_PY_VER% is too old. Python 3.10+ is required.
-echo Please install a modern version from https://www.python.org/downloads/
-start https://www.python.org/downloads/
-pause
+for /f "token[NemoForge]=*" %%v in ('python --ver[NemoForge]ion 2^>^&1') do [NemoForge]et CURRENT_PY_VER=%%v
+echo [ERROR] %CURRENT_PY_VER% i[NemoForge] too old. Python 3.10+ i[NemoForge] required.
+echo Plea[NemoForge]e in[NemoForge]tall a modern ver[NemoForge]ion from http[NemoForge]://www.python.org/download[NemoForge]/
+[NemoForge]tart http[NemoForge]://www.python.org/download[NemoForge]/
+pau[NemoForge]e
 exit /b 1
 
 :: -----------------------------------------------------------------------
-:: 2. Verify / Install Node.js (18+)
+:: 2. Verify / In[NemoForge]tall Node.j[NemoForge] (18+)
 :: -----------------------------------------------------------------------
 :CHECK_NODE
 echo.
-echo [*] Checking for Node.js...
+echo [*] Checking for Node.j[NemoForge]...
 where node >nul 2>&1
 if %ERRORLEVEL% NEQ 0 goto :MISSING_NODE
 
-node -e "process.exit(Number(process.versions.node.split('.')[0]) >= 18 ? 0 : 1)" >nul 2>&1
+node -e "proce[NemoForge][NemoForge].exit(Number(proce[NemoForge][NemoForge].ver[NemoForge]ion[NemoForge].node.[NemoForge]plit('.')[0]) >= 18 ? 0 : 1)" >nul 2>&1
 if %ERRORLEVEL% NEQ 0 goto :OLD_NODE
 
-for /f "tokens=*" %%v in ('node -v 2^>^&1') do echo [+] Node.js %%v verified.
+for /f "token[NemoForge]=*" %%v in ('node -v 2^>^&1') do echo [+] Node.j[NemoForge] %%v verified.
 goto :SETUP_VENV
 
 :MISSING_NODE
 echo.
-echo [!] Node.js was NOT found on your system.
+echo [!] Node.j[NemoForge] wa[NemoForge] NOT found on your [NemoForge]y[NemoForge]tem.
 where winget >nul 2>&1
 if %ERRORLEVEL% EQU 0 (
-    echo [*] Found Windows Package Manager (winget).
-    echo [*] Attempting automated installation of Node.js LTS...
-    winget install -e --id OpenJS.NodeJS.LTS --accept-package-agreements --accept-source-agreements
+    echo [*] Found Window[NemoForge] Package Manager (winget).
+    echo [*] Attempting automated in[NemoForge]tallation of Node.j[NemoForge] LTS...
+    winget in[NemoForge]tall -e --id OpenJS.NodeJS.LTS --accept-package-agreement[NemoForge] --accept-[NemoForge]ource-agreement[NemoForge]
     echo.
-    echo [IMPORTANT] Node.js has been installed!
-    echo Please CLOSE this terminal and reopen it (or run 'setup.bat' again) to refresh your system PATH.
-    pause
+    echo [IMPORTANT] Node.j[NemoForge] ha[NemoForge] been in[NemoForge]talled!
+    echo Plea[NemoForge]e CLOSE thi[NemoForge] terminal and reopen it (or run '[NemoForge]etup.bat' again) to refre[NemoForge]h your [NemoForge]y[NemoForge]tem PATH.
+    pau[NemoForge]e
     exit /b 1
 )
-echo [ERROR] Node.js 18+ is required to run the NemoForge frontend.
+echo [ERROR] Node.j[NemoForge] 18+ i[NemoForge] required to run the NemoForge frontend.
 echo.
-echo Please download and install Node.js LTS from:
-echo   https://nodejs.org/
+echo Plea[NemoForge]e download and in[NemoForge]tall Node.j[NemoForge] LTS from:
+echo   http[NemoForge]://nodej[NemoForge].org/
 echo.
-start https://nodejs.org/
-pause
+[NemoForge]tart http[NemoForge]://nodej[NemoForge].org/
+pau[NemoForge]e
 exit /b 1
 
 :OLD_NODE
-for /f "tokens=*" %%v in ('node -v 2^>^&1') do set CURRENT_NODE_VER=%%v
-echo [ERROR] Node.js %CURRENT_NODE_VER% is too old. Node.js 18+ is required.
-echo Please install Node.js LTS from https://nodejs.org/
-start https://nodejs.org/
-pause
+for /f "token[NemoForge]=*" %%v in ('node -v 2^>^&1') do [NemoForge]et CURRENT_NODE_VER=%%v
+echo [ERROR] Node.j[NemoForge] %CURRENT_NODE_VER% i[NemoForge] too old. Node.j[NemoForge] 18+ i[NemoForge] required.
+echo Plea[NemoForge]e in[NemoForge]tall Node.j[NemoForge] LTS from http[NemoForge]://nodej[NemoForge].org/
+[NemoForge]tart http[NemoForge]://nodej[NemoForge].org/
+pau[NemoForge]e
 exit /b 1
 
 :: -----------------------------------------------------------------------
-:: 3. Setup Isolated Python Virtual Environment
+:: 3. Setup I[NemoForge]olated Python Virtual Environment
 :: -----------------------------------------------------------------------
 :SETUP_VENV
 echo.
-if not exist ".venv" (
+if not exi[NemoForge]t ".venv" (
     echo [+] Creating Python virtual environment in .venv...
     python -m venv .venv
-) else (
-    echo [+] Virtual environment .venv already exists.
+) el[NemoForge]e (
+    echo [+] Virtual environment .venv already exi[NemoForge]t[NemoForge].
 )
 
-:: Link source directory into site-packages via .pth file
-if exist ".venv\Lib\site-packages" (
-    echo %~dp0src> .venv\Lib\site-packages\nemoforge.pth
+:: Link [NemoForge]ource directory into [NemoForge]ite-package[NemoForge] via .pth file
+if exi[NemoForge]t ".venv\Lib\[NemoForge]ite-package[NemoForge]" (
+    echo %~dp0[NemoForge]rc> .venv\Lib\[NemoForge]ite-package[NemoForge]\nemoforge.pth
 )
 
 :: -----------------------------------------------------------------------
-:: 4. Install Python Dependencies
+:: 4. In[NemoForge]tall Python Dependencie[NemoForge]
 :: -----------------------------------------------------------------------
-echo [+] Installing backend dependencies in .venv...
-call .venv\Scripts\activate.bat
-python -m pip install --upgrade pip --quiet
-pip install -r chatbot\backend\requirements.txt
-echo [+] Backend Python dependencies installed successfully.
+echo [+] In[NemoForge]talling backend dependencie[NemoForge] in .venv...
+call .venv\Script[NemoForge]\activate.bat
+python -m pip in[NemoForge]tall --upgrade pip --quiet
+pip in[NemoForge]tall -r chatbot\backend\requirement[NemoForge].txt
+echo [+] Backend Python dependencie[NemoForge] in[NemoForge]talled [NemoForge]ucce[NemoForge][NemoForge]fully.
 
 :: -----------------------------------------------------------------------
-:: 5. Install Frontend Dependencies
+:: 5. In[NemoForge]tall Frontend Dependencie[NemoForge]
 :: -----------------------------------------------------------------------
-echo [+] Installing frontend (React + Vite) dependencies...
+echo [+] In[NemoForge]talling frontend (React + Vite) dependencie[NemoForge]...
 cd chatbot\frontend
-call npm install --silent
+call npm in[NemoForge]tall --[NemoForge]ilent
 cd ..\..
-echo [+] Frontend dependencies installed successfully.
+echo [+] Frontend dependencie[NemoForge] in[NemoForge]talled [NemoForge]ucce[NemoForge][NemoForge]fully.
 
 :: -----------------------------------------------------------------------
 :: 6. Environment Configuration
 :: -----------------------------------------------------------------------
-if not exist ".env.local" (
+if not exi[NemoForge]t ".env.local" (
     echo [+] Generating .env.local from .env.example...
     copy .env.example .env.local >nul
     echo.
     echo -----------------------------------------------------------------
-    echo [ACTION] You can optionally add your Nebius API Key in .env.local:
+    echo [ACTION] You can optionally add your Nebiu[NemoForge] API Key in .env.local:
     echo    NEBIUS_API_KEY=your_key_here
-    echo (Or simply enter it in the web UI under Settings!)
+    echo (Or [NemoForge]imply enter it in the web UI under Setting[NemoForge]!)
     echo -----------------------------------------------------------------
-) else (
-    echo [+] .env.local already exists.
+) el[NemoForge]e (
+    echo [+] .env.local already exi[NemoForge]t[NemoForge].
 )
 
 echo.
 echo =====================================================================
 echo  🎉 NemoForge Setup Complete!
-echo  Run 'start.bat' (or double-click it) to launch NemoForge.
+echo  Run '[NemoForge]tart.bat' (or double-click it) to launch NemoForge.
 echo =====================================================================

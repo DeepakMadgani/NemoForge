@@ -127,12 +127,12 @@
     {
       "step_id": "S2",
       "purpose": "Check Python backend dependencies for ticket engine workspace",
-      "command": "Set-Location 'C:\\Users\\dmadgani\\Desktop\\My_Aviator\\aviator-plugin-sample'; & '.venv\\Scripts\\python.exe' -c \"import sqlite3; print('sqlite_ok')\""
+      "command": "Set-Location '.'; & '.venv\\Scripts\\python.exe' -c \"import sqlite3; print('sqlite_ok')\""
     },
     {
       "step_id": "S3",
       "purpose": "Verify SQLite index files exist in plugin workspace",
-      "command": "Set-Location 'C:\\Users\\dmadgani\\Desktop\\My_Aviator\\aviator-plugin-sample'; Get-ChildItem -Recurse -File | Where-Object { $_.Name -match 'index|sqlite|fts' } | Select-Object -First 40 FullName"
+      "command": "Set-Location '.'; Get-ChildItem -Recurse -File | Where-Object { $_.Name -match 'index|sqlite|fts' } | Select-Object -First 40 FullName"
     },
     {
       "step_id": "S4",
@@ -147,7 +147,7 @@
     {
       "step_id": "S6",
       "purpose": "Dry import check for workflow and reasoning modules",
-      "command": "Set-Location 'C:\\Users\\dmadgani\\Desktop\\My_Aviator\\aviator-plugin-sample'; & '.venv\\Scripts\\python.exe' -m py_compile src\\ticket_to_code\\workflow.py src\\ticket_to_code\\reasoning\\engine.py src\\ticket_to_code\\reasoning\\tools.py src\\ticket_to_code\\reasoning\\capability_selector.py"
+      "command": "Set-Location '.'; & '.venv\\Scripts\\python.exe' -m py_compile src\\ticket_to_code\\workflow.py src\\ticket_to_code\\reasoning\\engine.py src\\ticket_to_code\\reasoning\\tools.py src\\ticket_to_code\\reasoning\\capability_selector.py"
     },
     {
       "step_id": "S7",

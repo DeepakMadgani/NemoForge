@@ -10,7 +10,7 @@
       "labels": ["benchmark", "smoke"],
       "category": "single_file_bug",
       "complexity": "small",
-      "repo_scope": "C:/Users/dmadgani/Desktop/My_Aviator/aviator-plugin-sample",
+      "repo_scope": ".",
       "acceptance_criteria": [
         "Benchmark run completes and writes output report files"
       ],
