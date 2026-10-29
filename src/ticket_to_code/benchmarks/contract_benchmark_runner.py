@@ -4,7 +4,7 @@ Runs canonical intake-contract tickets through contract mode and writes a report
 
 Usage:
     python -m ticket_to_code.benchmarks.contract_benchmark_runner \
-      --workspace C:/CC4E \
+      --workspace C:/CloudForge \
       --tickets C:/path/to/ground_truth_tickets.json \
       --report C:/path/to/contract_report.json
 """

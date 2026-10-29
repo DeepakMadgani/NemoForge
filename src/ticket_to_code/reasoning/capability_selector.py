@@ -1,5 +1,5 @@
 """
-Capability selector for the CC4E reasoning kernel.
+Capability selector for the Enterprise reasoning kernel.
 
 Purpose:
 - Pick the cheapest useful capability for the current missing need.

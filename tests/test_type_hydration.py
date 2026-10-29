@@ -8,7 +8,7 @@ Verifies:
    - FilterStringInput exposes eq?: string
    - TypeDependencyEdge records is_array=True
 4. Rendered TypeContract contains authoritative repository declarations and explicit array guidance.
-5. End-to-end hydration on the real CC4E xchange-ui codebase (MemberService.members).
+5. End-to-end hydration on the real CloudForge xchange-ui codebase (MemberService.members).
 """
 
 from pathlib import Path
@@ -23,7 +23,7 @@ from ticket_to_code.intelligence.typescript.type_contract import MethodTypeContr
 
 @pytest.fixture
 def synthetic_ts_repo(tmp_path: Path):
-    """Build a synthetic TypeScript project modeling the real CC4E structure."""
+    """Build a synthetic TypeScript project modeling the real CloudForge structure."""
     models_dir = tmp_path / "src" / "app" / "models"
     models_dir.mkdir(parents=True)
     services_dir = tmp_path / "src" / "app" / "services"
@@ -153,14 +153,14 @@ def test_transitive_type_hydration_members(synthetic_ts_repo):
     assert "companyName?: string" in prompt_block
 
 
-def test_live_cc4e_member_service_hydration():
-    """Verify type hydration directly against the real CC4E repository if present."""
-    cc4e_service = Path(r"C:\CC4E\xchange-ui\src\app\modules\shared\services\members\member.service.ts")
-    if not cc4e_service.exists():
-        pytest.skip("C:\\CC4E\\xchange-ui not present in environment")
+def test_live_cloudforge_member_service_hydration():
+    """Verify type hydration directly against the real CloudForge repository if present."""
+    cloudforge_service = Path(r"C:\sample_repo\xchange-ui\src\app\modules\shared\services\members\member.service.ts")
+    if not cloudforge_service.exists():
+        pytest.skip("C:\\CloudForge\\xchange-ui not present in environment")
 
     contract = TypeScriptTypeResolver.build_method_type_contract(
-        cc4e_service, "members", workspace_root=r"C:\CC4E"
+        cloudforge_service, "members", workspace_root=r"C:\sample_repo"
     )
     assert not contract.is_empty()
     assert "FilterParticipantMemberInput" in contract.direct_types

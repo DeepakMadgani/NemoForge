@@ -1,4 +1,4 @@
-"""Active CC4E Brain manager for ticket-to-code reasoning.
+"""Active Enterprise Brain manager for ticket-to-code reasoning.
 
 Loads structured Brain artifacts once, builds in-memory indexes, and serves
 fast deterministic queries. The Brain does not reason; it returns facts.

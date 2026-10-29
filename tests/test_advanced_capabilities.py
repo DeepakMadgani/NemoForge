@@ -169,7 +169,7 @@ def test_db_migration_flyway_syntax_and_safety(tmp_path):
 def test_fullstack_two_stage_pipeline_execution(tmp_path):
     from ticket_to_code.lean.fullstack_pipeline import extract_api_contract_from_java, run_fullstack_pipeline
 
-    ws = tmp_path / "cc4e"
+    ws = tmp_path / "cloudforge"
     ws.mkdir()
     be_root = ws / "issues-service"
     be_root.mkdir()

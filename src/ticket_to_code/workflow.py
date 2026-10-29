@@ -5677,7 +5677,7 @@ def localize_node(state: TicketToCodeState, agents: WorkflowAgents) -> dict:
     DEFAULT ACTION: MODIFY EXISTING FILE.
     Only create new files when proven necessary.
 
-    Uses SQLite AST index (39K+ symbols for CC4E) to:
+    Uses SQLite AST index (multi-service codebase) to:
     1. Find the ACTUAL file in the repository for each planned task
     2. Override planner-suggested (LLM-hallucinated) paths with real ones
     3. Change task_type to MODIFY when existing file found

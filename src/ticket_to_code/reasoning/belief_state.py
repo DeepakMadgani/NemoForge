@@ -1,4 +1,4 @@
-"""Belief-state primitives for the CC4E reasoning kernel.
+"""Belief-state primitives for the Enterprise reasoning kernel.
 
 Design intent:
 - Observations are immutable raw outputs from tools.

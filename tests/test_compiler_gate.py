@@ -12,7 +12,7 @@ def test_compiler_gate_parses_java_cannot_find_symbol():
     bb = DeductiveBlackboard()
     raw_error = """
     > Task :issues-service:compileJava FAILED
-    /C:/CC4E/issues-service/src/main/java/com/cloudforge/solutions/services/issues/service/impl/IssuesServiceImpl.java:480: error: cannot find symbol
+    /workspace/CloudForge-Commerce/order-service/src/main/java/com/cloudforge/solutions/services/issues/service/impl/IssuesServiceImpl.java:480: error: cannot find symbol
         if (issue.getPriority() == IssuePriority.CRITICAL) {
                                    ^
       symbol:   variable IssuePriority

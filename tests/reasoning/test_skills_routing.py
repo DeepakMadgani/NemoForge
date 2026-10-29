@@ -21,7 +21,7 @@ def test_skills_routing():
         ("", "Create a new Angular component in xchange-ui", "ui_component"),
         ("", "Fix NPE regression in saga compensate", "bugfix"),
         ("version_bump", "Bump version from 26.3 to 26.4", "version_change"),
-        ("", "Something totally unrelated", "cc4e_default"),
+        ("", "Something totally unrelated", "cloudforge_default"),
         ("access_control", "Restrict coordinator role for organization", "access_control"),
         ("", "Add RabbitMQ consumer for event stream", "messaging_event"),
         ("", "Add a ConstraintValidator for field length", "validator"),

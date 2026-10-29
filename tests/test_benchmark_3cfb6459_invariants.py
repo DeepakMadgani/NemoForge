@@ -77,7 +77,7 @@ def test_invariant_1_2_3_7_ownership_deduplication_and_single_tasks(tmp_path: Pa
     - add-members.component.scss appears ONCE
     - No duplicate generation occurs even when discovered via mixed absolute/relative paths.
     """
-    ws = tmp_path / "CC4E"
+    ws = tmp_path / "CloudForge"
     ws.mkdir()
     ui_dir = ws / "xchange-ui" / "src" / "app" / "modules" / "members" / "add-members"
     ui_dir.mkdir(parents=True, exist_ok=True)
@@ -156,7 +156,7 @@ def test_invariant_4_5_6_structured_supplier_authorization_and_model_protection(
     - member.service.ts is authorized through GENERATED_DEPENDENCY only via structured contract proof.
     - shared models remain protected (read-only).
     """
-    ws = tmp_path / "CC4E"
+    ws = tmp_path / "CloudForge"
     ws.mkdir()
     comp_dir = ws / "xchange-ui" / "src" / "app" / "modules" / "members" / "add-members"
     comp_dir.mkdir(parents=True, exist_ok=True)

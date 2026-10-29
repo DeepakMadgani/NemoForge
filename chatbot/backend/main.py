@@ -1838,7 +1838,6 @@ class StartReasoningAgentRequest(BaseModel):
 
 
 @app.post("/api/agent/solve")
-@app.post("/api/agent/cc4e/solve")
 async def solve_with_reasoner(request: StartReasoningAgentRequest):
     """Deprecated standalone endpoint. Use transparent workflow with execution_mode."""
     raise HTTPException(
@@ -1852,7 +1851,6 @@ async def solve_with_reasoner(request: StartReasoningAgentRequest):
 
 
 @app.get("/api/agent/brain")
-@app.get("/api/agent/cc4e/brain")
 async def get_project_brain_summary(repo_path: str):
     """Return a summary of what the Project Repository Brain has learned so far."""
     if os.getenv("AVIATOR_ENABLE_EXPERIMENTAL_REASONING", "0") != "1":
@@ -7448,7 +7446,7 @@ def _build_fallback_chat_reply(question: str, explanation: dict, gen_files: list
     """Dynamic fallback answer when LLM is unavailable, powered by project RAG, knowledge stores, and state."""
     lower = question.lower()
 
-    # 1. CC4E Architecture & Role Mapping (Coordinator vs Administrator)
+    # 1. Architecture & Role Mapping (Coordinator vs Administrator)
     if "coordinator" in lower and "administrator" in lower:
         return (
             "### 🏛️ Coordinator vs. Administrator Mapping:\n\n"

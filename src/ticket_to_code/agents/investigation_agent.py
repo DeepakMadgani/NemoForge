@@ -500,7 +500,7 @@ RESPOND with JSON in this exact structure:
   "root_cause_hypothesis": "<brief hypothesis about what's causing the issue>",
   "affected_systems": ["<system1>", "<system2>"],
   "core_subjects": ["<core entity/value being changed, e.g., 'version string', 'deliverable count'>"],
-  "context_locations": ["<contextual locations where issue is displayed, e.g., 'dashboard', 'CC4E app'>"],
+  "context_locations": ["<contextual locations where issue is displayed, e.g., 'dashboard', 'portal'>"],
   "investigation_areas": ["<area1>", "<area2>"],
   "possible_causes": [
     "<possible cause 1>",

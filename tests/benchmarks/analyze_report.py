@@ -1,5 +1,5 @@
 """
-Post-hoc analysis of a cc4e_scope_localization report.
+Post-hoc analysis of a scope_localization report.
 
 Separates the numbers that answer different questions:
   * by ANSWER WIDTH  — a 13-file ticket is easier to hit than a 1-file ticket,

@@ -49,7 +49,7 @@ def _top_root(path: str) -> str:
     language/layer rule. Returns '' when the path has no distinct top segment.
     """
     n = (path or "").replace("\\", "/").lstrip("/")
-    # Drop a leading drive/absolute prefix if present (e.g. C:/CC4E/xchange-ui/..)
+    # Drop a leading drive/absolute prefix if present (e.g. workspace/CloudForge-Commerce/store-ui/..)
     parts = [p for p in n.split("/") if p and not p.endswith(":")]
     return parts[0] if len(parts) > 1 else ""
 

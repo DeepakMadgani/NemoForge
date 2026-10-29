@@ -90,9 +90,9 @@ class RepositoryBrain:
             ws / ".aviator" / "brain" / "memory.json",
             ws / "brain" / "project_agent_memory.json",
             ws / "brain" / "memory.json",
-            ws / "brain" / "cc4e_agent_memory.json",
+            ws / "brain" / "cloudforge_agent_memory.json",
             ws / "project_agent_memory.json",
-            ws / "cc4e_agent_memory.json",
+            ws / "cloudforge_agent_memory.json",
         ]
         for c in candidates:
             if c.exists():
@@ -249,4 +249,4 @@ class RepositoryBrain:
 
 
 # Backward compatibility alias
-CC4EBrain = RepositoryBrain
+EnterpriseBrain = RepositoryBrain

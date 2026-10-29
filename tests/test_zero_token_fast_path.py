@@ -15,7 +15,7 @@ def test_zero_token_fast_path_record_and_lookup():
         
         # 1. Record verified patch
         patch_id = store.record_verified_patch(
-            repo="cc4e",
+            repo="cloudforge",
             error_sig=error_sig,
             ticket_summary="Fix missing core import in auth",
             patch_content=patch,
@@ -24,16 +24,16 @@ def test_zero_token_fast_path_record_and_lookup():
         assert patch_id is not None
 
         # 2. Zero-token lookup
-        hit = store.lookup_zero_token_patch("cc4e", error_sig)
+        hit = store.lookup_zero_token_patch("cloudforge", error_sig)
         assert hit is not None
         assert hit["patch_content"] == patch
         assert hit["hit_count"] >= 1
 
         # 3. Non-existent signature returns None
-        miss = store.lookup_zero_token_patch("cc4e", "unknown_error_sig")
+        miss = store.lookup_zero_token_patch("cloudforge", "unknown_error_sig")
         assert miss is None
 
         # 4. Demote patch upon verification failure -> future lookups must return None
-        demoted = store.demote_patch("cc4e", error_sig)
+        demoted = store.demote_patch("cloudforge", error_sig)
         assert demoted is True
-        assert store.lookup_zero_token_patch("cc4e", error_sig) is None
+        assert store.lookup_zero_token_patch("cloudforge", error_sig) is None

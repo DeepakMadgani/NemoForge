@@ -52,7 +52,7 @@ class _FakeSemanticResolver:
         return _Resolution(should_reuse=False)
 
 
-MEMBER_SVC = "C:/CC4E/xchange-ui/src/app/modules/shared/services/members/member.service.ts"
+MEMBER_SVC = "workspace/CloudForge-Commerce/store-ui/src/app/modules/shared/services/members/member.service.ts"
 BACKEND = "project-service/src/main/java/com/cloudforge/projectservice/service/ContractMemberService.java"
 COMPONENT = "xchange-ui/src/app/modules/members/add-members/add-members.component.ts"
 

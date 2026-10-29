@@ -1,4 +1,4 @@
-"""Tests for the lean deterministic harness. Localization/fence are proven against real CC4E
+"""Tests for the lean deterministic harness. Localization/fence are proven against real CloudForge
 files when present; the orchestrator is proven offline with injected patch/verify functions.
 """
 
@@ -18,8 +18,8 @@ from ticket_to_code.lean.lean_path import (
     LockedContext, VerifyOutcome, run_lean_path, should_use_lean,
 )
 
-CC4E = Path("C:/CC4E")
-GRID_TS = CC4E / "xchange-ui/src/app/modules/deliverables/deliverable/deliverable.component.ts"
+CloudForge = Path("C:/sample_repo")
+GRID_TS = CloudForge / "xchange-ui/src/app/modules/deliverables/deliverable/deliverable.component.ts"
 UI_TEXT = ("In the Deliverables tab grid reverse the order of the 'Content', 'Issues' and 'Name' "
            "columns so it reads Status, Info, Name, Issues, Content, List, 'Revision code', 'Issue reason'.")
 
@@ -250,12 +250,12 @@ def test_fullstack_ticket_is_declined_by_lean(tmp_path):
     assert not should_use_lean(scope)
 
 
-# ── real CC4E localization proof (skips when the repo is absent) ───────────────
+# ── real CloudForge localization proof (skips when the repo is absent) ───────────────
 
-@pytest.mark.skipif(not GRID_TS.exists(), reason="CC4E checkout not present")
-def test_real_cc4e_localization_picks_grid_files_zero_llm():
-    scope = triage("CC4E-DLV-UI-01", "Deliverables grid: show Name before Issues and Content",
-                   UI_TEXT, "C:/CC4E")
+@pytest.mark.skipif(not GRID_TS.exists(), reason="CloudForge checkout not present")
+def test_real_cloudforge_localization_picks_grid_files_zero_llm():
+    scope = triage("CF-DLV-UI-01", "Deliverables grid: show Name before Issues and Content",
+                   UI_TEXT, "workspace/CloudForge-Commerce")
     assert scope.layer == "ui"
     assert Path(scope.root).name == "xchange-ui"       # sub-project auto-selected
     cands, fence = locate(scope)
@@ -267,20 +267,20 @@ def test_real_cc4e_localization_picks_grid_files_zero_llm():
     assert top.distinct_anchors >= 2
 
 
-@pytest.mark.skipif(not GRID_TS.exists(), reason="CC4E checkout not present")
+@pytest.mark.skipif(not GRID_TS.exists(), reason="CloudForge checkout not present")
 def test_monorepo_repo_scope_still_resolves_subproject():
     # repo_scope pointing at the monorepo root must still descend to xchange-ui.
-    scope = triage("CC4E-DLV-UI-01", "Deliverables grid", UI_TEXT, "C:/CC4E", explicit_root="C:/CC4E")
+    scope = triage("CF-DLV-UI-01", "Deliverables grid", UI_TEXT, "workspace/CloudForge-Commerce", explicit_root="workspace/CloudForge-Commerce")
     assert Path(scope.root).name == "xchange-ui"
     cands, _ = locate(scope)
     assert any("deliverable/deliverable.component" in c.rel for c in cands)
 
 
-@pytest.mark.skipif(not GRID_TS.exists(), reason="CC4E checkout not present")
+@pytest.mark.skipif(not GRID_TS.exists(), reason="CloudForge checkout not present")
 def test_screen_noun_affinity_ranks_grid_component_first():
     from ticket_to_code.lean.lean_path import build_locked_context
-    scope = triage("CC4E-DLV-UI-01", "Deliverables grid: show Name before Issues and Content",
-                   UI_TEXT, "C:/CC4E", explicit_root="C:/CC4E")
+    scope = triage("CF-DLV-UI-01", "Deliverables grid: show Name before Issues and Content",
+                   UI_TEXT, "workspace/CloudForge-Commerce", explicit_root="workspace/CloudForge-Commerce")
     assert scope.screen_noun == "deliverable"
     cands, fence = locate(scope)
     assert "deliverable/deliverable.component.ts" in cands[0].rel   # grid component ranks #1

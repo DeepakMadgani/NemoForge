@@ -8,7 +8,7 @@ Invariants:
 1. Workspace-rooted: paths resolve against the actual workspace/repository root.
 2. Containment verification: paths outside the workspace root are marked ungrounded
    and not guessed.
-3. No hardcoded prefixes: never hardcode 'C:/CC4E', 'CC4E', 'xchange-ui', or any project names.
+3. No hardcoded prefixes: never hardcode 'xchange-ui', or any project names.
 4. Slashes: POSIX forward slashes only ('/'), no duplicate separators, no '.' or '..'.
 5. Component companions: strictly structural component extensions only
    (.component.ts, .component.html, .component.scss, .component.css, .component.spec.ts).

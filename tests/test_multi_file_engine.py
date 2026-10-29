@@ -1,7 +1,7 @@
 """
 Tests for Multi-File, Cross-Folder Working Set and Strict Test Verification Gates
 
-Simulates enterprise tickets like CC4E-BE-DEFECT-09:
+Simulates enterprise tickets like CF-REFUND-101:
 1. Multi-File Working Set Resolution (Repository + Service + Test + Migration)
 2. Coordinated Multi-File SEARCH/REPLACE Execution
 3. New File Creation (Flyway Migration SQL)
@@ -89,7 +89,7 @@ def test_multi_file_working_set_discovery(tmp_path):
     (test_dir / "ParticipatingMemberServiceTest.java").write_text("public class ParticipatingMemberServiceTest {}", encoding="utf-8")
 
     ticket = ValueEdgeTicket(
-        ticket_id="CC4E-BE-DEFECT-09",
+        ticket_id="CF-REFUND-101",
         title="Prevent Ghost Members in ParticipatingMemberService and ContractMemberRepository",
         description="Check ContractMemberRepository before demoting coordinators in ParticipatingMemberService.",
     )
@@ -104,7 +104,7 @@ def test_multi_file_working_set_discovery(tmp_path):
 
 def test_multi_file_coordinated_execution_and_strict_test_gate(tmp_path):
     """
-    Simulates CC4E-BE-DEFECT-09:
+    Simulates CF-REFUND-101:
     Coordinates edits across ContractMemberRepository, ParticipatingMemberService, and Flyway migration SQL.
     Verifies that the strict test gate rejects '0 tests run' and succeeds when >= 1 test passes.
     """
@@ -134,7 +134,7 @@ def test_multi_file_coordinated_execution_and_strict_test_gate(tmp_path):
     )
 
     ticket = ValueEdgeTicket(
-        ticket_id="CC4E-BE-DEFECT-09",
+        ticket_id="CF-REFUND-101",
         title="Project Service: Prevent Ghost Members by Removing Project-Level Coordinators with No Contracts",
         description="Update ContractMemberRepository.java, ParticipatingMemberService.java, and add Flyway migration.",
     )

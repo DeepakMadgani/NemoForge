@@ -1,4 +1,4 @@
-"""Experience store for CC4E reasoning policy.
+"""Experience store for Enterprise reasoning policy.
 
 Separates dynamic experience from static knowledge:
 - decision policies (what worked)
@@ -35,9 +35,9 @@ class ExperienceStore:
             ws / ".aviator" / "brain" / "experience.json",
             ws / "brain" / "project_experience.json",
             ws / "brain" / "experience.json",
-            ws / "brain" / "cc4e_experience.json",
+            ws / "brain" / "cloudforge_experience.json",
             ws / "project_experience.json",
-            ws / "cc4e_experience.json",
+            ws / "cloudforge_experience.json",
         ]
         for c in candidates:
             if c.exists():

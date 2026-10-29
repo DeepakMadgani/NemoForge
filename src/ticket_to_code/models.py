@@ -285,7 +285,7 @@ class InvestigationResult(BaseModel):
     )
     context_locations: List[str] = Field(
         default_factory=list,
-        description="Contextual locations where the issue manifests (e.g., 'dashboard', 'CC4E app')"
+        description="Contextual locations where the issue manifests (e.g., 'dashboard', 'settings panel')"
     )
     investigation_areas: List[str] = Field(
         default_factory=list,
@@ -2047,7 +2047,7 @@ class InvestigationHypothesis(BaseModel):
     )
     context_locations: List[str] = Field(
         default_factory=list,
-        description="Contextual locations where the issue manifests (e.g., 'dashboard', 'CC4E app')"
+        description="Contextual locations where the issue manifests (e.g., 'dashboard', 'settings panel')"
     )
     macro_directories: List[str] = Field(
         default_factory=list,

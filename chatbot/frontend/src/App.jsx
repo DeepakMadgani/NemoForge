@@ -809,7 +809,7 @@ function App() {
                 projectId: selectedProject?.id,
                 ticketId: data.workflow_id,
                 ticketDescription: data.message || 'Live Ticket Run',
-                repoPath: selectedProject?.path || 'C:\\CC4E',
+                repoPath: selectedProject?.path || 'workspace/CloudForge-Commerce',
                 attachments: [],
                 existingWorkflowId: data.workflow_id,
               };

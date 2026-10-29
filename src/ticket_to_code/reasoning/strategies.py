@@ -1,5 +1,5 @@
 """
-Ticket-type strategies (skills) for the CC4E reasoning engine.
+Ticket-type strategies (skills) for the Enterprise reasoning engine.
 
 A strategy is lightweight prior knowledge that seeds the reasoner for a class
 of tickets: which tools to prefer first, typical files, typical validation, and
@@ -7,7 +7,7 @@ common mistakes. This is the "Skill System" — the reasoner loads only the skil
 relevant to the current ticket instead of using one generic planner.
 
 Strategies are ADVISORY. The reasoner still decides dynamically; strategies just
-give it a strong, CC4E-specific starting point so it doesn't rediscover basics.
+give it a strong, Enterprise-specific starting point so it doesn't rediscover basics.
 """
 
 from __future__ import annotations

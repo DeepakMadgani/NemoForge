@@ -1,5 +1,5 @@
 """
-Ticket-aware outcome verifiers for the CC4E reasoning engine.
+Ticket-aware outcome verifiers for the Enterprise reasoning engine.
 
 Distinct from semantic validation ("did I edit the intended owner?"), these
 verify the ACTUAL requested change is now true in the repository.

@@ -11,7 +11,7 @@ def test_multi_service_orchestrator_detects_all_layers_for_ticket_3():
     bb = DeductiveBlackboard()
     orchestrator = MultiServiceOrchestrator(blackboard=bb)
 
-    title = "CC4E-FS-COMPLEX-03: Deliverables & Issues: Cross-Service Severity Breakdown & Priority Badging"
+    title = "CF-COMPLEX-03: Deliverables & Issues: Cross-Service Severity Breakdown & Priority Badging"
     desc = """
     Currently, deliverables grid displays a simple issue count.
     We need to extend the backend issues-service to break down issue counts by priority (critical, high, medium, low).

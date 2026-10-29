@@ -191,7 +191,7 @@ def reset_fixture_workspace(workspace: Path, allow_live_reset: bool = False) -> 
                 f"Found {len(changed)} uncommitted change(s):\n"
                 f"  {changed[:5]}\n"
                 f"The harness will NOT run 'git reset --hard / clean -fd' on a dirty live tree without --allow-live-reset.\n"
-                f"Please run against a dedicated fixture clone (default: C:\\CC4E\\xchange-ui-fixture) "
+                f"Please run against a dedicated fixture clone (default: workspace/CloudForge-Commerce) "
                 f"or pass --allow-live-reset if you are intentionally resetting this repo."
             )
             logger.error(msg)
@@ -762,7 +762,7 @@ def make_golden_50_specs() -> List[TicketSpec]:
         evaluator=lambda ws, res: (
             Tier0AssertionResult(
                 passed=_check_any_pattern(
-                    _read_file_text(ws, "project-service/src/main/java/com/cc4e/project/dto/MemberDto.java") or
+                    _read_file_text(ws, "project-service/src/main/java/com/cloudforge/project/dto/MemberDto.java") or
                     _read_file_text(ws, "MemberDto.java") or "",
                     [
                         re.compile(r"@NotNull[^\n]*\n[^\n]*@Size[^\n]*\n[^\n]*private\s+String\s+email", re.MULTILINE),
@@ -787,7 +787,7 @@ def make_golden_50_specs() -> List[TicketSpec]:
         evaluator=lambda ws, res: (
             Tier0AssertionResult(
                 passed=_check_any_pattern(
-                    _read_file_text(ws, "project-service/src/main/java/com/cc4e/project/model/ProjectStatus.java") or
+                    _read_file_text(ws, "project-service/src/main/java/com/cloudforge/project/model/ProjectStatus.java") or
                     _read_file_text(ws, "ProjectStatus.java") or "",
                     ["ARCHIVED"]
                 ),
@@ -808,7 +808,7 @@ def make_golden_50_specs() -> List[TicketSpec]:
         evaluator=lambda ws, res: (
             Tier0AssertionResult(
                 passed=_check_any_pattern(
-                    _read_file_text(ws, "project-service/src/main/java/com/cc4e/project/controller/MemberController.java") or
+                    _read_file_text(ws, "project-service/src/main/java/com/cloudforge/project/controller/MemberController.java") or
                     _read_file_text(ws, "MemberController.java") or "",
                     [
                         re.compile(r"@RequestParam\([^)]*organizationId[^)]*\)", re.IGNORECASE),
@@ -832,7 +832,7 @@ def make_golden_50_specs() -> List[TicketSpec]:
         evaluator=lambda ws, res: (
             Tier0AssertionResult(
                 passed=_check_any_pattern(
-                    _read_file_text(ws, "project-service/src/main/java/com/cc4e/project/exception/GlobalExceptionHandler.java") or
+                    _read_file_text(ws, "project-service/src/main/java/com/cloudforge/project/exception/GlobalExceptionHandler.java") or
                     _read_file_text(ws, "GlobalExceptionHandler.java") or "",
                     [
                         re.compile(r"@ResponseStatus\(\s*HttpStatus\.CONFLICT\s*\)", re.IGNORECASE),
@@ -857,7 +857,7 @@ def make_golden_50_specs() -> List[TicketSpec]:
         evaluator=lambda ws, res: (
             Tier0AssertionResult(
                 passed=_check_any_pattern(
-                    _read_file_text(ws, "project-service/src/main/java/com/cc4e/project/entity/Deliverable.java") or
+                    _read_file_text(ws, "project-service/src/main/java/com/cloudforge/project/entity/Deliverable.java") or
                     _read_file_text(ws, "Deliverable.java") or "",
                     [
                         "@SQLDelete",
@@ -883,7 +883,7 @@ def make_golden_50_specs() -> List[TicketSpec]:
         evaluator=lambda ws, res: (
             Tier0AssertionResult(
                 passed=_check_any_pattern(
-                    _read_file_text(ws, "project-service/src/main/java/com/cc4e/project/service/MemberBatchService.java") or
+                    _read_file_text(ws, "project-service/src/main/java/com/cloudforge/project/service/MemberBatchService.java") or
                     _read_file_text(ws, "MemberBatchService.java") or "",
                     [
                         re.compile(r"sort\([^)]*Comparator", re.IGNORECASE),
@@ -909,7 +909,7 @@ def make_golden_50_specs() -> List[TicketSpec]:
         evaluator=lambda ws, res: (
             Tier0AssertionResult(
                 passed=_check_any_pattern(
-                    _read_file_text(ws, "project-service/src/main/java/com/cc4e/project/controller/DeliverableController.java") or
+                    _read_file_text(ws, "project-service/src/main/java/com/cloudforge/project/controller/DeliverableController.java") or
                     _read_file_text(ws, "DeliverableController.java") or "",
                     [
                         re.compile(r"@PreAuthorize\([^)]*hasRole[^)]*\)", re.IGNORECASE),
@@ -1124,16 +1124,16 @@ def make_golden_50_specs() -> List[TicketSpec]:
         category="Cfg",
         difficulty="Easy",
         title="Add CORS allowed origin for staging domain",
-        description="Add 'https://staging.cc4e.internal' to allowed CORS origins in backend configuration.",
-        acceptance_criteria=["CORS configuration allows staging.cc4e.internal origin"],
+        description="Add 'https://staging.cloudforge.internal' to allowed CORS origins in backend configuration.",
+        acceptance_criteria=["CORS configuration allows staging.cloudforge.internal origin"],
         required_prereqs=["git"],
         evaluator=lambda ws, res: (
             Tier0AssertionResult(
                 passed=_check_any_pattern(
-                    _read_file_text(ws, "project-service/src/main/java/com/cc4e/project/config/CorsConfig.java") or
+                    _read_file_text(ws, "project-service/src/main/java/com/cloudforge/project/config/CorsConfig.java") or
                     _read_file_text(ws, "CorsConfig.java") or
                     _read_file_text(ws, "application.yml") or "",
-                    ["https://staging.cc4e.internal", "staging.cc4e.internal"]
+                    ["https://staging.cloudforge.internal", "staging.cloudforge.internal"]
                 ),
                 reason="CORS configuration contains staging domain origin",
             )
@@ -2027,8 +2027,8 @@ def run_benchmark(
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="50-Ticket Golden Set Benchmark Harness")
-    parser.add_argument("--workspace", type=str, default=r"C:\CC4E\xchange-ui-fixture", help="Target fixture workspace path (default: C:\\CC4E\\xchange-ui-fixture)")
-    parser.add_argument("--source-repo", type=str, default=r"C:\CC4E\xchange-ui", help="Source repository to clone fixture from if missing")
+    parser.add_argument("--workspace", type=str, default=r"workspace\CloudForge-Commerce", help="Target fixture workspace path (default: workspace/CloudForge-Commerce)")
+    parser.add_argument("--source-repo", type=str, default=r"workspace\CloudForge-Commerce\store-ui", help="Source repository to clone fixture from if missing")
     parser.add_argument("--auto-fixture", action="store_true", default=True, help="Auto-create dedicated fixture clone if missing")
     parser.add_argument("--allow-live-reset", action="store_true", default=False, help="Explicitly allow destructive reset on live or dirty workspace")
     parser.add_argument("--tickets", type=str, default="all", help="Ticket filter (e.g. 'all', '1-5', 'GOLDEN-01')")

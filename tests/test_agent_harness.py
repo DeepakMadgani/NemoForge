@@ -55,7 +55,7 @@ def test_explicit_modification_verbs(message):
     "Can you explain the coordinator removal path?",
     "What is the credit limit calculation?",  # 'credit' must NOT trigger the 'edit' verb
     "[EXPLAIN ONLY] fix the bug",             # explicit override wins over the verb
-    "Why did the fix in CC4E-8421 fail? Explain the root cause",
+    "Why did the fix in CF-8421 fail? Explain the root cause",
     "Explain how to fix this",
     "Analyze why the fix didn't work",
     "Investigate why the coordinator deletion failed",
@@ -129,7 +129,7 @@ def test_explicit_read_only_tag_beats_defect_question():
 @pytest.mark.parametrize("message", [
     "Don't just explain only, actually fix the bug",
     "Instead of explaining, implement the contract member removal",
-    "Stop explaining and fix CC4E-01",
+    "Stop explaining and fix CF-01",
     "No need to explain, apply the fix",
 ])
 def test_negated_explain_with_modification(message):
@@ -138,7 +138,7 @@ def test_negated_explain_with_modification(message):
 
 
 @pytest.mark.parametrize("message", [
-    "EXPLAIN ONLY] Do not trigger the autonomous code modification workflow. Analyze CC4E-FS-COMPLEX-03",
+    "EXPLAIN ONLY] Do not trigger the autonomous code modification workflow. Analyze CF-FS-COMPLEX-03",
     "explain only: what does IssuesController do?",
     "Can you explain why the NullPointerException happens?",
     "Walk me through the error in PaymentService",
@@ -347,7 +347,7 @@ def test_context_compactor_structured_resumption():
     from ticket_to_code.runtime.agent_harness import ContextCompactor
 
     block = ContextCompactor.compact_history(
-        task_id="CC4E-FS-COMPLEX-03",
+        task_id="CF-FS-COMPLEX-03",
         user_requests=["What is the endpoint?", "How does Angular consume it?", "Fix the breakdown badge"],
         verified_facts=["IssueCount has criticalCount", "DeliverablesComponent uses Enterprise UX Components"],
         active_context="Workspace: C:/repo\nStatus: in_progress",
@@ -357,7 +357,7 @@ def test_context_compactor_structured_resumption():
     assert "1. What is the endpoint?" in block
     assert "3. Fix the breakdown badge" in block
     assert "- IssueCount has criticalCount" in block
-    assert "CC4E-FS-COMPLEX-03" in block
+    assert "CF-FS-COMPLEX-03" in block
     assert "Enterprise UX Components" in block
 
 
@@ -383,10 +383,10 @@ def test_react_loop_governor_anti_spinning():
 @pytest.mark.parametrize(
     "msg,expected",
     [
-        ("/explain why did the fix fail in CC4E-8421", AgentIntent.EXPLANATION_REVIEW),
+        ("/explain why did the fix fail in CF-8421", AgentIntent.EXPLANATION_REVIEW),
         ("/ask how does acquireLock work", AgentIntent.EXPLANATION_REVIEW),
         ("/read IssueRepository.java", AgentIntent.EXPLANATION_REVIEW),
-        ("/fix CC4E-8421", AgentIntent.AUTONOMOUS_MODIFICATION),
+        ("/fix CF-8421", AgentIntent.AUTONOMOUS_MODIFICATION),
         ("/patch the deadlock in consolidation", AgentIntent.AUTONOMOUS_MODIFICATION),
         ("/flow implement issue consolidation", AgentIntent.AUTONOMOUS_MODIFICATION),
         ("/plan schema migration", AgentIntent.PLANNING_ARCHITECTURE),
@@ -471,7 +471,7 @@ def test_repo_invariants_loaded_only_with_marker(tmp_path):
     assert "HIERARCHICAL RBAC" not in sys_inst
     assert "REPOSITORY-SPECIFIC INVARIANTS" not in sys_inst
 
-    # 2. Marker directory present: packaged CC4E skill is loaded
+    # 2. Marker directory present: packaged skill is loaded
     (tmp_path / "xchange-ui").mkdir()
     rules = SkillLoader(tmp_path).load_repo_invariants()
     joined = "\n".join(rules)

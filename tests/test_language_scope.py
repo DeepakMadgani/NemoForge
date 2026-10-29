@@ -46,7 +46,7 @@ def test_infer_resolution_scope_java_backend():
 
 
 def test_infer_resolution_scope_with_workspace_root():
-    ws = Path("C:/CC4E")
+    ws = Path("workspace/CloudForge-Commerce")
     target = ws / "xchange-ui/src/app/foo.ts"
     scope = infer_resolution_scope(target, workspace_root=ws)
     assert scope.language == "typescript"

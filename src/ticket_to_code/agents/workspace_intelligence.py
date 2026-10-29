@@ -6,7 +6,7 @@ object that every downstream node consumes instead of discovering it themselves.
 
 Key design decisions:
 - Deterministic parsing only (no LLM for workspace structure)
-- Recursive monorepo discovery (handles CC4E which has Angular + Spring + shell)
+- Recursive monorepo discovery (handles monorepos with Angular + Spring + shell)
 - Caches to ~/.aviator/brain/workspace_cache/{hash}.json
 - Returns populated values, NEVER "Unknown" if the workspace exists
 """

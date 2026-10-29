@@ -354,8 +354,8 @@ def test_investigate_node_informational_question_triage():
     ticket = ValueEdgeTicket(
         id="TASK-Q1",
         ticket_id="TASK-Q1",
-        title="What microservices make up CC4E and how do they communicate?",
-        description="What microservices make up CC4E and how do they communicate?",
+        title="What microservices make up CloudForge and how do they communicate?",
+        description="What microservices make up CloudForge and how do they communicate?",
     )
     state = {
         "ticket": ticket,

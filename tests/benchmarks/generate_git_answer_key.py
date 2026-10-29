@@ -1,5 +1,5 @@
 """
-Generate Ground-Truth Answer Key from Git History in C:/CC4E repositories.
+Generate Ground-Truth Answer Key from Git History in workspace/CloudForge-Commerce repositories.
 
 Scans all microservices and xchange-ui for commit messages containing 6-7 digit ticket IDs,
 extracts fix diffs, verifies existing workspace files, and constructs a high-power answer key.
@@ -14,7 +14,7 @@ import subprocess
 from pathlib import Path
 from typing import Dict, List, Any
 
-WORKSPACE = Path("C:/CC4E")
+WORKSPACE = Path("workspace/CloudForge-Commerce")
 REPOS = [
     "xchange-ui",
     "se-connector-apis",
@@ -135,7 +135,7 @@ def build_answer_key(target_count: int = 100) -> Dict[str, Any]:
         grouped.setdefault(tid, []).append(c)
 
     # Load existing hand-annotated key to preserve anchors
-    key_path = Path("tests/benchmarks/cc4e_real_ticket_answer_key.json")
+    key_path = Path("tests/benchmarks/answer_key.json")
     existing_data = {}
     if key_path.exists():
         existing_data = json.loads(key_path.read_text(encoding="utf-8"))
@@ -203,11 +203,11 @@ def build_answer_key(target_count: int = 100) -> Dict[str, Any]:
     result = {
         "meta": {
             "version": 2,
-            "workspace_root": "C:/CC4E",
+            "workspace_root": "workspace/CloudForge-Commerce",
             "total_tickets": len(curated_tickets),
             "hand_annotated_count": len(existing_ids),
             "git_derived_count": len(curated_tickets) - len(existing_ids),
-            "description": "Expanded ground-truth answer key derived from git commit history across CC4E repos.",
+            "description": "Expanded ground-truth answer key derived from git commit history across enterprise repos.",
         },
         "tickets": curated_tickets,
         "excluded": existing_data.get("excluded", []),
@@ -218,7 +218,7 @@ def build_answer_key(target_count: int = 100) -> Dict[str, Any]:
 if __name__ == "__main__":
     out_dir = Path("tests/benchmarks")
     key = build_answer_key(target_count=300)
-    out_file = out_dir / "cc4e_git_curated_answer_key.json"
+    out_file = out_dir / "answer_key.json"
     out_file.write_text(json.dumps(key, indent=2), encoding="utf-8")
     print(f"Generated {len(key['tickets'])} tickets into {out_file}")
     print(f"  Hand-annotated : {key['meta']['hand_annotated_count']}")

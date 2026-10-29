@@ -8,10 +8,10 @@ mechanically, with no human annotation, at whatever scale the history allows.
 
 WHY THIS EXISTS
 ---------------
-The hand-annotated key in cc4e_real_ticket_answer_key.json has 9 tickets, 4 of
+The hand-annotated key in answer_key.json has 9 tickets, 4 of
 them CONFIRMED. At that size a single ticket flipping moves the top-3 hit rate
 by 11%, so no change to the ranker is falsifiable. This script converts the
-1,700+ ticket-tagged commits across the CC4E services into a benchmark with
+1,700+ ticket-tagged commits across the enterprise services into a benchmark with
 enough n to detect a real improvement.
 
 HONEST CAVEAT — READ BEFORE USING THE NUMBERS
@@ -26,7 +26,7 @@ EASIER than production. Treat it as:
   * a ranking of RELATIVE progress between runs
 
 and NOT as an estimate of production accuracy. For realistic (harder)
-measurement use cc4e_real_ticket_answer_key.json, which carries real ticket
+measurement use answer_key.json, which carries real ticket
 descriptions. Never average the two.
 
 Usage:
@@ -45,8 +45,8 @@ import time
 from collections import defaultdict
 from pathlib import Path
 
-CC4E_ROOT = Path(r"C:\CC4E")
-DEFAULT_OUT = Path(__file__).resolve().parent / "cc4e_git_derived_answer_key.json"
+FIXTURE_ROOT = Path(r"workspace\CloudForge-Commerce")
+DEFAULT_OUT = Path(__file__).resolve().parent / "answer_key.json"
 
 # Repos that contain a verbatim copy of xchange-ui. Including them would make
 # every UI answer ambiguous: the same file exists at two paths.
@@ -136,7 +136,7 @@ def _flush(by_ticket, subject, files, commit_hash) -> None:
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--root", default=str(CC4E_ROOT))
+    ap.add_argument("--root", default=str(FIXTURE_ROOT))
     ap.add_argument("--out", default=str(DEFAULT_OUT))
     ap.add_argument("--max-files", type=int, default=8,
                     help="Tickets touching more source files are features, not "
@@ -224,7 +224,7 @@ def main() -> int:
                 "NOT_ANNOTATABLE by the production router. Use this key to measure the "
                 "RETRIEVAL LAYER under sparse text, or as a 292-ticket regression suite "
                 "for detecting ranker changes. Do NOT compare its absolute hit rate to "
-                "production, and never average it with cc4e_real_ticket_answer_key.json."
+                "production, and never average it with answer_key.json."
             ),
         },
         "tickets": built,

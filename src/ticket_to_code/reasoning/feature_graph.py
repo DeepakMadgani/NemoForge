@@ -1,5 +1,5 @@
 """
-CC4E Feature Graph — the project's long-term, self-improving knowledge.
+Enterprise Feature Graph — the project's long-term, self-improving knowledge.
 
 Separation of concerns (important):
   - SKILLS know FEATURES  (e.g. "application version")
@@ -21,9 +21,9 @@ WITHOUT hardcoding repo layout in code:
     confidence         : how trustworthy this feature's owner map is
 
 Because owners are LEARNED (and hints live in editable data, not in code), the
-graph stays correct even if CC4E's version/config process changes later.
+graph stays correct even if Enterprise's version/config process changes later.
 
-Storage: single JSON document, co-located with the CC4E brain.
+Storage: single JSON document, co-located with the Enterprise brain.
 
 Author: Deepak Madgani
 """
@@ -142,7 +142,7 @@ _SEED_FEATURES: List[Dict[str, Any]] = [
 
 
 class FeatureGraph:
-    """Feature-centric, self-improving knowledge store for CC4E."""
+    """Feature-centric, self-improving knowledge store for Enterprise."""
 
     def __init__(self, workspace_path: str):
         self.workspace_path = workspace_path
@@ -161,9 +161,9 @@ class FeatureGraph:
             ws / ".aviator" / "brain" / "feature_graph.json",
             ws / "brain" / "project_feature_graph.json",
             ws / "brain" / "feature_graph.json",
-            ws / "brain" / "cc4e_feature_graph.json",
+            ws / "brain" / "cloudforge_feature_graph.json",
             ws / "project_feature_graph.json",
-            ws / "cc4e_feature_graph.json",
+            ws / "cloudforge_feature_graph.json",
         ]
         for c in candidates:
             if c.exists():
@@ -182,7 +182,7 @@ class FeatureGraph:
                 loaded = json.loads(self.path.read_text(encoding="utf-8"))
                 if isinstance(loaded, dict) and isinstance(loaded.get("features"), dict):
                     self.data.update(loaded)
-                    logger.info("CC4E Feature Graph loaded: %d features", len(self.data["features"]))
+                    logger.info("Enterprise Feature Graph loaded: %d features", len(self.data["features"]))
         except Exception as exc:
             logger.warning("Feature Graph load failed (%s) — starting fresh", exc)
 
@@ -329,7 +329,7 @@ class FeatureGraph:
     def summary(self) -> dict:
         feats = self.data.get("features", {})
         return {
-            "project": self.data.get("project", "CC4E"),
+            "project": self.data.get("project", "Enterprise"),
             "feature_count": len(feats),
             "features": {
                 fid: {

@@ -1,8 +1,8 @@
 """Run one ticket through the lean path with live LLM patching and CDP verification.
 
 Example:
-  python -m ticket_to_code.lean.run_ticket --ticket src/.../benchmark_cc4e_deliverables_easy.json \
-      --workspace C:/CC4E --cdp http://127.0.0.1:9222 \
+  python -m ticket_to_code.lean.run_ticket --ticket src/.../ticket.json \
+      --workspace workspace/CloudForge-Commerce --cdp http://127.0.0.1:9222 \
       --expected "status,info,name,issues,content,list,revision code"
 """
 

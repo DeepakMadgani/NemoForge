@@ -1,8 +1,8 @@
 """
-Tool layer for the CC4E dynamic reasoning engine.
+Tool layer for the Enterprise dynamic reasoning engine.
 
 Each Tool wraps an EXISTING capability (RAG, repo search, localization,
-generation, build, outcome verification) or the CC4E Brain. The reasoning
+generation, build, outcome verification) or the Enterprise Brain. The reasoning
 engine decides *when* to call each tool — the tools do not dictate control flow.
 
 Design goals:
@@ -574,7 +574,7 @@ def _t_verify_outcome(ctx: ToolContext, args: dict) -> str:
 
 
 def _t_recall_feature(ctx: ToolContext, args: dict) -> str:
-    """Query the CC4E Feature Graph for this ticket's feature (owners/validators). No args."""
+    """Query the Enterprise Feature Graph for this ticket's feature (owners/validators). No args."""
     fg = getattr(ctx, "feature_graph", None)
     if fg is None:
         return "No feature graph available."

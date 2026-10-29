@@ -1,4 +1,4 @@
-"""Batch validation runner for real CC4E tickets.
+"""Batch validation runner for real CloudForge tickets.
 
 Runs a ticket batch through the current production pipeline and emits:
 - Per-ticket outcomes
@@ -7,7 +7,7 @@ Runs a ticket batch through the current production pipeline and emits:
 
 Usage:
     python -m ticket_to_code.benchmarks.batch_validation_runner \
-      --workspace C:/CC4E \
+      --workspace C:/CloudForge \
       --tickets C:/path/to/tickets.json \
       --report-dir C:/path/to/reports
 """

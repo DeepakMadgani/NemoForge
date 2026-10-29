@@ -100,7 +100,7 @@ def test_autonomous_react_engine_full_reference_loop(tmp_path):
     )
 
     ticket = ValueEdgeTicket(
-        ticket_id="CC4E-BE-DEFECT-09",
+        ticket_id="CF-REFUND-101",
         title="Prevent Ghost Members",
         description="Verify contracts before saving in ParticipatingMemberService.",
     )

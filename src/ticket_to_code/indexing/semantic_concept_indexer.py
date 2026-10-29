@@ -22,7 +22,7 @@ from typing import Dict, List, Optional, Set, Tuple
 logger = logging.getLogger(__name__)
 
 
-# Core domain ontology for CC4E and enterprise web applications
+# Core domain ontology for enterprise web applications
 CORE_DOMAIN_CONCEPTS: List[Dict[str, Any]] = [
     {
         "id": "concept_transmittal_ack",

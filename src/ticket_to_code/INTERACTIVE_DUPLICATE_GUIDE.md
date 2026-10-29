@@ -39,7 +39,7 @@ Body:
 
 ```json
 {
-  "workspace_path": "C:/CC4E",
+  "workspace_path": "./workspace/CloudForge-Commerce",
   "goal": "Fix registers upload button disabled after deliverables flow",
   "initial_message": "Ticket details and repro steps..."
 }
@@ -128,7 +128,7 @@ This enables traceable, correction-friendly behavior.
 
 ## How this maps to your goal
 
-For CC4E ticket solving, this gives:
+For autonomous ticket solving, this gives:
 
 1. Context continuity across messages
 2. Explainability before code changes

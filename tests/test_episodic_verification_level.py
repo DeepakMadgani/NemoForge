@@ -79,7 +79,7 @@ def test_legacy_db_is_migrated(tmp_path):
 
 def test_consolidate_completed_without_verification_is_not_success(tmp_path):
     store = EpisodicMemoryStore(str(tmp_path))
-    summary = store.consolidate_run(_state("T-1"), repo="cc4e")
+    summary = store.consolidate_run(_state("T-1"), repo="cloudforge")
     assert summary["files_touched"] == 1
     row = _episode_row(store, "T-1")
     assert row["outcome"] == "FAILED"
@@ -89,33 +89,33 @@ def test_consolidate_completed_without_verification_is_not_success(tmp_path):
 @pytest.mark.parametrize("level", ["test_verified", "compile_only"])
 def test_consolidate_verified_levels_are_success_and_stored(tmp_path, level):
     store = EpisodicMemoryStore(str(tmp_path))
-    store.consolidate_run(_state("T-2"), repo="cc4e", verification_level=level)
+    store.consolidate_run(_state("T-2"), repo="cloudforge", verification_level=level)
     row = _episode_row(store, "T-2")
     assert row == {"outcome": "SUCCESS", "verification_level": level}
 
 
 def test_consolidate_reads_verification_level_from_state(tmp_path):
     store = EpisodicMemoryStore(str(tmp_path))
-    store.consolidate_run(_state("T-3", verification_level="test_verified"), repo="cc4e")
+    store.consolidate_run(_state("T-3", verification_level="test_verified"), repo="cloudforge")
     assert _episode_row(store, "T-3")["outcome"] == "SUCCESS"
 
 
 def test_consolidate_outcome_check_correct_still_requires_verification(tmp_path):
     store = EpisodicMemoryStore(str(tmp_path))
     store.consolidate_run(
-        _state("T-4", status="unknown", outcome_check_result={"status": "CORRECT"}), repo="cc4e",
+        _state("T-4", status="unknown", outcome_check_result={"status": "CORRECT"}), repo="cloudforge",
     )
     assert _episode_row(store, "T-4")["outcome"] == "FAILED"
     store.consolidate_run(
         _state("T-5", status="unknown", outcome_check_result={"status": "CORRECT"}),
-        repo="cc4e", verification_level="compile_only",
+        repo="cloudforge", verification_level="compile_only",
     )
     assert _episode_row(store, "T-5")["outcome"] == "SUCCESS"
 
 
 def test_consolidate_stopped_is_interrupted_and_default_kwarg_keeps_legacy_callers(tmp_path):
     store = EpisodicMemoryStore(str(tmp_path))
-    summary = store.consolidate_run(_state("T-6", status="stopped"), repo="cc4e")  # legacy 2-arg call
+    summary = store.consolidate_run(_state("T-6", status="stopped"), repo="cloudforge")  # legacy 2-arg call
     assert summary["files_touched"] == 1
     assert _episode_row(store, "T-6")["outcome"] == "INTERRUPTED"
 

@@ -6,7 +6,7 @@ Verifies:
    (e.g., selectedUser.isExistingProjectMember when controller has isExistingMember).
 3. TemplateContractValidator approves compliant templates that bind to actual controller fields.
 4. Rendered prompt block provides explicit controller contract for template generation.
-5. Live validation against real CC4E add-members.component.ts if present.
+5. Live validation against add-members.component.ts if present.
 """
 
 from pathlib import Path
@@ -154,13 +154,13 @@ def test_component_contract_prompt_block_rendering(synthetic_add_members_control
     assert "Do NOT invent phantom sub-properties" in prompt  # Universal negative warning instructions
 
 
-def test_live_cc4e_add_members_component_contract():
-    cc4e_path = Path(r"C:\CC4E\xchange-ui\src\app\modules\members\add-members\add-members.component.ts")
-    if not cc4e_path.exists():
-        pytest.skip("CC4E add-members.component.ts not found")
+def test_live_add_members_component_contract():
+    sample_path = Path(r"C:\sample_repo\xchange-ui\src\app\modules\members\add-members\add-members.component.ts")
+    if not sample_path.exists():
+        pytest.skip("component not found")
 
-    content = cc4e_path.read_text(encoding="utf-8", errors="ignore")
-    contract = ComponentContract.extract_from_ts(content, file_path=str(cc4e_path))
+    content = sample_path.read_text(encoding="utf-8", errors="ignore")
+    contract = ComponentContract.extract_from_ts(content, file_path=str(sample_path))
     assert contract.class_name == "AddMembersComponent"
     assert len(contract.properties) > 0
     assert len(contract.methods) > 0

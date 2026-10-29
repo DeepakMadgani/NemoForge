@@ -1,7 +1,7 @@
 """
 Workflow Discovery Layer — Full Execution Path Tracing
 
-Discovers complete execution paths across CC4E:
+Discovers complete execution paths across microservices:
   Route → Component → Store → Service → API → Controller → BackendService → Entity
 
 Reuses:
@@ -966,7 +966,7 @@ class WorkflowDiscovery:
         path_lower = route.lower()
         comp_lower = component.lower()
 
-        # Known CC4E domains
+        # Known enterprise domains
         domains = [
             "library", "deliverable", "transmittal", "register",
             "project", "contract", "member", "task", "report",
@@ -1190,10 +1190,10 @@ class WorkflowDiscovery:
     def _find_java_files(self, pattern: str) -> List[Path]:
         """Find Java files matching glob pattern across all backend projects."""
         results = []
-        # Search in workspace and known CC4E backend project directories
+        # Search in workspace and backend project directories
         search_roots = [self.workspace_path]
 
-        # Also search CC4E backend projects if they exist at the same level
+        # Also search backend projects if they exist at the same level
         workspace_parent = self.workspace_path.parent
         for project in ["area-service", "issues-service", "project-service",
                         "ene-load-service", "sagas-service", "bim-gateway",

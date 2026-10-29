@@ -1,11 +1,11 @@
-# CC4E Architecture Model — Domain Ownership Definitions
+# Enterprise Architecture Model — Domain Ownership Definitions
 # 
-# PROJECT-SPECIFIC CONFIGURATION for the CC4E codebase.
+# PROJECT-SPECIFIC CONFIGURATION for the microservice codebase.
 # Other projects should create their own architecture_model.yaml.
 # See: config/architecture_model.template.yaml for a blank template.
 #
 # This file defines the bounded contexts, capabilities, and ownership
-# rules for the CC4E microservice architecture. It is the single source
+# rules for the microservice architecture. It is the single source
 # of truth for the Domain Ownership layer.
 #
 # Provenance levels:

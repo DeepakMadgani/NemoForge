@@ -3,7 +3,7 @@ Unit tests for the Stop Flow cancellation mechanism and multi-tier conversation 
 Verifies that:
 1. ConversationSessionManager handles mark_stopped cleanly.
 2. Workflow explanations and chat summaries correctly format stopped workflows.
-3. _build_fallback_chat_reply answers CC4E architecture questions (coordinators, roles, contract access).
+3. _build_fallback_chat_reply answers CloudForge architecture questions (coordinators, roles, contract access).
 4. Stopped workflow memory and past task episodic history are preserved.
 """
 import sys
@@ -28,7 +28,7 @@ def test_session_manager_mark_stopped():
     session = manager.create_session(
         workspace_path="/tmp/workspace",
         goal="Fix contract coordinator permissions",
-        initial_message="User reports issue with coordinator role removal in CC4E."
+        initial_message="User reports issue with coordinator role removal in CloudForge."
     )
     manager.mark_running(session.session_id)
     assert manager.get_session(session.session_id).stage == SessionStage.RUNNING
@@ -79,7 +79,7 @@ def test_build_chat_summary_stopped():
     assert "coordinators.component.ts" in summary
 
 
-def test_cc4e_architecture_fallback_response():
+def test_cloudforge_architecture_fallback_response():
     # User asks about coordinator vs administrator and contract access removal
     question = (
         "do project level , it will store coordinator and in backend it will be stored as "
@@ -124,9 +124,9 @@ def test_episodic_facts_and_consolidation(tmp_path):
     store = EpisodicMemoryStore(str(tmp_path))
 
     # Test fact upsert & hit count
-    store.upsert_fact("cc4e", "build_fix", "TS2307", "Add @core/auth barrel import", "T-101")
-    store.upsert_fact("cc4e", "build_fix", "TS2307", "Add @core/auth barrel import", "T-102")
-    facts = store.lookup_facts("cc4e", kind="build_fix")
+    store.upsert_fact("cloudforge", "build_fix", "TS2307", "Add @core/auth barrel import", "T-101")
+    store.upsert_fact("cloudforge", "build_fix", "TS2307", "Add @core/auth barrel import", "T-102")
+    facts = store.lookup_facts("cloudforge", kind="build_fix")
     assert len(facts) == 1
     assert facts[0]["key"] == "TS2307"
     assert facts[0]["hit_count"] == 2
@@ -141,12 +141,12 @@ def test_episodic_facts_and_consolidation(tmp_path):
         "exec_logs": ["Error: TS2307 cannot find module '@bim/auth'"],
         "rejected_approaches": ["Do not edit area-service directly"],
     }
-    summary = store.consolidate_run(state, repo="cc4e")
+    summary = store.consolidate_run(state, repo="cloudforge")
     assert summary["files_touched"] >= 1
     assert summary["facts_added"] >= 2
 
     # Test scratchpad priming
-    primed = store.prime_scratchpad("cc4e", "coordinator modal auth error")
+    primed = store.prime_scratchpad("cloudforge", "coordinator modal auth error")
     assert any("coordinators.component.ts" in f for f in primed["known_files"])
     assert "TS2307" in primed["known_fixes"]
     assert any("area-service" in p for p in primed["user_preferences"])

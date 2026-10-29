@@ -56,7 +56,7 @@ async def test_mcp_test_connection():
 
 
 def test_feature_graph_dynamic_form_match():
-    fg = FeatureGraph("C:/CC4E/xchange-ui")
+    fg = FeatureGraph("workspace/CloudForge-Commerce/store-ui")
     matched = fg.match_feature("Upload Document register - Inline message missing for invalid file types")
     assert matched is not None
     assert matched["feature"] == "dynamic_form_component"

@@ -1359,8 +1359,7 @@
       "init",
       "analyze",
       "report",
-      "cc4e",
-      "scope",
+            "scope",
       "localization",
       "generate",
       "git",
@@ -1378,8 +1377,7 @@
     "key_artifacts": [
       "tests/benchmarks/__init__.py",
       "tests/benchmarks/analyze_report.py",
-      "tests/benchmarks/cc4e_scope_localization.py",
-      "tests/benchmarks/generate_git_answer_key.py",
+            "tests/benchmarks/generate_git_answer_key.py",
       "tests/benchmarks/git_answer_key_extractor.py",
       "tests/benchmarks/golden_50_harness.py"
     ]

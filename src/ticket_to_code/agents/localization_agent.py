@@ -492,7 +492,7 @@ class LocalizationAgent:
                 target_files.append(f)
                 
         # ── Global Isolation Fix: Filter out files that don't exist in the current workspace ──
-        # This prevents global graph databases (like Neo4j) or RKB from leaking CC4E files
+        # This prevents global graph databases (like Neo4j) or RKB from leaking external repository files
         # into other workspaces.
         valid_target_files = []
         for tf in target_files:
@@ -2872,7 +2872,7 @@ class LocalizationAgent:
         # included for the content-boost phase.  Scoring and graph-seeding use
         # concept_keywords only (computed after the walk).
         # ── Monorepo Subsystem / Domain Isolation ─────────────────────────────
-        # If the workspace contains multiple services (e.g. CC4E with xchange-ui + Java microservices),
+        # If the workspace contains multiple services (e.g. monorepo with UI + Java microservices),
         # prevent cross-domain contamination so UI tickets never pull in Java backend services,
         # and Java backend tickets never pull in Angular UI components.
         _UI_INDICATORS = {

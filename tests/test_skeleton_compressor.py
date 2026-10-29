@@ -52,7 +52,7 @@ export class DocumentRegisterComponent implements OnInit {
 
 
 def test_compress_java_spring():
-    java_code = """package com.cc4e.document.controller;
+    java_code = """package com.cloudforge.document.controller;
 
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
@@ -124,7 +124,7 @@ def test_compress_yaml_gateway():
             - Path=/api/v1/issues/**
           filters:
             - StripPrefix=1
-            - AddRequestHeader=X-Tenant, cc4e
+            - AddRequestHeader=X-Tenant, cloudforge
 """ + "\n".join(f"            - DeepConfigKey{i}: value{i}" for i in range(30))
     result = SkeletonCompressor.compress_file("application.yml", content=yaml_code)
     assert result.language == "yaml"

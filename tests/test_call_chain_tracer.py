@@ -11,7 +11,7 @@ from services.call_chain_tracer import CallChainTracer
 
 
 def test_call_chain_tracer_traces_coordinator_dialog(tmp_path):
-    # Mock workspace structure reflecting true CC4E architecture
+    # Mock workspace structure reflecting microservice architecture
     xchange_dir = tmp_path / "xchange-ui" / "src" / "app" / "modules" / "project" / "coordinators" / "delete-coodinator"
     xchange_dir.mkdir(parents=True)
     i18n_dir = tmp_path / "xchange-ui" / "src" / "assets" / "i18n" / "projects"
@@ -245,7 +245,7 @@ def test_real_triage_coordinator_ticket_injects_call_chain(tmp_path):
     desc = 'They are not removed from the contract. Navigate to contract: Observe user still a member. Message: "will revoke access from all contracts in this project."'
     
     # Run REAL triage
-    scope = triage("CC4E-100", title, desc, str(tmp_path))
+    scope = triage("CF-100", title, desc, str(tmp_path))
     assert not scope.grid_hint, "Coordinator ticket must not be classified as grid ticket"
     
     fence = ScopeFence(scope)
@@ -266,7 +266,7 @@ def test_real_triage_column_reorder_ticket_skips_call_chain(tmp_path):
     desc = "Reorder columns in members grid: Name, Role, Contract List, Status"
     
     # Run REAL triage
-    scope = triage("CC4E-200", title, desc, str(tmp_path))
+    scope = triage("CF-200", title, desc, str(tmp_path))
     assert scope.grid_hint is True, "Column reordering ticket must have grid_hint=True"
     
     fence = ScopeFence(scope)
@@ -354,8 +354,8 @@ sagas:
     assert "removeContractMembers" in summary_text
 
 
-def test_generic_monorepo_no_cc4e_hardcoding(tmp_path):
-    """Verify that a generic monorepo with unrelated services produces zero CC4E false claims."""
+def test_generic_monorepo_no_hardcoding(tmp_path):
+    """Verify that a generic monorepo with unrelated services produces zero false claims."""
     from ticket_to_code.lean.call_chain_tracer import CallChainTracer
 
     # Monorepo with completely different services
@@ -371,7 +371,7 @@ def test_generic_monorepo_no_cc4e_hardcoding(tmp_path):
     assert "billing-service" in res["microservices"]
 
     summary_text = "\n".join(res["summary_trace"])
-    # Absolutely zero CC4E specific terms
+    # Absolutely zero project-specific terms
     assert "orders-service" in summary_text
     assert "billing-service" in summary_text
     assert "contract-service" not in summary_text
@@ -469,8 +469,8 @@ def test_handler_archetype_and_ts_model_contract(tmp_path):
     assert "ARCHITECTURAL NOTE" in summary
 
 
-def test_non_cc4e_monorepo_with_repository_methods_and_candidate_label(tmp_path):
-    """Verify that a completely non-CC4E monorepo discovers real repository methods and labels candidate chains without false architecture claims."""
+def test_generic_monorepo_with_repository_methods_and_candidate_label(tmp_path):
+    """Verify that a completely monorepo discovers real repository methods and labels candidate chains without false architecture claims."""
     from ticket_to_code.lean.call_chain_tracer import CallChainTracer
 
     # 1. Setup UI service

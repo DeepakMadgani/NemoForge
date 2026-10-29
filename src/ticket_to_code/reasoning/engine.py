@@ -41,7 +41,7 @@ from ticket_to_code.reasoning.capability_selector import (
     select_capability,
     should_override_action,
 )
-from ticket_to_code.reasoning.repository_brain import RepositoryBrain, CC4EBrain
+from ticket_to_code.reasoning.repository_brain import RepositoryBrain, EnterpriseBrain
 from ticket_to_code.reasoning.experience import ExperienceStore
 from ticket_to_code.reasoning.feature_graph import FeatureGraph
 from ticket_to_code.reasoning.brain_manager import BrainManager
@@ -103,7 +103,7 @@ Capability metadata (cost, confidence gain, prerequisites, provides):
 Deterministic selector recommendation for NEXT step:
 {selector_recommendation}
 
-CC4E strategy for this ticket ({strategy_name}):
+Enterprise strategy for this ticket ({strategy_name}):
 {strategy_guidance}
 
 Preferred capabilities for this ticket type (use these first when relevant):
@@ -546,7 +546,7 @@ def run_reasoning_agent(
         from langchain_core.messages import SystemMessage, HumanMessage
         llm = LLMRegistry.get_llm(assistant=False)
     except Exception as exc:
-        logger.error("CC4E Reasoner cannot load LLM: %s", exc)
+        logger.error("Enterprise Reasoner cannot load LLM: %s", exc)
         current_run_context.reset(token)
         return ReasoningResult(ticket_id=ticket_id, status="failed", verified=False,
                                summary=f"LLM unavailable: {exc}")
@@ -781,7 +781,7 @@ def run_reasoning_agent(
     except Exception as exc:
         logger.warning("Experience learning failed: %s", exc)
 
-    # Learn back into the CC4E Brain (only real successes reinforce owner maps).
+    # Learn back into the Enterprise Brain (only real successes reinforce owner maps).
     try:
         brain.record_ticket(
             ticket_id=ticket_id,
@@ -826,5 +826,5 @@ def run_reasoning_agent(
 
 
 # Backward compatibility alias
-run_cc4e_reasoning_agent = run_reasoning_agent
+run_cloudforge_reasoning_agent = run_reasoning_agent
 

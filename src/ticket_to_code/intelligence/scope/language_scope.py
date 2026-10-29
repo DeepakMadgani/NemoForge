@@ -144,7 +144,7 @@ def infer_resolution_scope(
         if len(parts) > 1 and not p.is_absolute():
             project_root = parts[0]
         elif len(parts) > 2 and p.is_absolute():
-            # For Windows absolute paths C:/CC4E/xchange-ui/...
+            # For Windows absolute paths workspace/CloudForge-Commerce/store-ui/...
             # Search for recognizable project roots or use the first directory under root
             for idx, part in enumerate(parts):
                 if part.lower() in ("src", "app", "modules", "main"):

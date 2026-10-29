@@ -67,7 +67,6 @@ def run_reasoning_agent(*args, **kwargs):
     from .reasoning import run_reasoning_agent as _impl
     return _impl(*args, **kwargs)
 
-run_cc4e_reasoning_agent = run_reasoning_agent
 
 # All exports
 __all__ = [
@@ -75,7 +74,6 @@ __all__ = [
     "run_autonomous_workflow",
     "run_autonomous_workflow_langgraph",
     "run_reasoning_agent",
-    "run_cc4e_reasoning_agent",
     
     # Models
     "ValueEdgeTicket",

@@ -1,26 +1,26 @@
 """
-CC4E Skill layer for the reasoning kernel.
+Enterprise Skill layer for the reasoning kernel.
 
-A Skill is CC4E-specific knowledge for a class of tickets. It does two things:
+A Skill is Enterprise-specific knowledge for a class of tickets. It does two things:
 
   1. ADVISES the kernel: which capabilities (tools) to prefer, which validators
      must pass, and which mistakes to avoid.  These are grounded in the real
-     CC4E architecture (Spring Boot 3.x / Java 17, Angular 19, Flyway, sagas-lib,
+     Enterprise architecture (Spring Boot 3.x / Java 17, Angular 19, Flyway, sagas-lib,
      Spring Cloud Stream + RabbitMQ).
   2. SEEDS deterministic knowledge via prepare(): LLM keyword expansion,
      Brain index lookups, and Feature Graph owner resolution — so the kernel
      starts every ticket from a strong, project-specific position.
 
 The reasoning kernel stays in control.  Skills never execute the loop — they make
-the kernel start from a strong, project-specific position (the CC4E advantage).
+the kernel start from a strong, project-specific position (the Enterprise advantage).
 
 Design:
   Skill.matches(...)  -> is this skill relevant to the ticket?
   Skill.prepare(ctx)  -> deterministic seeding (returns a short summary string)
   select_skill(...)   -> pick the best-match skill (priority-scored, not first-match)
 
-Playbook definitions below were generated from a deep analysis of the CC4E
-codebase (C:/CC4E): project-service, area-service, issues-service,
+Playbook definitions below were generated from a deep analysis of the Enterprise
+codebase (C:/Enterprise): project-service, area-service, issues-service,
 ene-load-service, sagas-service, bim-gateway, se-connector-apis, xchange-ui.
 """
 
@@ -64,8 +64,8 @@ class Skill:
         capabilities: Prioritized list of engine tools the agent should use,
             in order.
         validators: Strict conditions that MUST hold before the job is "done".
-        guidance: Architectural guardrails grounded in the CC4E codebase.
-        common_mistakes: Recurring errors engineers make in CC4E for this task.
+        guidance: Architectural guardrails grounded in the Enterprise codebase.
+        common_mistakes: Recurring errors engineers make in Enterprise for this task.
         priority: Higher wins when more than one skill matches a ticket.
     """
     name: str
@@ -178,9 +178,9 @@ class Skill:
 
 
 # ===========================================================================
-# CC4E SKILL PLAYBOOKS
+# Enterprise SKILL PLAYBOOKS
 #
-# Grounded in the real CC4E architecture:
+# Grounded in the real Enterprise architecture:
 #   Java services: Spring Boot 3.x / Java 17, mostly Gradle (area-service &
 #   se-connector-apis are Maven).
 #   Layered: controller -> service(/impl) -> repository(JPA) -> entity/dto,
@@ -414,7 +414,7 @@ _CONFIGURATION = Skill(
     ],
     guidance=(
         "Configuration tickets modify config files (yml/properties/json/xml/env). Confirm the "
-        "exact key and change only the owning config file(s). In CC4E, application.yml is under "
+        "exact key and change only the owning config file(s). In Enterprise, application.yml is under "
         "src/main/resources/ in each service. Do not change Java code when only a config value "
         "needs updating."
     ),
@@ -445,7 +445,7 @@ _ACCESS_CONTROL = Skill(
     guidance=(
         "Access-control tickets are policy tickets first, UI tickets second. Identify the "
         "authoritative authorization/validation owner, implement minimal policy checks there, "
-        "then verify edit forms and APIs reflect the restriction without bypass paths. In CC4E, "
+        "then verify edit forms and APIs reflect the restriction without bypass paths. In Enterprise, "
         "auth flows through ot2-auth and role checks live in service-layer validators."
     ),
     common_mistakes=[
@@ -484,9 +484,9 @@ _BUGFIX = Skill(
     priority=90,
 )
 
-# Catch-all so the engine can still guide *any* ticket with CC4E guardrails.
-_CC4E_DEFAULT = Skill(
-    name="cc4e_default",
+# Catch-all so the engine can still guide *any* ticket with Enterprise guardrails.
+_Enterprise_DEFAULT = Skill(
+    name="cloudforge_default",
     matches_keys=[],
     capabilities=[
         "recall_memory", "brain_query", "find_owner",
@@ -499,7 +499,7 @@ _CC4E_DEFAULT = Skill(
         "No plaintext secrets, no System.out.println/console-only logging, no swallowed exceptions.",
     ],
     guidance=(
-        "Respect the CC4E layered architecture (controller -> service -> repository -> entity for "
+        "Respect the Enterprise layered architecture (controller -> service -> repository -> entity for "
         "Java services; feature-module components + shared services for xchange-ui). Prefer additive, "
         "backward-compatible changes, reuse existing services/constants/shared libraries "
         "(bim-commons-lib, sagas-lib, ot2-auth), and keep the diff as small as the ticket allows."
@@ -530,13 +530,13 @@ _SKILLS: List[Skill] = [
 
 
 def select_skill(ticket_type: str, ticket_text: str) -> Skill:
-    """Pick the most relevant CC4E skill for this ticket.
+    """Pick the most relevant Enterprise skill for this ticket.
 
     Uses priority-based scoring: the skill with the most keyword hits wins.
-    Ties are broken by priority.  Falls back to _CC4E_DEFAULT when nothing
+    Ties are broken by priority.  Falls back to _Enterprise_DEFAULT when nothing
     matches.
     """
-    best = _CC4E_DEFAULT
+    best = _Enterprise_DEFAULT
     best_hits = 0
     for skill in _SKILLS:
         hits = skill.matches(ticket_type, ticket_text)
