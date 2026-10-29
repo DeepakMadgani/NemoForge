@@ -1,5 +1,9 @@
 # ⚡ NemoForge: Autonomous SWE Agent
 
+<p align="center">
+  <img src="docs/assets/thumbnail.png" alt="NemoForge: Autonomous SWE Agent" width="100%" style="border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.4);" />
+</p>
+
 > **Powered by NVIDIA Nemotron on Nebius Token Factory**  
 > An autonomous software engineering agent that ingests Jira/Git issues, localizes target code via deterministic AST symbol graphs, performs surgical edits using NVIDIA Nemotron, and guarantees correctness through automated multi-tier verification gates.
 
