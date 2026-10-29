@@ -1175,6 +1175,7 @@ function App() {
         method: 'DELETE'
       });
       if (response.ok) {
+        setProjects(prev => prev.filter(p => p.id !== projectId));
         if (selectedProject?.id === projectId) setSelectedProject(null);
         if (indexingState?.projectId === projectId) setIndexingState(null);
         fetchProjects();

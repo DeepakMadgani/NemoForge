@@ -299,7 +299,8 @@ _PROJECTS_FILE = Path(__file__).parent / "projects.json"
 def _load_projects() -> Dict[str, "Project"]:
     """Load projects from disk, automatically registering the active workspace environment."""
     loaded: Dict[str, "Project"] = {}
-    if _PROJECTS_FILE.exists():
+    file_existed = _PROJECTS_FILE.exists()
+    if file_existed:
         try:
             raw = json.loads(_PROJECTS_FILE.read_text())
             loaded = {pid: Project(**p) for pid, p in raw.items()}
@@ -335,7 +336,7 @@ def _load_projects() -> Dict[str, "Project"]:
     env_ws = os.getenv("AVIATOR_WORKSPACE_PATH") or os.getenv("WORKSPACE_PATH")
     candidate_ws = Path(env_ws).resolve() if (env_ws and Path(env_ws).exists()) else (repo_root / "workspace" / "CloudForge-Commerce").resolve()
     
-    if not loaded and candidate_ws.exists() and candidate_ws.is_dir():
+    if not file_existed and not loaded and candidate_ws.exists() and candidate_ws.is_dir():
         ws_path = str(candidate_ws)
         if not any(Path(p.path).resolve() == Path(ws_path) for p in loaded.values()):
             auto_id = "default-cloudforge-commerce"
@@ -521,9 +522,32 @@ async def get_project(project_id: str):
 
 @app.delete("/api/projects/{project_id}")
 async def delete_project(project_id: str):
-    """Delete a project"""
+    """Delete a project and its associated index database"""
     if project_id not in projects:
         raise HTTPException(status_code=404, detail="Project not found")
+    
+    proj = projects[project_id]
+    try:
+        p_path = Path(proj.local_path or proj.path)
+        if not p_path.is_absolute():
+            repo_root = Path(__file__).resolve().parent.parent.parent
+            if (repo_root / p_path).exists():
+                p_path = repo_root / p_path
+        # Clean index databases so re-adding is completely fresh
+        if (p_path / ".nemoforge").exists():
+            for db_file in (p_path / ".nemoforge").glob("index.db*"):
+                try:
+                    db_file.unlink()
+                except Exception:
+                    pass
+        if (p_path / ".ticket_to_code").exists():
+            for db_file in (p_path / ".ticket_to_code").glob("index.db*"):
+                try:
+                    db_file.unlink()
+                except Exception:
+                    pass
+    except Exception as exc:
+        logger.warning(f"Failed to clean index database for {proj.name}: {exc}")
     
     # Delete associated knowledge bases
     kb_ids_to_delete = [kb_id for kb_id, kb in knowledge_bases.items() if kb.project_id == project_id]
