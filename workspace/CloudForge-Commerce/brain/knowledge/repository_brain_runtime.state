@@ -1,0 +1,64 @@
+{
+  "files": {
+    "settlement-service/src/main/java/com/cloudforge/commerce/settlement/controller/settlementcontroller.java": {
+      "original_path": "settlement-service/src/main/java/com/cloudforge/commerce/settlement/controller/settlementcontroller.java",
+      "success_count": 1,
+      "first_success_at": "2026-10-26T05:19:22.594067Z",
+      "last_success_at": "2026-10-26T05:19:22.594067Z",
+      "last_verification_level": "compile_only",
+      "verification_counts": {
+        "compile_only": 1
+      }
+    },
+    "order-service/src/main/java/com/cloudforge/commerce/order/service/OrderService.java": {
+      "original_path": "order-service/src/main/java/com/cloudforge/commerce/order/service/OrderService.java",
+      "success_count": 3,
+      "first_success_at": "2026-10-26T05:38:43.186579Z",
+      "last_success_at": "2026-10-29T15:21:06.946753Z",
+      "last_verification_level": "compile_only",
+      "verification_counts": {
+        "compile_only": 3
+      }
+    },
+    "order-service/src/main/java/com/cloudforge/commerce/order/model/OrderStatus.java": {
+      "original_path": "order-service/src/main/java/com/cloudforge/commerce/order/model/OrderStatus.java",
+      "success_count": 1,
+      "first_success_at": "2026-10-29T15:21:06.887042Z",
+      "last_success_at": "2026-10-29T15:21:06.887042Z",
+      "last_verification_level": "compile_only",
+      "verification_counts": {
+        "compile_only": 1
+      }
+    },
+    "store-ui/src/components/OrderManagement.tsx": {
+      "original_path": "store-ui/src/components/OrderManagement.tsx",
+      "success_count": 2,
+      "first_success_at": "2026-10-29T15:21:06.922177Z",
+      "last_success_at": "2026-10-29T15:21:07.041542Z",
+      "last_verification_level": "compile_only",
+      "verification_counts": {
+        "compile_only": 2
+      }
+    },
+    "store-ui/src/types/order.ts": {
+      "original_path": "store-ui/src/types/order.ts",
+      "success_count": 1,
+      "first_success_at": "2026-10-29T15:21:06.982419Z",
+      "last_success_at": "2026-10-29T15:21:06.982419Z",
+      "last_verification_level": "compile_only",
+      "verification_counts": {
+        "compile_only": 1
+      }
+    },
+    "order-service/src/main/java/com/cloudforge/commerce/order/controller/OrderController.java": {
+      "original_path": "order-service/src/main/java/com/cloudforge/commerce/order/controller/OrderController.java",
+      "success_count": 1,
+      "first_success_at": "2026-10-29T15:21:07.016815Z",
+      "last_success_at": "2026-10-29T15:21:07.016815Z",
+      "last_verification_level": "compile_only",
+      "verification_counts": {
+        "compile_only": 1
+      }
+    }
+  }
+}

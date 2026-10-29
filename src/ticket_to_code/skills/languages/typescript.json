@@ -1,0 +1,25 @@
+{
+  "id": "typescript",
+  "name": "TypeScript / Angular",
+  "extensions": [".ts", ".tsx", ".js", ".jsx", ".html", ".scss", ".css"],
+  "manifest": "package.json",
+  "build_command": "npm run build",
+  "test_command": "npm test -- {test_file}",
+  "test_file_pattern": "{name}.spec.ts",
+  "companion_rules": [
+    {
+      "trigger_suffix": ".component.ts",
+      "companions": [".component.html", ".component.scss", ".component.spec.ts"]
+    },
+    {
+      "trigger_suffix": ".component.html",
+      "companions": [".component.ts", ".component.scss", ".component.spec.ts"]
+    },
+    {
+      "trigger_suffix": ".service.ts",
+      "companions": [".service.spec.ts"]
+    }
+  ],
+  "verifier": "typescript-ast",
+  "comment_syntax": "//"
+}

@@ -1,0 +1,73 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# Build artifacts
+*.tar.gz
+*.whl
+
+# Git
+.git/
+.gitignore
+
+# Docker
+.dockerignore
+
+# Cache
+.cache/
+.ruff_cache/
+
+# Documentation
+docs/_build/
+
+# Credentials (should use volumes instead)
+*.json
+credentials/
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
+
+# Docker treats patterns without a leading ** as root-relative; nested copies
+# of these must be excluded explicitly.
+**/.env
+**/.env.*
+**/node_modules
+**/*.db
+**/history.json
+**/projects.json
+**/mcp_servers.json
+**/.venv

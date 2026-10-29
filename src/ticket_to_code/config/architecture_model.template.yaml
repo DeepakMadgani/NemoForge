@@ -1,0 +1,117 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# ARCHITECTURE MODEL TEMPLATE — Domain Ownership Configuration
+# ═══════════════════════════════════════════════════════════════════════════════
+#
+# PURPOSE:
+#   This file teaches Ticket-to-Code which microservice OWNS each business
+#   capability. Without it, the system can find files that are semantically
+#   RELEVANT but architecturally WRONG (e.g., editing area-service's
+#   MemberService when the ticket is about project membership).
+#
+# HOW TO USE:
+#   1. Copy this template to your workspace:
+#        brain/knowledge/architecture_model.yaml   (preferred)
+#        OR
+#        <ticket-to-code>/config/architecture_model.yaml  (fallback)
+#
+#   2. Fill in YOUR project's services and capabilities below.
+#   3. The system loads this automatically — no code changes needed.
+#
+# CONCEPTS:
+#   - service:    A microservice / module / bounded context in your codebase
+#   - capability: A business feature (e.g., "user-authentication", "order-management")
+#   - primary_owners:           Service(s) that OWN this capability's state/logic
+#   - secondary_participants:   Service(s) that legitimately react/consume
+#   - reference_only:           Service(s) that may READ for context but MUST NOT modify
+#
+# PROVENANCE LEVELS:
+#   DECLARATIVE   → You manually defined this. High confidence → HARD blocks.
+#   DISCOVERED    → Auto-discovered from code structure. → soft warnings only.
+#   LLM_INFERRED  → LLM guessed this. → soft warnings, needs verification.
+#   VERIFIED      → Was discovered/inferred, then you confirmed it. → HARD blocks.
+#
+# CONFIDENCE:
+#   0.0 - 0.7  → Soft warnings only (investigate, don't block)
+#   0.8 - 1.0  → Hard blocks (reject tasks in wrong service)
+#
+# ═══════════════════════════════════════════════════════════════════════════════
+
+services:
+  # ┌─────────────────────────────────────────────────────────────────────────┐
+  # │  EXAMPLE: Replace with YOUR project's services                        │
+  # └─────────────────────────────────────────────────────────────────────────┘
+
+  # ── Service 1 ─────────────────────────────────────────────────────────────
+  - name: user-service                        # ← Your service/module name
+    path_prefix: user-service/                # ← Directory prefix in repo
+    domain: "User management, authentication, profiles"  # ← Human description
+    capabilities:
+      - name: user-authentication             # ← Unique capability ID
+        keywords:                             # ← Words that indicate this capability
+          - login
+          - logout
+          - authentication
+          - password
+          - JWT
+          - token
+          - session
+        primary_owners: [user-service]        # ← Who OWNS the state
+        secondary_participants: []            # ← Who legitimately reacts
+        reference_only: []                    # ← Who can READ but NOT modify
+        provenance: DECLARATIVE               # ← DECLARATIVE = you defined it
+        confidence: 1.0                       # ← 1.0 = hard block violations
+
+      - name: user-profile
+        keywords:
+          - profile
+          - user settings
+          - preferences
+          - avatar
+        primary_owners: [user-service]
+        secondary_participants: [notification-service]
+        reference_only: [analytics-service]
+        provenance: DECLARATIVE
+        confidence: 1.0
+
+  # ── Service 2 ─────────────────────────────────────────────────────────────
+  - name: order-service
+    path_prefix: order-service/
+    domain: "Order processing, checkout, payment"
+    capabilities:
+      - name: order-management
+        keywords:
+          - order
+          - checkout
+          - cart
+          - purchase
+        primary_owners: [order-service]
+        secondary_participants: [inventory-service, notification-service]
+        reference_only: [analytics-service]
+        provenance: DECLARATIVE
+        confidence: 1.0
+
+  # ── Frontend (if applicable) ──────────────────────────────────────────────
+  # - name: frontend-app
+  #   path_prefix: frontend/
+  #   domain: "All frontend UI"
+  #   capabilities:
+  #     - name: ui-orders
+  #       keywords: [order page, cart UI, checkout UI]
+  #       primary_owners: [frontend-app]
+  #       secondary_participants: []
+  #       reference_only: []
+  #       provenance: DECLARATIVE
+  #       confidence: 0.9
+
+  # ── Add more services below ───────────────────────────────────────────────
+  # - name: your-service-name
+  #   path_prefix: your-service-name/
+  #   domain: "Description of what this service does"
+  #   capabilities:
+  #     - name: capability-id
+  #       keywords: [keyword1, keyword2, keyword3]
+  #       primary_owners: [your-service-name]
+  #       secondary_participants: []
+  #       reference_only: []
+  #       provenance: DECLARATIVE
+  #       confidence: 1.0

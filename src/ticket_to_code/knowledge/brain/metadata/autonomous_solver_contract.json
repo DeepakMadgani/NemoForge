@@ -1,0 +1,188 @@
+{
+  "version": "1.0.0",
+  "last_updated": "2026-07-15",
+  "scope": "CC4E autonomous ticket solver",
+  "design_contract": {
+    "principles": [
+      "Evidence precedes belief.",
+      "Observations are immutable raw facts.",
+      "Evidence is interpreted support/contradiction derived from observations.",
+      "Beliefs are always revisable and evidence-backed.",
+      "Decisions optimize expected value of next state, not immediate action score.",
+      "Objective coverage gates completion, not perceived progress.",
+      "Knowledge and Experience are separate stores.",
+      "Learn from both success and failure.",
+      "Reflection distills lessons before persistence."
+    ],
+    "required_capabilities": [
+      "Utility-based dynamic next-action policy",
+      "Expected evidence gain (state-conditional)",
+      "Objective checklist and coverage tracking",
+      "Working theories created only from discovered evidence",
+      "Action preconditions and provided-effects constraints",
+      "Contradiction detection and resolution step",
+      "Hierarchy: Goal -> Subgoal -> Action",
+      "Observation -> Evidence -> Belief update pipeline",
+      "Reflection before learning writeback"
+    ]
+  },
+  "current_state_summary": {
+    "implemented": [
+      "BrainManager integration in reasoning flow",
+      "Reasoning-first with pipeline fallback",
+      "Generic canonical-source strategy (no ticket hardcoding)",
+      "Access-control skill and classification",
+      "Grounded resolution consumes deterministic and brain hints"
+    ],
+    "missing": [
+      "Observation vs Evidence split in runtime state",
+      "Belief state and working theory manager",
+      "Expected-next-state value policy in selector",
+      "Objective coverage gate as formal completion criterion",
+      "Contradiction checker",
+      "Separate Experience store with policy/failure priors",
+      "Reflection stage before persisting lessons",
+      "Production validation of indexing and graph/vector dependencies"
+    ],
+    "why_not_99_confident_yet": [
+      "Core dynamic policy rewrite is not fully implemented yet.",
+      "Experience base for these ticket families is still sparse.",
+      "Operational dependencies (indexing/sqlite/neo4j/vector/build) are not fully verified in target run path.",
+      "Cross-service refactor ticket (canonical source centralization) needs real end-to-end proof."
+    ]
+  },
+  "target_architecture": {
+    "flow": [
+      "Intent and objective extraction",
+      "Objective checklist creation",
+      "Belief state initialization",
+      "Candidate action generation",
+      "Policy evaluation (expected next-state value)",
+      "Execute single action",
+      "Observation capture",
+      "Evidence extraction",
+      "Belief and theory update",
+      "Contradiction check and resolution",
+      "Objective coverage check",
+      "Verification",
+      "Reflection",
+      "Learning writeback"
+    ],
+    "policy_terms": [
+      "expected_evidence_gain",
+      "objective_coverage_delta",
+      "experience_prior",
+      "cost",
+      "risk",
+      "loop_penalty",
+      "precondition_validity"
+    ]
+  },
+  "verification_protocol": {
+    "goal": "Establish operational confidence gates before claiming high confidence",
+    "gates": [
+      {
+        "id": "G1",
+        "name": "Index and stores available",
+        "must_pass": [
+          "SQLite index reachable",
+          "Neo4j reachable",
+          "Vector retrieval returns non-empty context for known literals"
+        ]
+      },
+      {
+        "id": "G2",
+        "name": "Action policy dynamic behavior",
+        "must_pass": [
+          "Different next actions chosen for materially different states",
+          "Action preconditions block invalid actions",
+          "Contradiction path triggers resolution step"
+        ]
+      },
+      {
+        "id": "G3",
+        "name": "Objective coverage correctness",
+        "must_pass": [
+          "Ticket completion blocked when any acceptance objective remains open",
+          "Verification required before success"
+        ]
+      },
+      {
+        "id": "G4",
+        "name": "Ticket references",
+        "must_pass": [
+          "Ticket 1 solved with correct owner and UI verification",
+          "Ticket 3 solved with backend policy enforcement and exception handling",
+          "Ticket 2 solved or minimized with explicit explanation of technical constraints"
+        ]
+      }
+    ]
+  },
+  "helper_steps_windows_powershell": [
+    {
+      "step_id": "S1",
+      "purpose": "Confirm CC4E repository availability",
+      "command": "Test-Path 'C:\\CC4E'; Get-ChildItem 'C:\\CC4E' -Directory | Select-Object -ExpandProperty Name"
+    },
+    {
+      "step_id": "S2",
+      "purpose": "Check Python backend dependencies for ticket engine workspace",
+      "command": "Set-Location 'C:\\Users\\dmadgani\\Desktop\\My_Aviator\\aviator-plugin-sample'; & '.venv\\Scripts\\python.exe' -c \"import sqlite3; print('sqlite_ok')\""
+    },
+    {
+      "step_id": "S3",
+      "purpose": "Verify SQLite index files exist in plugin workspace",
+      "command": "Set-Location 'C:\\Users\\dmadgani\\Desktop\\My_Aviator\\aviator-plugin-sample'; Get-ChildItem -Recurse -File | Where-Object { $_.Name -match 'index|sqlite|fts' } | Select-Object -First 40 FullName"
+    },
+    {
+      "step_id": "S4",
+      "purpose": "Verify Neo4j service reachability (if running locally)",
+      "command": "Test-NetConnection -ComputerName localhost -Port 7687"
+    },
+    {
+      "step_id": "S5",
+      "purpose": "Verify vector store endpoints (adapt ports as configured)",
+      "command": "Test-NetConnection -ComputerName localhost -Port 5432; Test-NetConnection -ComputerName localhost -Port 6333"
+    },
+    {
+      "step_id": "S6",
+      "purpose": "Dry import check for workflow and reasoning modules",
+      "command": "Set-Location 'C:\\Users\\dmadgani\\Desktop\\My_Aviator\\aviator-plugin-sample'; & '.venv\\Scripts\\python.exe' -m py_compile src\\ticket_to_code\\workflow.py src\\ticket_to_code\\reasoning\\engine.py src\\ticket_to_code\\reasoning\\tools.py src\\ticket_to_code\\reasoning\\capability_selector.py"
+    },
+    {
+      "step_id": "S7",
+      "purpose": "UI build verification for ticket 1 style changes",
+      "command": "Set-Location 'C:\\CC4E\\xchange-ui'; npm ci; npm run build"
+    },
+    {
+      "step_id": "S8",
+      "purpose": "Service build verification for access-control ticket class",
+      "command": "Set-Location 'C:\\CC4E\\issues-service'; mvn -q -DskipTests compile"
+    }
+  ],
+  "result_reporting_template": {
+    "format": [
+      "step_id",
+      "status: PASS|FAIL",
+      "key_output_lines",
+      "blockers",
+      "notes"
+    ]
+  },
+  "gemini_knowledge_generation": {
+    "model_hint": "Gemini 3.1 Pro",
+    "output_rule": "Output only strict JSON that matches schema. No markdown prose.",
+    "master_prompt": "You are a senior CC4E architecture mining system. Build machine-readable knowledge for an autonomous ticket solver. Use only the provided repository facts. Do not invent files, services, APIs, or ownership.\\n\\nINPUTS YOU RECEIVE: repository tree, sampled source snippets, ticket examples, and existing metadata files (feature_graph.json, ticket_patterns.json, investigation_playbooks.json).\\n\\nTASKS:\\n1) Extract canonical owner mappings for common change targets (version, access-control, API contract, configuration keys, UI display values).\\n2) For each target, list owner files, likely consumer files, and propagation expectations.\\n3) Produce ticket patterns with intent, typical features/files/skills, investigation_order, verification_order, failure_probability, estimated_cost.\\n4) Produce decision policies as WHEN->THEN rules (state conditions to best next action).\\n5) Produce failure policies from anti-patterns (wrong owner edits, UI-only security fixes, over-broad refactors).\\n6) Include confidence_source for each claim: symbol_graph, literal_match, call_graph, config_key_match, build_error, test_signal.\\n\\nOUTPUT JSON SCHEMA:\\n{\\n  \"knowledge\": {\\n    \"owner_maps\": [\\n      {\\n        \"target_type\": \"string\",\\n        \"owner_files\": [\"string\"],\\n        \"consumer_files\": [\"string\"],\\n        \"propagation_expectations\": [\"string\"],\\n        \"confidence_sources\": [\"string\"]\\n      }\\n    ],\\n    \"ticket_patterns\": [\\n      {\\n        \"pattern_id\": \"string\",\\n        \"intent\": \"string\",\\n        \"typical_features\": [\"string\"],\\n        \"typical_files\": [\"string\"],\\n        \"typical_skills\": [\"string\"],\\n        \"investigation_order\": [\"string\"],\\n        \"verification_order\": [\"string\"],\\n        \"failure_probability\": {\"string\": 0.0},\\n        \"estimated_cost\": {\"string\": 0},\\n        \"average_resolution_time\": \"string\"\\n      }\\n    ],\\n    \"decision_policies\": [\\n      {\\n        \"when\": {\"intent\": \"string\", \"conditions\": [\"string\"]},\\n        \"then\": {\"recommended_action\": \"string\", \"reason\": \"string\"}\\n      }\\n    ],\\n    \"failure_policies\": [\\n      {\\n        \"when\": {\"intent\": \"string\", \"conditions\": [\"string\"]},\\n        \"avoid\": \"string\",\\n        \"recovery\": \"string\"\\n      }\\n    ]\\n  },\\n  \"quality\": {\\n    \"assumptions\": [\"string\"],\\n    \"unknowns\": [\"string\"],\\n    \"requires_human_validation\": [\"string\"]\\n  }\\n}\\n\\nSTRICTNESS:\\n- If evidence is insufficient, put item in unknowns.\\n- Never fabricate ownership.\\n- Prefer fewer high-confidence mappings over broad low-confidence mappings.",
+    "integration_targets": [
+      "knowledge/brain/metadata/ticket_patterns.json",
+      "knowledge/brain/metadata/investigation_playbooks.json",
+      "knowledge/brain/metadata/feature_graph.json",
+      "knowledge/brain/metadata/action_policies.json",
+      "knowledge/brain/metadata/failure_policies.json"
+    ]
+  },
+  "confidence_target": {
+    "target": 0.99,
+    "condition": "Only claim >=0.99 after all verification gates pass on real ticket runs and reflection-quality experience is persisted."
+  }
+}

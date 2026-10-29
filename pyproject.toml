@@ -1,0 +1,127 @@
+[project]
+name = "nemoforge"
+version = "1.0.0"
+description = "NemoForge - Autonomous SWE Agent Powered by NVIDIA Nemotron on Nebius Token Factory"
+readme = "README.md"
+authors = [{ name = "Deepak Madgani" }]
+requires-python = ">=3.13"
+dependencies = [
+    "gitpython>=3.1.59",
+    "httpx>=0.27.0",
+    "tree-sitter>=0.23.0",
+    "tree-sitter-java>=0.23.0",
+    "tree-sitter-typescript>=0.23.0",
+    "pydantic>=2.0.0",
+    "langchain-core>=0.3.0",
+    "langchain-google-genai>=2.0.0",
+    "langchain-openai>=0.2.0",
+    "langchain-anthropic>=0.2.0",
+    "langgraph>=0.2.0",
+    "opentelemetry-api>=1.20.0",
+    "celery>=5.3.0",
+    "fastapi>=0.115.0",
+    "uvicorn>=0.30.0",
+    "python-dotenv>=1.0.0",
+    "websockets>=12.0",
+    "python-multipart>=0.0.9",
+    "pydantic-settings>=2.0.0",
+    "rank-bm25>=0.2.2",
+    "playwright>=1.40.0",
+    "beautifulsoup4>=4.12.0",
+    "lxml>=5.0.0",
+    "psycopg2-binary>=2.9.0",
+    "neo4j>=5.0.0",
+    "langchain-postgres>=0.0.12",
+]
+
+[build-system]
+requires = ["uv_build>=0.9.13,<0.12.0"]
+build-backend = "uv_build"
+
+
+[dependency-groups]
+dev = [
+    "ruff>=0.14.7",
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.23.0",
+]
+
+[tool.ruff.lint]
+# https://docs.astral.sh/ruff/rules/
+select = ["ALL"]
+
+ignore = [
+    "FIX002",
+    "TD002",
+    "TD003",
+    "BLE001",
+    "ERA001",
+    "S105",
+    "S106",
+    "S107",
+    "S113",
+    "S311",
+    "S314",
+    "S603",
+    "S608",
+    "RUF005",
+    "RUF012",
+    "E501",
+    "PERF203",
+    "PLW2901",
+    "PD002",
+    "UP032",
+    "D202",
+    "D203",
+    "D213",
+    "PLC0415",
+    "PLR0911",
+    "PLR0912",
+    "PLR0913",
+    "PLR0915",
+    "PLR2004",
+    "PTH",
+    "PTH123",
+    "PTH103",
+    "PTH104",
+    "PTH107",
+    "PTH110",
+    "PTH112",
+    "PTH113",
+    "PTH118",
+    "PTH119",
+    "PTH120",
+    "PTH122",
+    "FBT001",
+    "FBT002",
+    "RET504",
+    "RET505",
+    "C901",
+    "B019",
+    "TRY300",
+    "TRY400",
+    "COM812",
+]
+fixable = ["ALL"]
+unfixable = []
+
+[tool.ruff]
+line-length = 120
+include = ["src/**/*.py", "tests/**/*.py"]
+exclude = []
+
+[tool.ruff.lint.extend-per-file-ignores]
+"**/tests/*.py" = ["INP001", "D100", "D103", "ANN", "S101", "ARG", "S311"]
+"**/**/test_*.py" = [
+    "INP001",
+    "D100",
+    "D103",
+    "ANN",
+    "S101",
+    "ARG",
+    "FBT",
+    "PLR2004",
+    "S311",
+    "D102",
+]
+"**/__init__.py" = ["D104"]

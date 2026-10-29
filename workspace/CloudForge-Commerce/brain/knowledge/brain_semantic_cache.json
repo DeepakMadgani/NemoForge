@@ -1,0 +1,165 @@
+{
+  "version": 1,
+  "folders": {
+    "order-service/src/main/java/com/cloudforge/commerce/order": {
+      "current_signature": "50728cb4e141aef67156bcc60f2015b56ea252a83d96bc75e7bc129633a812a9",
+      "descriptions": {
+        "50728cb4e141aef67156bcc60f2015b56ea252a83d96bc75e7bc129633a812a9": {
+          "business_domain": "Orders",
+          "technical_role": "Application Entry Point",
+          "core_responsibilities": "Contains the main class that bootstraps the Order Service Spring Boot application."
+        }
+      }
+    },
+    "order-service/src/main/java/com/cloudforge/commerce/order/controller": {
+      "current_signature": "00cfe1cc810a1b71a9dcae16ade6470dc4509b048d9812ec7ecfa0588f483aa5",
+      "descriptions": {
+        "00cfe1cc810a1b71a9dcae16ade6470dc4509b048d9812ec7ecfa0588f483aa5": {
+          "business_domain": "Orders",
+          "technical_role": "REST Controllers",
+          "core_responsibilities": "Exposes RESTful endpoints for managing customer orders within the commerce system."
+        }
+      }
+    },
+    "order-service/src/main/java/com/cloudforge/commerce/order/model": {
+      "current_signature": "db553d65843b5c49eec37c8f3dee04448fb13d7abaa2c3c07716d99d382f227c",
+      "descriptions": {
+        "db553d65843b5c49eec37c8f3dee04448fb13d7abaa2c3c07716d99d382f227c": {
+          "business_domain": "Orders",
+          "technical_role": "Domain Model Entities",
+          "core_responsibilities": "Contains Java entity classes that model orders, their statuses, payment reservations, and reservation statuses for the order service."
+        }
+      }
+    },
+    "order-service/src/main/java/com/cloudforge/commerce/order/repository": {
+      "current_signature": "b396e4f8011b931ee2d7fb83956e5d65475707a6b6664407cab7661f33c0163c",
+      "descriptions": {
+        "b396e4f8011b931ee2d7fb83956e5d65475707a6b6664407cab7661f33c0163c": {
+          "business_domain": "Orders",
+          "technical_role": "Data Access Layer",
+          "core_responsibilities": "Provide CRUD and query operations for Order and PaymentReservation entities within the order service."
+        }
+      }
+    },
+    "order-service/src/main/java/com/cloudforge/commerce/order/service": {
+      "current_signature": "d5d25492b6bdd360aec53f7fc1a55192524e22dd35c9615f312759a4a8a87163",
+      "descriptions": {
+        "d5d25492b6bdd360aec53f7fc1a55192524e22dd35c9615f312759a4a8a87163": {
+          "business_domain": "Order Management",
+          "technical_role": "Service Layer",
+          "core_responsibilities": "Contains service classes that implement order processing and payment ledger functionality."
+        }
+      }
+    },
+    "order-service/src/test/java/com/cloudforge/commerce/order": {
+      "current_signature": "0f5675131ecf7985c544ebdba030e26c20e61d012923b6c72dc94f060f186db7",
+      "descriptions": {
+        "0f5675131ecf7985c544ebdba030e26c20e61d012923b6c72dc94f060f186db7": {
+          "business_domain": "Order Management",
+          "technical_role": "Unit Tests",
+          "core_responsibilities": "Contains test cases for the OrderService to validate order creation, modification, and related business logic."
+        }
+      }
+    },
+    "settlement-service/src/main/java/com/cloudforge/commerce/settlement": {
+      "current_signature": "1e6bef5a6da816b53bc43fffa4099e4ddd0920dd8a6acfae1b5ecf7e5832520f",
+      "descriptions": {
+        "1e6bef5a6da816b53bc43fffa4099e4ddd0920dd8a6acfae1b5ecf7e5832520f": {
+          "business_domain": "Order Settlement",
+          "technical_role": "Microservice Main Application",
+          "core_responsibilities": "Contains the Spring Boot bootstrap class that launches the settlement service responsible for processing payment settlements within the commerce platform."
+        }
+      }
+    },
+    "settlement-service/src/main/java/com/cloudforge/commerce/settlement/controller": {
+      "current_signature": "0c32f4ed98d4628ee0cc60615d9a5022ed5e0ccd812feb88d1ba82061bb27566",
+      "descriptions": {
+        "0c32f4ed98d4628ee0cc60615d9a5022ed5e0ccd812feb88d1ba82061bb27566": {
+          "business_domain": "Settlements",
+          "technical_role": "REST Controllers",
+          "core_responsibilities": "Contains REST controller classes that expose settlement operations as HTTP endpoints for the commerce platform."
+        }
+      }
+    },
+    "settlement-service/src/main/java/com/cloudforge/commerce/settlement/model": {
+      "current_signature": "50a49531ec32a0130fa3f246810619c350f1358b044615705860b5c9761a3ccd",
+      "descriptions": {
+        "50a49531ec32a0130fa3f246810619c350f1358b044615705860b5c9761a3ccd": {
+          "business_domain": "Payments",
+          "technical_role": "Data Model",
+          "core_responsibilities": "Contains Java classes representing settlement-related entities such as batches, ledger entries, and statuses used throughout the settlement service."
+        }
+      }
+    },
+    "settlement-service/src/main/java/com/cloudforge/commerce/settlement/repository": {
+      "current_signature": "3f4aca47aedf6d298d68ec862e804f4c89ec1e93ffc4d499906c51e600236c63",
+      "descriptions": {
+        "3f4aca47aedf6d298d68ec862e804f4c89ec1e93ffc4d499906c51e600236c63": {
+          "business_domain": "Settlements",
+          "technical_role": "Data Access Layer",
+          "core_responsibilities": "Provides data access methods for persisting and retrieving SettlementBatch entities in the settlement service."
+        }
+      }
+    },
+    "settlement-service/src/main/java/com/cloudforge/commerce/settlement/service": {
+      "current_signature": "abfd45013bc2aaae98c34dd0900224253834c078f4312706f7c7c824875fc835",
+      "descriptions": {
+        "abfd45013bc2aaae98c34dd0900224253834c078f4312706f7c7c824875fc835": {
+          "business_domain": "Payments",
+          "technical_role": "Service Layer",
+          "core_responsibilities": "Provides business logic for reconciling settlement transactions within the commerce system."
+        }
+      }
+    },
+    "store-ui": {
+      "current_signature": "bdff5a65d2cf616c1eecc27993e477e05a998ffd89ccbfc3fad5ad9d45fcbbaa",
+      "descriptions": {
+        "bdff5a65d2cf616c1eecc27993e477e05a998ffd89ccbfc3fad5ad9d45fcbbaa": {
+          "business_domain": "E-commerce Storefront",
+          "technical_role": "Frontend Build Configuration",
+          "core_responsibilities": "Holds the HTML entry point and Vite configuration used to bundle and serve the store's user interface."
+        }
+      }
+    },
+    "store-ui/src": {
+      "current_signature": "543cc4c30805c52a58806f4be6ef7bf2c9f7099d353d965e9954b4e3d05a3995",
+      "descriptions": {
+        "b1c0eafc62dfb2e1dc3aedbd56f148e51ca6b55d1ec4d0a65384b79f07b039dc": {
+          "business_domain": "Order Management",
+          "technical_role": "Frontend Application Entry Point",
+          "core_responsibilities": "Holds the root React components and styles for the storefront UI, managing order interactions and demo state."
+        },
+        "543cc4c30805c52a58806f4be6ef7bf2c9f7099d353d965e9954b4e3d05a3995": {
+          "business_domain": "Order Management",
+          "technical_role": "Frontend Application",
+          "core_responsibilities": "Contains the React UI source (App, main, styles) that implements order-related features such as canceling, refunding, and tracking reservations for the store."
+        }
+      }
+    },
+    "store-ui/src/components": {
+      "current_signature": "c1d778f32bf5632dcc54572cf166e25e6e50c699cbe1a8d1dd9be8e5b3c8e7c7",
+      "descriptions": {
+        "33f3324df13e11c66a72c2d1f7c70ba2733fbd3588122c9e50da2da4d4e2abc2": {
+          "business_domain": "Orders",
+          "technical_role": "React UI Components",
+          "core_responsibilities": "Provides UI components for viewing and handling order actions like cancellation."
+        },
+        "c1d778f32bf5632dcc54572cf166e25e6e50c699cbe1a8d1dd9be8e5b3c8e7c7": {
+          "business_domain": "Orders",
+          "technical_role": "React UI Components",
+          "core_responsibilities": "Contains React components that display order information and handle actions like cancellation and refunds."
+        }
+      }
+    },
+    "store-ui/src/types": {
+      "current_signature": "0fd410dd2037b7c2646f49ae8f3e9f7cee2cf54014664c6f5b1e66f4513d435f",
+      "descriptions": {
+        "0fd410dd2037b7c2646f49ae8f3e9f7cee2cf54014664c6f5b1e66f4513d435f": {
+          "business_domain": "Orders",
+          "technical_role": "Type Definitions / Data Models",
+          "core_responsibilities": "Contains TypeScript interfaces and enums representing order entities, their statuses, and payment reservations for use across the store UI."
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,77 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+.pytest_cache/
+
+# Virtual Environment
+.venv/
+.venv*/
+venv/
+ENV/
+env/
+
+# IDE & Editor
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Environment & Secrets (NEVER COMMIT)
+.env
+.env.*
+!.env.example
+/otl-*.json
+/otl-cs-csai*.json
+*.pem
+*.key
+credentials/
+
+# Databases & Runtime State (NEVER COMMIT)
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+.aviator/
+.nemoforge/
+history.json
+projects.json
+chatbot/backend/history.json
+chatbot/backend/projects.json
+# MCP server config holds per-user secrets; commit mcp_servers.example.json instead
+chatbot/backend/mcp_servers.json
+bin/*.exe
+
+# Node & Frontend
+node_modules/
+.npm/
+
+# Logs, Reports & Benchmarks
+*.log
+logs/
+benchmark_reports*/
+scratch/
+debug_*.log
+
+# OS
+.DS_Store
+Thumbs.db

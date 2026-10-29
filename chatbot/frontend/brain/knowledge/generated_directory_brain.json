@@ -1,0 +1,15 @@
+[
+  {
+    "directory_path": "xchange-ui/src/jato/layout",
+    "business_domain": "Jato / Layout",
+    "technical_role": "Source Module",
+    "core_responsibilities": "Source files under xchange-ui/src/jato/layout",
+    "intent_terms": [
+      "jlayout",
+      "component"
+    ],
+    "key_artifacts": [
+      "xchange-ui/src/jato/layout/jlayout.component.ts"
+    ]
+  }
+]

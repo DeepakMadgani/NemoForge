@@ -1,0 +1,245 @@
+{
+  "version": 1,
+  "folders": {
+    "chatbot/backend": {
+      "current_signature": "05b7e1462f8d84cab16e47ee30d41ac521f1a5e597116a0faba72c6b72e971b3",
+      "descriptions": {
+        "68c8d10cfd5abd7b3ec0f1561380104dd381697781dfaa26ec90615b1e15b2a7": {
+          "business_domain": "Chatbot Backend Logic",
+          "technical_role": "Core Application Services",
+          "core_responsibilities": "This directory contains the core backend logic for the chatbot, managing workflows, project states, history storage, and data models."
+        }
+      }
+    },
+    "chatbot/backend/services": {
+      "current_signature": "7c493feda96027e929ea245a911277ae37d572ae09fb139f8be873475fd735f2",
+      "descriptions": {
+        "13b96ddddeef27f4612bdb3505a7ff9d33726b020addcee206f69dc511a51df9": {
+          "business_domain": "ValueEdge Integration",
+          "technical_role": "Service Layer",
+          "core_responsibilities": "This directory houses services responsible for interacting with the ValueEdge API, scraping data, managing MCP processes, and verifying content, acting as the core business logic for ValueEdge-related operations."
+        }
+      }
+    },
+    "chatbot/frontend": {
+      "current_signature": "cada7b3ebc6d557df6edf96e64509151a9aa0948e04a939a3b47b14bae721167",
+      "descriptions": {
+        "cada7b3ebc6d557df6edf96e64509151a9aa0948e04a939a3b47b14bae721167": {
+          "business_domain": "Chatbot User Interface",
+          "technical_role": "Frontend Configuration",
+          "core_responsibilities": "This directory contains configuration files for the chatbot's frontend, including build tools (Vite) and end-to-end testing frameworks (Playwright)."
+        }
+      }
+    },
+    "chatbot/frontend/src": {
+      "current_signature": "757da8305dcbb1f6d39da8d131b985df7085ef3e947389605757f58ab29b7463",
+      "descriptions": {
+        "757da8305dcbb1f6d39da8d131b985df7085ef3e947389605757f58ab29b7463": {
+          "business_domain": "Chatbot UI",
+          "technical_role": "Frontend Application Core",
+          "core_responsibilities": "This directory contains the main entry point and core components for the chatbot's user interface, including styling and application rendering logic."
+        }
+      }
+    },
+    "chatbot/frontend/src/components": {
+      "current_signature": "c12107c9d4f837ea6d1c1f92b3cd0da81d3f1b3ed93d3c779a9caa586600372e",
+      "descriptions": {
+        "c12107c9d4f837ea6d1c1f92b3cd0da81d3f1b3ed93d3c779a9caa586600372e": {
+          "business_domain": "Chatbot UI Components",
+          "technical_role": "Frontend Components",
+          "core_responsibilities": "This directory contains reusable UI components for the chatbot's frontend, specifically related to managing server connections (McpHub) and displaying workflow information (TransparentWorkflow)."
+        }
+      }
+    },
+    "chatbot/frontend/tests": {
+      "current_signature": "e52daff42b3a02884c0787af861e79019e8f5f6a40f6ade540a0bb924bb69196",
+      "descriptions": {
+        "e52daff42b3a02884c0787af861e79019e8f5f6a40f6ade540a0bb924bb69196": {
+          "business_domain": "Chatbot Frontend",
+          "technical_role": "Testing Utilities",
+          "core_responsibilities": "This directory contains helper functions for testing the chatbot's frontend, providing utilities for waiting for various events, interacting with elements, and navigating the UI."
+        }
+      }
+    },
+    "chatbot/frontend/tests/e2e": {
+      "current_signature": "5a5b4849c230a286a1334d42d18e53790dda7db4ab0f86c4dea52dbfa703cfa9",
+      "descriptions": {
+        "5a5b4849c230a286a1334d42d18e53790dda7db4ab0f86c4dea52dbfa703cfa9": {
+          "business_domain": "Chatbot Frontend",
+          "technical_role": "End-to-End Tests",
+          "core_responsibilities": "This directory contains end-to-end tests for the chatbot's frontend, verifying core functionalities like application loading, project management, workflow execution, and API integration."
+        }
+      }
+    },
+    "chatbot/frontend/xchange-ui/src/jato/layout": {
+      "current_signature": "e4465dd416da07d14261cacbea23b2cba891c733e17921a9cf4a69f05c34212e",
+      "descriptions": {
+        "e4465dd416da07d14261cacbea23b2cba891c733e17921a9cf4a69f05c34212e": {
+          "business_domain": "Chatbot UI",
+          "technical_role": "Layout Components",
+          "core_responsibilities": "This directory contains the core layout component for the Jato UI, defining the overall structure and arrangement of elements within the chatbot's frontend."
+        }
+      }
+    },
+    "src/ticket_to_code": {
+      "current_signature": "11a8e4659190250f4b9822d2572415ee45613b2d3599b88a03c002e3344dc141",
+      "descriptions": {
+        "bad622cb8a1a2509ec5d02f7a4731111ed8104fcc74dcc92aae1295aaa80e2f1": {
+          "business_domain": "Ticket to Code Transformation",
+          "technical_role": "Workflow Orchestration and Utilities",
+          "core_responsibilities": "This directory contains the core logic for transforming tickets into code, including workflow management, LLM interactions, data structures, and debugging utilities."
+        }
+      }
+    },
+    "src/ticket_to_code/agents": {
+      "current_signature": "837e0a37487a6984ef66d6b914043e6a8790491bdbe04d0f2b90ee5d92cd4efd",
+      "descriptions": {
+        "c9d9481d6bef71f5adf1b37d7ce5e6af20ab8a6ef5cb5fdc4f6c6b85856abfe2": {
+          "business_domain": "Software Development Automation",
+          "technical_role": "Agent Orchestration and Management",
+          "core_responsibilities": "This directory houses various agents responsible for analyzing software requirements (tickets), understanding code architecture, and generating or verifying code artifacts as part of an automated development pipeline."
+        }
+      }
+    },
+    "src/ticket_to_code/agents/providers": {
+      "current_signature": "620cf76b6bdeb5d98ade21b83e9565314c41b12f0df485a83dc2882c1fd63684",
+      "descriptions": {
+        "620cf76b6bdeb5d98ade21b83e9565314c41b12f0df485a83dc2882c1fd63684": {
+          "business_domain": "Ticket to Code",
+          "technical_role": "Provider Implementations",
+          "core_responsibilities": "This directory contains implementations of various providers, including a factory for creating them and a specific provider for handling relationships, all within the ticket-to-code system."
+        }
+      }
+    },
+    "src/ticket_to_code/api": {
+      "current_signature": "f991b9d6429952acc6e7d6e32951f6b015bbcff1e09ee0d889960ae8e75f433a",
+      "descriptions": {
+        "f991b9d6429952acc6e7d6e32951f6b015bbcff1e09ee0d889960ae8e75f433a": {
+          "business_domain": "Ticket to Code Workflow",
+          "technical_role": "API Endpoints",
+          "core_responsibilities": "This directory defines the API endpoints for interacting with the ticket-to-code workflow, handling requests for ticket submission, run creation, status updates, and report generation."
+        }
+      }
+    },
+    "src/ticket_to_code/benchmarks": {
+      "current_signature": "be7341cc93ed60a14e1ec5ef0d50c1567c1f9943e30f818f47f05e473ee03efa",
+      "descriptions": {
+        "15f92a6c8bc24e613dd3cc1783a3abc1e8cd4d921c73d2838d1be86b746bfcde": {
+          "business_domain": "Ticket Processing",
+          "technical_role": "Benchmark Runners",
+          "core_responsibilities": "This directory contains code for running benchmarks related to ticket processing, including batch validation and production readiness assessments."
+        }
+      }
+    },
+    "src/ticket_to_code/brain": {
+      "current_signature": "7cbd33550a834018c7cf921815063733dff16f04d5b9495e53e0e920334c1c44",
+      "descriptions": {
+        "7cbd33550a834018c7cf921815063733dff16f04d5b9495e53e0e920334c1c44": {
+          "business_domain": "Code Analysis and Representation",
+          "technical_role": "Repository Brain Generation and Storage",
+          "core_responsibilities": "This directory contains logic for generating and storing a 'brain' representation of a software repository, likely for code analysis or understanding purposes."
+        }
+      }
+    },
+    "src/ticket_to_code/conversation": {
+      "current_signature": "5124a1e0d8c0ddc5e26c265a1c1f1a159ea067059304e39157081043f7e71ae2",
+      "descriptions": {
+        "5124a1e0d8c0ddc5e26c265a1c1f1a159ea067059304e39157081043f7e71ae2": {
+          "business_domain": "Ticket Management",
+          "technical_role": "Session Management",
+          "core_responsibilities": "This directory manages the state and lifecycle of ticket-related conversations, including session initialization and reasoning snapshots."
+        }
+      }
+    },
+    "src/ticket_to_code/data": {
+      "current_signature": "5a5b39179663f307a419e2d647f99eacf6604c39db078848bcd1cc683313bd7e",
+      "descriptions": {
+        "5a5b39179663f307a419e2d647f99eacf6604c39db078848bcd1cc683313bd7e": {
+          "business_domain": "Ticket Management",
+          "technical_role": "Data Initialization",
+          "core_responsibilities": "This directory contains initialization code for data-related modules within the ticket-to-code system."
+        }
+      }
+    },
+    "src/ticket_to_code/delivery": {
+      "current_signature": "045ee88d397025f1f84a95fccced878c9f15f374291215e6c7e860c3718d8f9f",
+      "descriptions": {
+        "045ee88d397025f1f84a95fccced878c9f15f374291215e6c7e860c3718d8f9f": {
+          "business_domain": "Code Delivery",
+          "technical_role": "Delivery Logic",
+          "core_responsibilities": "This directory contains logic for validating delivery configurations and managing patch gates, ensuring code is delivered according to defined rules."
+        }
+      }
+    },
+    "src/ticket_to_code/editing": {
+      "current_signature": "02080630a58f6c09f65b00a29618594c76cf1f1f3fb46009614c4a0c34ad9002",
+      "descriptions": {
+        "3a5584a62aea7be00bc1f330b7de8bccfeb65f64e39b93af0ef613c36889529c": {
+          "business_domain": "Code Editing",
+          "technical_role": "Diff Engine",
+          "core_responsibilities": "This directory contains the core logic for performing surgical diff operations and managing the state of code edits."
+        }
+      }
+    },
+    "src/ticket_to_code/execution": {
+      "current_signature": "66fefb53e01d4a6c4c3d9962bfd1a157d7130c4dc6135ae94b7ecc466cac6ed5",
+      "descriptions": {
+        "6bed698069e65c7a8bbdb2449da379e0709c918e483fec607fbee30224161124": {
+          "business_domain": "Code Execution",
+          "technical_role": "Execution Engines",
+          "core_responsibilities": "This directory contains the core logic and implementations for executing code across various platforms and languages, including build, Java, Node.js, and microservices."
+        }
+      }
+    },
+    "src/ticket_to_code/indexing": {
+      "current_signature": "be5ac6a68cb381f6be61e8cd5fb0c952f67e4b0dd1a9679ac54e69745ab8066c",
+      "descriptions": {
+        "35be8b034ae495c4331ff2d77f3063f1012acabad8d07a277d752d6b31c23d2f": {
+          "business_domain": "Code Analysis",
+          "technical_role": "Indexing and Index Management",
+          "core_responsibilities": "This directory contains components responsible for indexing codebases, managing incremental updates to these indexes, and discovering semantic concepts and workflows within the code."
+        }
+      }
+    },
+    "src/ticket_to_code/integrity": {
+      "current_signature": "50ca4215134c7a44f0cf8e8bb0cd9b75f6ac1a71f4b5fa6a182c349f27a05569",
+      "descriptions": {
+        "50ca4215134c7a44f0cf8e8bb0cd9b75f6ac1a71f4b5fa6a182c349f27a05569": {
+          "business_domain": "Code Integrity",
+          "technical_role": "Policy Enforcement and Workspace Management",
+          "core_responsibilities": "This directory enforces policies related to code integrity, manages structural manifests, and handles workspace integrity checks, including authorization for deletions and conflict resolution."
+        }
+      }
+    },
+    "src/ticket_to_code/intelligence": {
+      "current_signature": "cb23f209917d82587b9626a7c74ade7f8bc805e2329a32434cc640b016d8bb01",
+      "descriptions": {
+        "61aee04065ef70ddd56afd225b2b0e4b991619718e5709f87f2516a70d6f022a": {
+          "business_domain": "AI Model Integration",
+          "technical_role": "AI Model Orchestration and Management",
+          "core_responsibilities": "This directory houses components responsible for interacting with various AI models, routing requests to appropriate models, and managing prompt caching for efficiency."
+        }
+      }
+    },
+    "src/ticket_to_code/intelligence/contracts": {
+      "current_signature": "aa8419701e19a9f6a5d2eb412aaf520cebfd95f993430cad7185fd50497a9e86",
+      "descriptions": {
+        "dd10680fddcfafa9f3e0004751f2291c8db6ad61de93a79f299fddd5b61f99f0": {
+          "business_domain": "Software Intelligence",
+          "technical_role": "Contract Definitions",
+          "core_responsibilities": "This directory defines the contracts and interfaces used for representing and validating various aspects of software intelligence, including companion resolvers and data flow analysis."
+        }
+      }
+    },
+    "src/ticket_to_code/intelligence/scope": {
+      "current_signature": "6ffc36368c70645b1b2297d708f37f149b368c06875921605da55d18a4bc52c0",
+      "descriptions": {
+        "6ffc36368c70645b1b2297d708f37f149b368c06875921605da55d18a4bc52c0": {
+          "business_domain": "Code Generation",
+          "technical_role": "Scope Definition",
+          "core_responsibilities": "This directory defines the scope and language-specific contexts for intelligence-driven code generation, enabling the system to understand and operate within different programming language environments."
+        }
+      }
+    }
+  }
+}

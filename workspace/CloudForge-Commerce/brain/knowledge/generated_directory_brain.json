@@ -1,0 +1,214 @@
+[
+  {
+    "directory_path": "order-service/src/main/java/com/cloudforge/commerce/order",
+    "business_domain": "Orders",
+    "technical_role": "Application Entry Point",
+    "core_responsibilities": "Contains the main class that bootstraps the Order Service Spring Boot application.",
+    "intent_terms": [
+      "OrderServiceApplication"
+    ],
+    "key_artifacts": [
+      "order-service/src/main/java/com/cloudforge/commerce/order/OrderServiceApplication.java"
+    ]
+  },
+  {
+    "directory_path": "order-service/src/main/java/com/cloudforge/commerce/order/controller",
+    "business_domain": "Orders",
+    "technical_role": "REST Controllers",
+    "core_responsibilities": "Exposes RESTful endpoints for managing customer orders within the commerce system.",
+    "intent_terms": [
+      "OrderController"
+    ],
+    "key_artifacts": [
+      "order-service/src/main/java/com/cloudforge/commerce/order/controller/OrderController.java"
+    ]
+  },
+  {
+    "directory_path": "order-service/src/main/java/com/cloudforge/commerce/order/model",
+    "business_domain": "Orders",
+    "technical_role": "Domain Model Entities",
+    "core_responsibilities": "Contains Java entity classes that model orders, their statuses, payment reservations, and reservation statuses for the order service.",
+    "intent_terms": [
+      "Order",
+      "OrderStatus",
+      "PaymentReservation",
+      "ReservationStatus"
+    ],
+    "key_artifacts": [
+      "order-service/src/main/java/com/cloudforge/commerce/order/model/Order.java",
+      "order-service/src/main/java/com/cloudforge/commerce/order/model/OrderStatus.java",
+      "order-service/src/main/java/com/cloudforge/commerce/order/model/PaymentReservation.java",
+      "order-service/src/main/java/com/cloudforge/commerce/order/model/ReservationStatus.java"
+    ]
+  },
+  {
+    "directory_path": "order-service/src/main/java/com/cloudforge/commerce/order/repository",
+    "business_domain": "Orders",
+    "technical_role": "Data Access Layer",
+    "core_responsibilities": "Provide CRUD and query operations for Order and PaymentReservation entities within the order service.",
+    "intent_terms": [
+      "OrderRepository",
+      "PaymentReservationRepository"
+    ],
+    "key_artifacts": [
+      "order-service/src/main/java/com/cloudforge/commerce/order/repository/OrderRepository.java",
+      "order-service/src/main/java/com/cloudforge/commerce/order/repository/PaymentReservationRepository.java"
+    ]
+  },
+  {
+    "directory_path": "order-service/src/main/java/com/cloudforge/commerce/order/service",
+    "business_domain": "Order Management",
+    "technical_role": "Service Layer",
+    "core_responsibilities": "Contains service classes that implement order processing and payment ledger functionality.",
+    "intent_terms": [
+      "OrderService",
+      "PaymentLedgerService"
+    ],
+    "key_artifacts": [
+      "order-service/src/main/java/com/cloudforge/commerce/order/service/OrderService.java",
+      "order-service/src/main/java/com/cloudforge/commerce/order/service/PaymentLedgerService.java"
+    ]
+  },
+  {
+    "directory_path": "order-service/src/test/java/com/cloudforge/commerce/order",
+    "business_domain": "Order Management",
+    "technical_role": "Unit Tests",
+    "core_responsibilities": "Contains test cases for the OrderService to validate order creation, modification, and related business logic.",
+    "intent_terms": [
+      "OrderServiceTest"
+    ],
+    "key_artifacts": [
+      "order-service/src/test/java/com/cloudforge/commerce/order/OrderServiceTest.java"
+    ]
+  },
+  {
+    "directory_path": "settlement-service/src/main/java/com/cloudforge/commerce/settlement",
+    "business_domain": "Order Settlement",
+    "technical_role": "Microservice Main Application",
+    "core_responsibilities": "Contains the Spring Boot bootstrap class that launches the settlement service responsible for processing payment settlements within the commerce platform.",
+    "intent_terms": [
+      "SettlementServiceApplication"
+    ],
+    "key_artifacts": [
+      "settlement-service/src/main/java/com/cloudforge/commerce/settlement/SettlementServiceApplication.java"
+    ]
+  },
+  {
+    "directory_path": "settlement-service/src/main/java/com/cloudforge/commerce/settlement/controller",
+    "business_domain": "Settlements",
+    "technical_role": "REST Controllers",
+    "core_responsibilities": "Contains REST controller classes that expose settlement operations as HTTP endpoints for the commerce platform.",
+    "intent_terms": [
+      "SettlementController"
+    ],
+    "key_artifacts": [
+      "settlement-service/src/main/java/com/cloudforge/commerce/settlement/controller/SettlementController.java"
+    ]
+  },
+  {
+    "directory_path": "settlement-service/src/main/java/com/cloudforge/commerce/settlement/model",
+    "business_domain": "Payments",
+    "technical_role": "Data Model",
+    "core_responsibilities": "Contains Java classes representing settlement-related entities such as batches, ledger entries, and statuses used throughout the settlement service.",
+    "intent_terms": [
+      "SettlementBatch",
+      "SettlementLedgerEntry",
+      "SettlementStatus"
+    ],
+    "key_artifacts": [
+      "settlement-service/src/main/java/com/cloudforge/commerce/settlement/model/SettlementBatch.java",
+      "settlement-service/src/main/java/com/cloudforge/commerce/settlement/model/SettlementLedgerEntry.java",
+      "settlement-service/src/main/java/com/cloudforge/commerce/settlement/model/SettlementStatus.java"
+    ]
+  },
+  {
+    "directory_path": "settlement-service/src/main/java/com/cloudforge/commerce/settlement/repository",
+    "business_domain": "Settlements",
+    "technical_role": "Data Access Layer",
+    "core_responsibilities": "Provides data access methods for persisting and retrieving SettlementBatch entities in the settlement service.",
+    "intent_terms": [
+      "SettlementBatchRepository"
+    ],
+    "key_artifacts": [
+      "settlement-service/src/main/java/com/cloudforge/commerce/settlement/repository/SettlementBatchRepository.java"
+    ]
+  },
+  {
+    "directory_path": "settlement-service/src/main/java/com/cloudforge/commerce/settlement/service",
+    "business_domain": "Payments",
+    "technical_role": "Service Layer",
+    "core_responsibilities": "Provides business logic for reconciling settlement transactions within the commerce system.",
+    "intent_terms": [
+      "SettlementReconciliationService"
+    ],
+    "key_artifacts": [
+      "settlement-service/src/main/java/com/cloudforge/commerce/settlement/service/SettlementReconciliationService.java"
+    ]
+  },
+  {
+    "directory_path": "store-ui",
+    "business_domain": "E-commerce Storefront",
+    "technical_role": "Frontend Build Configuration",
+    "core_responsibilities": "Holds the HTML entry point and Vite configuration used to bundle and serve the store's user interface.",
+    "intent_terms": [
+      "vite",
+      "config"
+    ],
+    "key_artifacts": [
+      "store-ui/index.html",
+      "store-ui/vite.config.ts"
+    ]
+  },
+  {
+    "directory_path": "store-ui/src",
+    "business_domain": "Order Management",
+    "technical_role": "Frontend Application",
+    "core_responsibilities": "Contains the React UI source (App, main, styles) that implements order-related features such as canceling, refunding, and tracking reservations for the store.",
+    "intent_terms": [
+      "App",
+      "handleCancelOrder",
+      "targetOrder",
+      "handleRefundOrder",
+      "resetDemo",
+      "activeReservationsCount",
+      "orphanedCount",
+      "linkedOrder",
+      "isOrphaned"
+    ],
+    "key_artifacts": [
+      "store-ui/src/App.tsx",
+      "store-ui/src/index.css",
+      "store-ui/src/main.tsx"
+    ]
+  },
+  {
+    "directory_path": "store-ui/src/components",
+    "business_domain": "Orders",
+    "technical_role": "React UI Components",
+    "core_responsibilities": "Contains React components that display order information and handle actions like cancellation and refunds.",
+    "intent_terms": [
+      "OrderManagement",
+      "handleCancel",
+      "handleRefund"
+    ],
+    "key_artifacts": [
+      "store-ui/src/components/OrderManagement.tsx"
+    ]
+  },
+  {
+    "directory_path": "store-ui/src/types",
+    "business_domain": "Orders",
+    "technical_role": "Type Definitions / Data Models",
+    "core_responsibilities": "Contains TypeScript interfaces and enums representing order entities, their statuses, and payment reservations for use across the store UI.",
+    "intent_terms": [
+      "order",
+      "OrderStatus",
+      "ReservationStatus",
+      "Order",
+      "PaymentReservation"
+    ],
+    "key_artifacts": [
+      "store-ui/src/types/order.ts"
+    ]
+  }
+]

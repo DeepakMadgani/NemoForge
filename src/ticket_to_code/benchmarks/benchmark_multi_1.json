@@ -1,0 +1,61 @@
+{
+  "dataset_name": "cc4e_production_readiness_multi_test",
+  "version": "1.0",
+  "notes": "Multi-ticket dataset based on the template for verifying batch processing.",
+  "target_distribution": {
+    "single_file_bug": 1,
+    "multi_file_bug": 0,
+    "config_or_version": 0,
+    "ui_responsive_or_layout": 1,
+    "backend_or_service": 0
+  },
+  "tickets": [
+    {
+      "ticket_id": "TW-0001",
+      "title": "TransparentWorkflow has markdown fence artifact breaking component parsing",
+      "description": "TransparentWorkflow.jsx includes a stray markdown fence and separator near helper declarations, which can break parsing and execution. Remove non-code artifact lines while preserving component behavior.",
+      "priority": "high",
+      "labels": ["frontend", "react", "bug"],
+      "category": "single_file_bug",
+      "complexity": "small",
+      "repo_scope": "C:/Users/dmadgani/Desktop/My_Aviator/aviator-plugin-sample/chatbot/frontend",
+      "technology": "nodejs",
+      "acceptance_criteria": [
+        "TransparentWorkflow component loads without syntax errors",
+        "No markdown fence or separator artifact remains in executable code"
+      ],
+      "expected_changed_files": [
+        "src/components/TransparentWorkflow.jsx"
+      ],
+      "expected_owner_files": [
+        "src/components/TransparentWorkflow.jsx"
+      ],
+      "forbidden_files": [],
+      "human_acceptance": "unknown"
+    },
+    {
+      "ticket_id": "4162805",
+      "title": "JATO tabs inaccessible on window resize",
+      "description": "On deliverables page, resizing hides right-side tabs and horizontal scroll is missing.",
+      "priority": "high",
+      "labels": ["ui", "responsive", "bug"],
+      "category": "ui_responsive_or_layout",
+      "complexity": "medium",
+      "repo_scope": "C:/Users/dmadgani/Desktop/My_Aviator/aviator-plugin-sample/chatbot/frontend",
+      "technology": "nodejs",
+      "acceptance_criteria": [
+        "Tabs remain accessible after resize",
+        "Horizontal navigation exists when tabs overflow"
+      ],
+      "expected_changed_files": [
+        "src/components/TransparentWorkflow.jsx",
+        "src/index.css"
+      ],
+      "expected_owner_files": [
+        "src/components/TransparentWorkflow.jsx"
+      ],
+      "forbidden_files": [],
+      "human_acceptance": "unknown"
+    }
+  ]
+}

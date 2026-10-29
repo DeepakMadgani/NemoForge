@@ -1,0 +1,8 @@
+{
+  "name": "nemoforge",
+  "version": "1.0.0",
+  "description": "NemoForge - Autonomous SWE Agent Powered by NVIDIA Nemotron on Nebius Token Factory",
+  "private": true,
+  "dependencies": {},
+  "devDependencies": {}
+}

@@ -1,0 +1,41 @@
+name: nemoforge
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: nemoforge-backend
+    ports:
+      - "8002:8002"
+    environment:
+      - LLM_PROVIDER=nebius
+      - LLM_MODEL=nebius/nvidia/nemotron-3-super-120b-a12b
+      - PYTHONIOENCODING=utf-8
+    env_file:
+      - path: chatbot/.env.local
+        required: false
+      - path: .env
+        required: false
+    volumes:
+      # Mount developer workspaces dynamically
+      - ./workspace:/app/workspace
+      - ./nemoforge_data:/app/.nemoforge
+      # Persist backend state across container rebuilds
+      - ./chatbot/backend/workflow_state.db:/app/chatbot/backend/workflow_state.db
+      - ./chatbot/backend/history.json:/app/chatbot/backend/history.json
+      - ./chatbot/backend/projects.json:/app/chatbot/backend/projects.json
+    restart: unless-stopped
+
+  frontend:
+    image: node:20-alpine
+    container_name: nemoforge-frontend
+    working_dir: /app
+    volumes:
+      - ./chatbot/frontend:/app
+    ports:
+      - "3000:3000"
+    command: sh -c "npm install --legacy-peer-deps && npm run dev -- --host 0.0.0.0 --port 3000"
+    depends_on:
+      - backend
+    restart: unless-stopped

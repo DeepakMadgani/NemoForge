@@ -1,0 +1,1613 @@
+[
+  {
+    "directory_path": "chatbot/backend",
+    "business_domain": "Chatbot / Backend",
+    "technical_role": "Source Module",
+    "core_responsibilities": "Source files under chatbot/backend",
+    "intent_terms": [
+      "history",
+      "store",
+      "ProjectType",
+      "ExecutionMode",
+      "ProjectStatus",
+      "Project",
+      "KnowledgeBase",
+      "TicketInfo",
+      "WorkflowEvent",
+      "ConnectionManager",
+      "CreateProjectRequest",
+      "SaveChatRequest",
+      "StartTransparentWorkflowRequest",
+      "StartReasoningAgentRequest"
+    ],
+    "key_artifacts": [
+      "chatbot/backend/history_store.py",
+      "chatbot/backend/main.py"
+    ]
+  },
+  {
+    "directory_path": "chatbot/backend/services",
+    "business_domain": "Backend / Services",
+    "technical_role": "Source Module",
+    "core_responsibilities": "Source files under chatbot/backend/services",
+    "intent_terms": [
+      "call",
+      "chain",
+      "tracer",
+      "mcp",
+      "manager",
+      "McpManager",
+      "models",
+      "ValueEdgeComment",
+      "TicketContext",
+      "playwright",
+      "verifier",
+      "valueedge",
+      "api",
+      "ValueEdgeAttachment",
+      "LinkedTicket",
+      "ValueEdgeAPIClient",
+      "scraper",
+      "ValueEdgeTicket",
+      "ValueEdgeScraper",
+      "service",
+      "ValueEdgeService",
+      "to"
+    ],
+    "key_artifacts": [
+      "chatbot/backend/services/call_chain_tracer.py",
+      "chatbot/backend/services/mcp_manager.py",
+      "chatbot/backend/services/models.py",
+      "chatbot/backend/services/playwright_verifier.py",
+      "chatbot/backend/services/valueedge_api.py",
+      "chatbot/backend/services/valueedge_scraper.py",
+      "chatbot/backend/services/valueedge_service.py"
+    ]
+  },
+  {
+    "directory_path": "chatbot/frontend",
+    "business_domain": "Chatbot User Interface",
+    "technical_role": "Frontend Configuration",
+    "core_responsibilities": "This directory contains configuration files for the chatbot's frontend, including build tools (Vite) and end-to-end testing frameworks (Playwright).",
+    "intent_terms": [
+      "playwright",
+      "config",
+      "vite"
+    ],
+    "key_artifacts": [
+      "chatbot/frontend/index.html",
+      "chatbot/frontend/playwright.config.js",
+      "chatbot/frontend/vite.config.js"
+    ]
+  },
+  {
+    "directory_path": "chatbot/frontend/src",
+    "business_domain": "Chatbot UI",
+    "technical_role": "Frontend Application Core",
+    "core_responsibilities": "This directory contains the main entry point and core components for the chatbot's user interface, including styling and application rendering logic.",
+    "intent_terms": [
+      "renderInline",
+      "isTableSeparator",
+      "parseTableRow",
+      "parseMarkdownBlocks",
+      "MarkdownMessage",
+      "ThoughtTrace",
+      "App",
+      "API_BASE_URL",
+      "WS_BASE_URL",
+      "trimmed",
+      "lines",
+      "line"
+    ],
+    "key_artifacts": [
+      "chatbot/frontend/src/App.css",
+      "chatbot/frontend/src/App.jsx",
+      "chatbot/frontend/src/index.css",
+      "chatbot/frontend/src/main.jsx"
+    ]
+  },
+  {
+    "directory_path": "chatbot/frontend/src/components",
+    "business_domain": "Chatbot UI Components",
+    "technical_role": "Frontend Components",
+    "core_responsibilities": "This directory contains reusable UI components for the chatbot's frontend, specifically related to managing server connections (McpHub) and displaying workflow information (TransparentWorkflow).",
+    "intent_terms": [
+      "McpHub",
+      "fetchServers",
+      "res",
+      "data",
+      "handleTestConnection",
+      "handleDeleteServer",
+      "handleAddServer",
+      "parsedArgs",
+      "err",
+      "serverEntries",
+      "totalTools",
+      "isTesting",
+      "TransparentWorkflow",
+      "AgentOutputRenderer",
+      "PreflightReportPanel",
+      "BuildDecisionPanel",
+      "cleaned",
+      "verdict",
+      "summary",
+      "missing",
+      "guidance",
+      "verdictColor",
+      "verdictIcon",
+      "handleDecision"
+    ],
+    "key_artifacts": [
+      "chatbot/frontend/src/components/McpHub.css",
+      "chatbot/frontend/src/components/McpHub.jsx",
+      "chatbot/frontend/src/components/TransparentWorkflow.css",
+      "chatbot/frontend/src/components/TransparentWorkflow.jsx"
+    ]
+  },
+  {
+    "directory_path": "chatbot/frontend/tests",
+    "business_domain": "Chatbot Frontend",
+    "technical_role": "Testing Utilities",
+    "core_responsibilities": "This directory contains helper functions for testing the chatbot's frontend, providing utilities for waiting for various events, interacting with elements, and navigating the UI.",
+    "intent_terms": [
+      "helpers",
+      "waitForAPIResponse",
+      "waitForWebSocket",
+      "waitForElementWithText",
+      "fillFormField",
+      "clickButton",
+      "isElementVisible",
+      "getElementText",
+      "elementContainsText",
+      "waitForLoadingComplete",
+      "takeScreenshot",
+      "getCurrentURL",
+      "navigateTo"
+    ],
+    "key_artifacts": [
+      "chatbot/frontend/tests/helpers.js"
+    ]
+  },
+  {
+    "directory_path": "chatbot/frontend/tests/e2e",
+    "business_domain": "Chatbot Frontend",
+    "technical_role": "End-to-End Tests",
+    "core_responsibilities": "This directory contains end-to-end tests for the chatbot's frontend, verifying core functionalities like application loading, project management, workflow execution, and API integration.",
+    "intent_terms": [
+      "01",
+      "loading",
+      "spec",
+      "heading",
+      "projectList",
+      "welcome",
+      "projectListVisible",
+      "welcomeVisible",
+      "addButton",
+      "inputs",
+      "input",
+      "value",
+      "submitButton",
+      "isDisabled",
+      "errorMessages",
+      "02",
+      "project",
+      "management",
+      "successMsg",
+      "success",
+      "listVisible",
+      "indexButton",
+      "visible",
+      "exists"
+    ],
+    "key_artifacts": [
+      "chatbot/frontend/tests/e2e/01-app-loading.spec.js",
+      "chatbot/frontend/tests/e2e/02-project-management.spec.js",
+      "chatbot/frontend/tests/e2e/03-workflow-execution.spec.js",
+      "chatbot/frontend/tests/e2e/04-api-integration.spec.js"
+    ]
+  },
+  {
+    "directory_path": "chatbot/frontend/xchange-ui/src/jato/layout",
+    "business_domain": "Chatbot UI",
+    "technical_role": "Layout Components",
+    "core_responsibilities": "This directory contains the core layout component for the Jato UI, defining the overall structure and arrangement of elements within the chatbot's frontend.",
+    "intent_terms": [
+      "jlayout",
+      "component"
+    ],
+    "key_artifacts": [
+      "chatbot/frontend/xchange-ui/src/jato/layout/jlayout.component.ts"
+    ]
+  },
+  {
+    "directory_path": "scripts",
+    "business_domain": "Scripts",
+    "technical_role": "Source Module",
+    "core_responsibilities": "Source files under scripts",
+    "intent_terms": [
+      "add",
+      "rule",
+      "apply",
+      "final",
+      "hardening",
+      "check",
+      "status",
+      "wf",
+      "clean",
+      "cg",
+      "regex",
+      "cleanup",
+      "junk",
+      "find",
+      "error",
+      "leadup",
+      "leadup2",
+      "fix",
+      "str",
+      "insert",
+      "heal",
+      "inspect",
+      "errors",
+      "llm"
+    ],
+    "key_artifacts": [
+      "scripts/add_rule.py",
+      "scripts/apply_final_hardening.py",
+      "scripts/apply_hardening.py",
+      "scripts/check_status.py",
+      "scripts/check_wf.py",
+      "scripts/clean_cg_regex.py",
+      "scripts/cleanup_junk.py",
+      "scripts/find_error.py",
+      "scripts/find_leadup.py",
+      "scripts/find_leadup2.py",
+      "scripts/fix_str.py",
+      "scripts/insert_heal.py",
+      "scripts/inspect_errors.py",
+      "scripts/inspect_llm_stats.py",
+      "scripts/inspect_plan.py",
+      "scripts/inspect_plan_tasks.py",
+      "scripts/inspect_step48.py",
+      "scripts/inspect_steps_range.py",
+      "scripts/patch_code_gen.py",
+      "scripts/patch_eam.py",
+      "scripts/patch_network_resilience.py",
+      "scripts/patch_none_guard.py",
+      "scripts/patch_outcome_early_exit.py",
+      "scripts/patch_wf_prose.py",
+      "scripts/print_err_details.py",
+      "scripts/reset_baseline.py",
+      "scripts/scan_secrets.py",
+      "scripts/test_heal.py",
+      "scripts/test_java_fix.py",
+      "scripts/test_order_service_compile.py",
+      "scripts/test_real_ticket.py"
+    ]
+  },
+  {
+    "directory_path": "src/ticket_to_code",
+    "business_domain": "Src / Ticket To Code",
+    "technical_role": "Source Module",
+    "core_responsibilities": "Source files under src/ticket_to_code",
+    "intent_terms": [
+      "init",
+      "adt",
+      "tools",
+      "AviatorConversationAdapter",
+      "api",
+      "TicketSubmissionRequest",
+      "WorkflowStatusResponse",
+      "GeneratedFileResponse",
+      "debug",
+      "tracker",
+      "WorkflowDebugger",
+      "to",
+      "json",
+      "utils",
+      "llm",
+      "BudgetExceeded",
+      "RunCancelled",
+      "logging",
+      "helper",
+      "WorkflowLogger",
+      "def",
+      "models",
+      "TicketPriority",
+      "TicketType"
+    ],
+    "key_artifacts": [
+      "src/ticket_to_code/__init__.py",
+      "src/ticket_to_code/adt_tools.py",
+      "src/ticket_to_code/api.py",
+      "src/ticket_to_code/debug_tracker.py",
+      "src/ticket_to_code/json_utils.py",
+      "src/ticket_to_code/llm_utils.py",
+      "src/ticket_to_code/logging_helper.py",
+      "src/ticket_to_code/models.py",
+      "src/ticket_to_code/plan_gating.py",
+      "src/ticket_to_code/workflow.py",
+      "src/ticket_to_code/workflow_discovery.py"
+    ]
+  },
+  {
+    "directory_path": "src/ticket_to_code/agents",
+    "business_domain": "Ticket To Code / Agents",
+    "technical_role": "Source Module",
+    "core_responsibilities": "Source files under src/ticket_to_code/agents",
+    "intent_terms": [
+      "init",
+      "analysis",
+      "pipeline",
+      "TicketToCodeAnalysisPipeline",
+      "api",
+      "contract",
+      "detector",
+      "APIContract",
+      "APIContractDetector",
+      "name",
+      "architecture",
+      "model",
+      "OwnershipVerdict",
+      "ModificationPolicy",
+      "CapabilityProvenance",
+      "DomainCapability",
+      "ServiceDomain",
+      "CandidateOwnership",
+      "DomainResolution",
+      "ArchitectureModel",
+      "artifact",
+      "classifier",
+      "ArtifactClassifier",
+      "generator"
+    ],
+    "key_artifacts": [
+      "src/ticket_to_code/agents/__init__.py",
+      "src/ticket_to_code/agents/analysis_pipeline.py",
+      "src/ticket_to_code/agents/api_contract_detector.py",
+      "src/ticket_to_code/agents/architecture_model.py",
+      "src/ticket_to_code/agents/artifact_classifier.py",
+      "src/ticket_to_code/agents/artifact_generator.py",
+      "src/ticket_to_code/agents/behavioral_understanding.py",
+      "src/ticket_to_code/agents/blueprint_verifier.py",
+      "src/ticket_to_code/agents/build_diagnostic_classifier.py",
+      "src/ticket_to_code/agents/canonical_path.py",
+      "src/ticket_to_code/agents/capability_reuse_resolver.py",
+      "src/ticket_to_code/agents/change_authorization.py",
+      "src/ticket_to_code/agents/change_target.py",
+      "src/ticket_to_code/agents/chat_interaction_manager.py",
+      "src/ticket_to_code/agents/checklist_agent.py",
+      "src/ticket_to_code/agents/checklist_verifier.py",
+      "src/ticket_to_code/agents/code_generator.py",
+      "src/ticket_to_code/agents/completeness_gate.py",
+      "src/ticket_to_code/agents/component_structure_provider.py",
+      "src/ticket_to_code/agents/context_assembler.py",
+      "src/ticket_to_code/agents/cross_file_refactorer.py",
+      "src/ticket_to_code/agents/cross_system_tracer.py",
+      "src/ticket_to_code/agents/dataflow_tracer.py",
+      "src/ticket_to_code/agents/deduplication_detector.py",
+      "src/ticket_to_code/agents/dependency_context_builder.py",
+      "src/ticket_to_code/agents/dependency_resolver.py",
+      "src/ticket_to_code/agents/diagnostic_context_builder.py",
+      "src/ticket_to_code/agents/diagnostic_localizer.py",
+      "src/ticket_to_code/agents/diagnostic_normalizer.py",
+      "src/ticket_to_code/agents/domain_resolver.py",
+      "src/ticket_to_code/agents/edit_loop_agent.py",
+      "src/ticket_to_code/agents/edit_loop_policy.py",
+      "src/ticket_to_code/agents/env_tracer.py",
+      "src/ticket_to_code/agents/error_resolution_agent.py",
+      "src/ticket_to_code/agents/evidence_collection_loop.py",
+      "src/ticket_to_code/agents/evidence_decline_evaluator.py",
+      "src/ticket_to_code/agents/evidence_ranking_engine.py",
+      "src/ticket_to_code/agents/fix_hypothesis_builder.py",
+      "src/ticket_to_code/agents/fix_localizer.py",
+      "src/ticket_to_code/agents/generated_reference_validator.py",
+      "src/ticket_to_code/agents/generation_readiness_gate.py",
+      "src/ticket_to_code/agents/generation_router.py",
+      "src/ticket_to_code/agents/git_aware_generator.py",
+      "src/ticket_to_code/agents/git_history_agent.py",
+      "src/ticket_to_code/agents/implementation_state.py",
+      "src/ticket_to_code/agents/incremental_validator.py",
+      "src/ticket_to_code/agents/investigation_agent.py",
+      "src/ticket_to_code/agents/knowledge_extractor.py",
+      "src/ticket_to_code/agents/live_type_inference.py",
+      "src/ticket_to_code/agents/localization_agent.py",
+      "src/ticket_to_code/agents/lsp_client.py",
+      "src/ticket_to_code/agents/ownership_resolver.py",
+      "src/ticket_to_code/agents/patch_gate.py",
+      "src/ticket_to_code/agents/planning_agent.py",
+      "src/ticket_to_code/agents/planning_recovery.py",
+      "src/ticket_to_code/agents/planning_scope_verifier.py",
+      "src/ticket_to_code/agents/pre_generation_gate.py",
+      "src/ticket_to_code/agents/provider_capability_resolver.py",
+      "src/ticket_to_code/agents/query_expansion.py",
+      "src/ticket_to_code/agents/rag_engine.py"
+    ]
+  },
+  {
+    "directory_path": "src/ticket_to_code/agents/providers",
+    "business_domain": "Ticket to Code",
+    "technical_role": "Provider Implementations",
+    "core_responsibilities": "This directory contains implementations of various providers, including a factory for creating them and a specific provider for handling relationships, all within the ticket-to-code system.",
+    "intent_terms": [
+      "init",
+      "provider",
+      "factory",
+      "RelationshipProviderFactory",
+      "relationship",
+      "RelationshipProvider"
+    ],
+    "key_artifacts": [
+      "src/ticket_to_code/agents/providers/__init__.py",
+      "src/ticket_to_code/agents/providers/provider_factory.py",
+      "src/ticket_to_code/agents/providers/relationship_provider.py"
+    ]
+  },
+  {
+    "directory_path": "src/ticket_to_code/api",
+    "business_domain": "Ticket to Code Workflow",
+    "technical_role": "API Endpoints",
+    "core_responsibilities": "This directory defines the API endpoints for interacting with the ticket-to-code workflow, handling requests for ticket submission, run creation, status updates, and report generation.",
+    "intent_terms": [
+      "init",
+      "routes",
+      "TicketSubmissionRequest",
+      "WorkflowStatusResponse",
+      "CreateRunRequest",
+      "CreateRunResponse",
+      "RunStatusResponse",
+      "FinalReportResponse",
+      "ClarificationAnswerRequest",
+      "ApprovalDecisionRequest",
+      "BenchmarkReplayRequest",
+      "BenchmarkReplayResponse",
+      "GeneratedFileResponse",
+      "ConversationSessionCreateRequest"
+    ],
+    "key_artifacts": [
+      "src/ticket_to_code/api/__init__.py",
+      "src/ticket_to_code/api/routes.py"
+    ]
+  },
+  {
+    "directory_path": "src/ticket_to_code/benchmarks",
+    "business_domain": "Ticket To Code / Benchmarks",
+    "technical_role": "Source Module",
+    "core_responsibilities": "Source files under src/ticket_to_code/benchmarks",
+    "intent_terms": [
+      "batch",
+      "validation",
+      "runner",
+      "TicketRunResult",
+      "BatchValidationRunner",
+      "contract",
+      "benchmark",
+      "production",
+      "readiness",
+      "TicketMetrics",
+      "swe",
+      "bench",
+      "BenchmarkTask",
+      "BenchmarkEvaluationResult",
+      "SWEBenchObjectiveRunner"
+    ],
+    "key_artifacts": [
+      "src/ticket_to_code/benchmarks/batch_validation_runner.py",
+      "src/ticket_to_code/benchmarks/contract_benchmark_runner.py",
+      "src/ticket_to_code/benchmarks/production_readiness_benchmark.py",
+      "src/ticket_to_code/benchmarks/swe_bench_runner.py"
+    ]
+  },
+  {
+    "directory_path": "src/ticket_to_code/brain",
+    "business_domain": "Code Analysis and Representation",
+    "technical_role": "Repository Brain Generation and Storage",
+    "core_responsibilities": "This directory contains logic for generating and storing a 'brain' representation of a software repository, likely for code analysis or understanding purposes.",
+    "intent_terms": [
+      "brain",
+      "storage",
+      "CapabilityVersionHistory",
+      "RepositoryBrainStorage",
+      "generate",
+      "repository"
+    ],
+    "key_artifacts": [
+      "src/ticket_to_code/brain/brain_storage.py",
+      "src/ticket_to_code/brain/generate_repository_brain.py"
+    ]
+  },
+  {
+    "directory_path": "src/ticket_to_code/conversation",
+    "business_domain": "Ticket Management",
+    "technical_role": "Session Management",
+    "core_responsibilities": "This directory manages the state and lifecycle of ticket-related conversations, including session initialization and reasoning snapshots.",
+    "intent_terms": [
+      "init",
+      "session",
+      "manager",
+      "SessionStage",
+      "ReasoningSnapshot",
+      "TicketConversationSession",
+      "ConversationSessionManager"
+    ],
+    "key_artifacts": [
+      "src/ticket_to_code/conversation/__init__.py",
+      "src/ticket_to_code/conversation/session_manager.py"
+    ]
+  },
+  {
+    "directory_path": "src/ticket_to_code/data",
+    "business_domain": "Ticket Management",
+    "technical_role": "Data Initialization",
+    "core_responsibilities": "This directory contains initialization code for data-related modules within the ticket-to-code system.",
+    "intent_terms": [
+      "init"
+    ],
+    "key_artifacts": [
+      "src/ticket_to_code/data/__init__.py"
+    ]
+  },
+  {
+    "directory_path": "src/ticket_to_code/delivery",
+    "business_domain": "Code Delivery",
+    "technical_role": "Delivery Logic",
+    "core_responsibilities": "This directory contains logic for validating delivery configurations and managing patch gates, ensuring code is delivered according to defined rules.",
+    "intent_terms": [
+      "init",
+      "config",
+      "validator",
+      "ConfigValidation",
+      "ConfigContext",
+      "ConfigValidator",
+      "patch",
+      "gate",
+      "ApplyResult",
+      "ScopeResult",
+      "SecretHit",
+      "DeliveryResult",
+      "PatchGate"
+    ],
+    "key_artifacts": [
+      "src/ticket_to_code/delivery/__init__.py",
+      "src/ticket_to_code/delivery/config_validator.py",
+      "src/ticket_to_code/delivery/patch_gate.py"
+    ]
+  },
+  {
+    "directory_path": "src/ticket_to_code/editing",
+    "business_domain": "Ticket To Code / Editing",
+    "technical_role": "Source Module",
+    "core_responsibilities": "Source files under src/ticket_to_code/editing",
+    "intent_terms": [
+      "init",
+      "structural",
+      "editing",
+      "EditTarget",
+      "EditResult",
+      "ValidationResult",
+      "EditingBackend",
+      "YAMLEditingBackend",
+      "XMLEditingBackend",
+      "ConservativeSourcePreservingBackend",
+      "StructuralEditingRegistry",
+      "surgical",
+      "diff",
+      "engine",
+      "EditStatus",
+      "EditSnapshot",
+      "SurgicalDiffEngine"
+    ],
+    "key_artifacts": [
+      "src/ticket_to_code/editing/__init__.py",
+      "src/ticket_to_code/editing/structural_editing.py",
+      "src/ticket_to_code/editing/surgical_diff_engine.py"
+    ]
+  },
+  {
+    "directory_path": "src/ticket_to_code/execution",
+    "business_domain": "Ticket To Code / Execution",
+    "technical_role": "Source Module",
+    "core_responsibilities": "Source files under src/ticket_to_code/execution",
+    "intent_terms": [
+      "init",
+      "base",
+      "executor",
+      "ExecutionEngineBase",
+      "ExecutionEngineFactory",
+      "build",
+      "DotNetExecutionEngine",
+      "orchestrator",
+      "FailureCategory",
+      "ClassifiedBuildResult",
+      "BuildFailureClassifier",
+      "GraphBuildOrchestrator",
+      "compiled",
+      "executors",
+      "GoExecutionEngine",
+      "RustExecutionEngine",
+      "execution",
+      "config",
+      "ExecutionConfig",
+      "ExecutionConfigDetector",
+      "AIExecutionConfigDetector",
+      "java",
+      "JavaMavenExecutor",
+      "JavaGradleExecutor"
+    ],
+    "key_artifacts": [
+      "src/ticket_to_code/execution/__init__.py",
+      "src/ticket_to_code/execution/base_executor.py",
+      "src/ticket_to_code/execution/build_executor.py",
+      "src/ticket_to_code/execution/build_orchestrator.py",
+      "src/ticket_to_code/execution/compiled_executors.py",
+      "src/ticket_to_code/execution/execution_config.py",
+      "src/ticket_to_code/execution/java_executor.py",
+      "src/ticket_to_code/execution/microservices_executor.py",
+      "src/ticket_to_code/execution/nodejs_executor.py",
+      "src/ticket_to_code/execution/platform_knowledge.py",
+      "src/ticket_to_code/execution/python_executor.py",
+      "src/ticket_to_code/execution/runtime_verifier.py",
+      "src/ticket_to_code/execution/service_prober.py"
+    ]
+  },
+  {
+    "directory_path": "src/ticket_to_code/indexing",
+    "business_domain": "Ticket To Code / Indexing",
+    "technical_role": "Source Module",
+    "core_responsibilities": "Source files under src/ticket_to_code/indexing",
+    "intent_terms": [
+      "init",
+      "codebase",
+      "indexer",
+      "CodebaseIndexer",
+      "contract",
+      "graph",
+      "ContractType",
+      "RoleType",
+      "ContractNode",
+      "ContractLink",
+      "ContractGraphIndexer",
+      "use",
+      "fast",
+      "repo",
+      "map",
+      "FileSymbolSummary",
+      "FastRepoMap",
+      "declarations",
+      "incremental",
+      "FileChangeType",
+      "FileChange",
+      "IndexUpdate",
+      "IncrementalIndexer",
+      "for"
+    ],
+    "key_artifacts": [
+      "src/ticket_to_code/indexing/__init__.py",
+      "src/ticket_to_code/indexing/codebase_indexer.py",
+      "src/ticket_to_code/indexing/contract_graph_indexer.py",
+      "src/ticket_to_code/indexing/fast_repo_map.py",
+      "src/ticket_to_code/indexing/incremental_indexer.py",
+      "src/ticket_to_code/indexing/semantic_concept_indexer.py",
+      "src/ticket_to_code/indexing/workflow_discovery.py"
+    ]
+  },
+  {
+    "directory_path": "src/ticket_to_code/integrity",
+    "business_domain": "Code Integrity",
+    "technical_role": "Policy Enforcement and Workspace Management",
+    "core_responsibilities": "This directory enforces policies related to code integrity, manages structural manifests, and handles workspace integrity checks, including authorization for deletions and conflict resolution.",
+    "intent_terms": [
+      "init",
+      "scope",
+      "policy",
+      "enforcer",
+      "ScopePolicyViolation",
+      "ScopeExpansionRequest",
+      "CandidateScoreBreakdown",
+      "ScopePolicyEnforcer",
+      "enforcing",
+      "structural",
+      "manifest",
+      "UnauthorizedDeletionError",
+      "DeleteAuthorization",
+      "StructuralSymbols",
+      "StructuralDelta",
+      "StructuralChangeManifest",
+      "DeleteAuthorizationValidator",
+      "workspace",
+      "integrity",
+      "PatchConflictError",
+      "OptimisticConcurrencyError",
+      "ProtectedRegion",
+      "FileBaseline",
+      "PatchOwnershipRecord"
+    ],
+    "key_artifacts": [
+      "src/ticket_to_code/integrity/__init__.py",
+      "src/ticket_to_code/integrity/scope_policy_enforcer.py",
+      "src/ticket_to_code/integrity/structural_manifest.py",
+      "src/ticket_to_code/integrity/workspace_integrity.py"
+    ]
+  },
+  {
+    "directory_path": "src/ticket_to_code/intelligence",
+    "business_domain": "Ticket To Code / Intelligence",
+    "technical_role": "Source Module",
+    "core_responsibilities": "Source files under src/ticket_to_code/intelligence",
+    "intent_terms": [
+      "init",
+      "model",
+      "adapter",
+      "CanonicalToolCall",
+      "NormalizedRequest",
+      "NormalizedEvent",
+      "BaseAdapter",
+      "AnthropicAdapter",
+      "OpenAIAdapter",
+      "GeminiAdapter",
+      "router",
+      "ModelMode",
+      "ModelTier",
+      "ModelDescriptor",
+      "ModelRouter",
+      "prompt",
+      "cache",
+      "manager",
+      "StablePromptStructure",
+      "PromptCacheManager",
+      "StageCacheTelemetry",
+      "WorkflowCacheSession",
+      "repository",
+      "intelligence"
+    ],
+    "key_artifacts": [
+      "src/ticket_to_code/intelligence/__init__.py",
+      "src/ticket_to_code/intelligence/model_adapter.py",
+      "src/ticket_to_code/intelligence/model_router.py",
+      "src/ticket_to_code/intelligence/prompt_cache_manager.py",
+      "src/ticket_to_code/intelligence/repository_intelligence.py",
+      "src/ticket_to_code/intelligence/skeleton_compressor.py"
+    ]
+  },
+  {
+    "directory_path": "src/ticket_to_code/intelligence/contracts",
+    "business_domain": "Intelligence / Contracts",
+    "technical_role": "Source Module",
+    "core_responsibilities": "Source files under src/ticket_to_code/intelligence/contracts",
+    "intent_terms": [
+      "init",
+      "companion",
+      "resolver",
+      "PolyglotCompanionResolver",
+      "CrossServiceContractResolver",
+      "component",
+      "contract",
+      "ComponentContract",
+      "TemplateContractValidator",
+      "dataflow",
+      "CausalDefectFingerprint",
+      "NegativeRule",
+      "DataFlowLink",
+      "DataFlowContract"
+    ],
+    "key_artifacts": [
+      "src/ticket_to_code/intelligence/contracts/__init__.py",
+      "src/ticket_to_code/intelligence/contracts/companion_resolver.py",
+      "src/ticket_to_code/intelligence/contracts/component_contract.py",
+      "src/ticket_to_code/intelligence/contracts/dataflow_contract.py"
+    ]
+  },
+  {
+    "directory_path": "src/ticket_to_code/intelligence/scope",
+    "business_domain": "Code Generation",
+    "technical_role": "Scope Definition",
+    "core_responsibilities": "This directory defines the scope and language-specific contexts for intelligence-driven code generation, enabling the system to understand and operate within different programming language environments.",
+    "intent_terms": [
+      "init",
+      "language",
+      "scope",
+      "ResolutionScope"
+    ],
+    "key_artifacts": [
+      "src/ticket_to_code/intelligence/scope/__init__.py",
+      "src/ticket_to_code/intelligence/scope/language_scope.py"
+    ]
+  },
+  {
+    "directory_path": "src/ticket_to_code/intelligence/typescript",
+    "business_domain": "Intelligence / Typescript",
+    "technical_role": "Source Module",
+    "core_responsibilities": "Source files under src/ticket_to_code/intelligence/typescript",
+    "intent_terms": [
+      "init",
+      "import",
+      "resolver",
+      "TypeScriptImportResolver",
+      "type",
+      "contract",
+      "TypeDefinition",
+      "TypeDependencyEdge",
+      "MethodTypeContract",
+      "TypeScriptTypeResolver",
+      "Foo"
+    ],
+    "key_artifacts": [
+      "src/ticket_to_code/intelligence/typescript/__init__.py",
+      "src/ticket_to_code/intelligence/typescript/import_resolver.py",
+      "src/ticket_to_code/intelligence/typescript/type_contract.py",
+      "src/ticket_to_code/intelligence/typescript/type_resolver.py"
+    ]
+  },
+  {
+    "directory_path": "src/ticket_to_code/lean",
+    "business_domain": "Ticket To Code / Lean",
+    "technical_role": "Source Module",
+    "core_responsibilities": "Source files under src/ticket_to_code/lean",
+    "intent_terms": [
+      "init",
+      "behavioral",
+      "verify",
+      "BehavioralContract",
+      "call",
+      "chain",
+      "tracer",
+      "CallChainTracer",
+      "clarify",
+      "gate",
+      "ClarifyQuestion",
+      "ClarifyGate",
+      "convergence",
+      "Action",
+      "StructuredFailure",
+      "ConvergenceTracker",
+      "db",
+      "migration",
+      "GenericMigrationInfo",
+      "MigrationAnalysis",
+      "firefox",
+      "session",
+      "fullstack",
+      "pipeline"
+    ],
+    "key_artifacts": [
+      "src/ticket_to_code/lean/__init__.py",
+      "src/ticket_to_code/lean/behavioral_verify.py",
+      "src/ticket_to_code/lean/call_chain_tracer.py",
+      "src/ticket_to_code/lean/clarify_gate.py",
+      "src/ticket_to_code/lean/convergence.py",
+      "src/ticket_to_code/lean/db_migration.py",
+      "src/ticket_to_code/lean/firefox_session.py",
+      "src/ticket_to_code/lean/fullstack_pipeline.py",
+      "src/ticket_to_code/lean/hunks.py",
+      "src/ticket_to_code/lean/lean_path.py",
+      "src/ticket_to_code/lean/live.py",
+      "src/ticket_to_code/lean/locate.py",
+      "src/ticket_to_code/lean/run_ticket.py",
+      "src/ticket_to_code/lean/schema_entity_cross_reference.py",
+      "src/ticket_to_code/lean/scope.py",
+      "src/ticket_to_code/lean/snippet.py",
+      "src/ticket_to_code/lean/workspace_census.py"
+    ]
+  },
+  {
+    "directory_path": "src/ticket_to_code/memory",
+    "business_domain": "Ticket To Code / Memory",
+    "technical_role": "Source Module",
+    "core_responsibilities": "Source files under src/ticket_to_code/memory",
+    "intent_terms": [
+      "init",
+      "bounded",
+      "state",
+      "ArtifactRef",
+      "ResourceBudget",
+      "CompactStageSummary",
+      "BoundedTicketToCodeState",
+      "ContextAssembler",
+      "episodic",
+      "memory",
+      "Episode",
+      "EpisodicMemoryStore",
+      "repository",
+      "MemoryType",
+      "MemoryEntry",
+      "RepositoryMemory",
+      "ticket",
+      "execution",
+      "context",
+      "FixAttempt",
+      "TicketExecutionContext"
+    ],
+    "key_artifacts": [
+      "src/ticket_to_code/memory/__init__.py",
+      "src/ticket_to_code/memory/bounded_state.py",
+      "src/ticket_to_code/memory/episodic_memory.py",
+      "src/ticket_to_code/memory/repository_memory.py",
+      "src/ticket_to_code/memory/ticket_execution_context.py"
+    ]
+  },
+  {
+    "directory_path": "src/ticket_to_code/policy",
+    "business_domain": "Ticket To Code / Policy",
+    "technical_role": "Source Module",
+    "core_responsibilities": "Source files under src/ticket_to_code/policy",
+    "intent_terms": [
+      "policy",
+      "engine",
+      "PolicyAction",
+      "PolicyDecision",
+      "PolicyEngine"
+    ],
+    "key_artifacts": [
+      "src/ticket_to_code/policy/policy_engine.py"
+    ]
+  },
+  {
+    "directory_path": "src/ticket_to_code/reasoning",
+    "business_domain": "Ticket To Code / Reasoning",
+    "technical_role": "Source Module",
+    "core_responsibilities": "Source files under src/ticket_to_code/reasoning",
+    "intent_terms": [
+      "init",
+      "belief",
+      "state",
+      "Observation",
+      "EvidenceItem",
+      "WorkingTheory",
+      "Objective",
+      "Contradiction",
+      "BeliefState",
+      "brain",
+      "manager",
+      "BrainManager",
+      "capability",
+      "selector",
+      "SelectorDecision",
+      "causal",
+      "chain",
+      "CausalHop",
+      "CausalChain",
+      "CausalAnalysis",
+      "CausalChainEngine",
+      "if",
+      "engine",
+      "ReasoningResult"
+    ],
+    "key_artifacts": [
+      "src/ticket_to_code/reasoning/__init__.py",
+      "src/ticket_to_code/reasoning/belief_state.py",
+      "src/ticket_to_code/reasoning/brain_manager.py",
+      "src/ticket_to_code/reasoning/capability_selector.py",
+      "src/ticket_to_code/reasoning/causal_chain.py",
+      "src/ticket_to_code/reasoning/engine.py",
+      "src/ticket_to_code/reasoning/experience.py",
+      "src/ticket_to_code/reasoning/feature_graph.py",
+      "src/ticket_to_code/reasoning/repository_brain.py",
+      "src/ticket_to_code/reasoning/skills.py",
+      "src/ticket_to_code/reasoning/strategies.py",
+      "src/ticket_to_code/reasoning/tools.py",
+      "src/ticket_to_code/reasoning/verifiers.py"
+    ]
+  },
+  {
+    "directory_path": "src/ticket_to_code/retrieval",
+    "business_domain": "Ticket To Code / Retrieval",
+    "technical_role": "Source Module",
+    "core_responsibilities": "Source files under src/ticket_to_code/retrieval",
+    "intent_terms": [
+      "init",
+      "context",
+      "retrieval",
+      "ContextRetrievalService",
+      "rag",
+      "engine"
+    ],
+    "key_artifacts": [
+      "src/ticket_to_code/retrieval/__init__.py",
+      "src/ticket_to_code/retrieval/context_retrieval.py",
+      "src/ticket_to_code/retrieval/rag_engine.py"
+    ]
+  },
+  {
+    "directory_path": "src/ticket_to_code/runtime",
+    "business_domain": "Ticket To Code / Runtime",
+    "technical_role": "Source Module",
+    "core_responsibilities": "Source files under src/ticket_to_code/runtime",
+    "intent_terms": [
+      "init",
+      "agent",
+      "harness",
+      "AgentIntent",
+      "HostStateMetadata",
+      "PromptAssembler",
+      "ContextCompactor",
+      "ReActLoopGovernor",
+      "HostEnvironmentTools",
+      "AgenticHarness",
+      "blast",
+      "radius",
+      "BlastRadiusReport",
+      "BlastRadiusAnalyzer",
+      "compat",
+      "models",
+      "StateModel",
+      "Config",
+      "Chunk",
+      "EmbeddingRequest",
+      "SymbolKind",
+      "EdgeKind",
+      "SourceLocation",
+      "Symbol"
+    ],
+    "key_artifacts": [
+      "src/ticket_to_code/runtime/__init__.py",
+      "src/ticket_to_code/runtime/agent_harness.py",
+      "src/ticket_to_code/runtime/blast_radius.py",
+      "src/ticket_to_code/runtime/compat_models.py",
+      "src/ticket_to_code/runtime/compiler_gate.py",
+      "src/ticket_to_code/runtime/container_sandbox.py",
+      "src/ticket_to_code/runtime/context_mentions.py",
+      "src/ticket_to_code/runtime/dag_orchestrator.py",
+      "src/ticket_to_code/runtime/decision_coordinator.py",
+      "src/ticket_to_code/runtime/deductive_blackboard.py",
+      "src/ticket_to_code/runtime/diagnostic_error_slicer.py",
+      "src/ticket_to_code/runtime/diff_engine.py",
+      "src/ticket_to_code/runtime/fast_ide_engine.py",
+      "src/ticket_to_code/runtime/fast_path_engine.py",
+      "src/ticket_to_code/runtime/git_sandbox.py",
+      "src/ticket_to_code/runtime/indexer.py",
+      "src/ticket_to_code/runtime/intake_contract.py",
+      "src/ticket_to_code/runtime/interactive_gate.py",
+      "src/ticket_to_code/runtime/invariant_gates.py",
+      "src/ticket_to_code/runtime/limits.py",
+      "src/ticket_to_code/runtime/llm_factory.py",
+      "src/ticket_to_code/runtime/localizer.py",
+      "src/ticket_to_code/runtime/lsp_client.py",
+      "src/ticket_to_code/runtime/multi_service_orchestrator.py",
+      "src/ticket_to_code/runtime/multi_zone_orchestrator.py",
+      "src/ticket_to_code/runtime/orchestrator_skeleton.py",
+      "src/ticket_to_code/runtime/patch_engine.py",
+      "src/ticket_to_code/runtime/polyglot_build.py",
+      "src/ticket_to_code/runtime/pricing.py",
+      "src/ticket_to_code/runtime/react_agent_engine.py",
+      "src/ticket_to_code/runtime/run_context.py",
+      "src/ticket_to_code/runtime/security.py",
+      "src/ticket_to_code/runtime/settings.py",
+      "src/ticket_to_code/runtime/sibling_crawler.py",
+      "src/ticket_to_code/runtime/speculative_sandbox.py",
+      "src/ticket_to_code/runtime/stage_depth.py",
+      "src/ticket_to_code/runtime/state_store.py",
+      "src/ticket_to_code/runtime/storage.py",
+      "src/ticket_to_code/runtime/storage_health.py",
+      "src/ticket_to_code/runtime/telemetry_evals.py",
+      "src/ticket_to_code/runtime/tool_registry.py",
+      "src/ticket_to_code/runtime/transactional_diff.py",
+      "src/ticket_to_code/runtime/vector_store.py"
+    ]
+  },
+  {
+    "directory_path": "src/ticket_to_code/skills",
+    "business_domain": "Ticket To Code / Skills",
+    "technical_role": "Source Module",
+    "core_responsibilities": "Source files under src/ticket_to_code/skills",
+    "intent_terms": [
+      "init",
+      "language",
+      "skill",
+      "registry",
+      "LanguageSkill",
+      "LanguageSkillRegistry",
+      "loader",
+      "SkillLoader"
+    ],
+    "key_artifacts": [
+      "src/ticket_to_code/skills/__init__.py",
+      "src/ticket_to_code/skills/language_skill_registry.py",
+      "src/ticket_to_code/skills/loader.py"
+    ]
+  },
+  {
+    "directory_path": "src/ticket_to_code/skills/project-architecture",
+    "business_domain": "Skills / Project Architecture",
+    "technical_role": "Source Module",
+    "core_responsibilities": "Source files under src/ticket_to_code/skills/project-architecture",
+    "intent_terms": [
+      "setup",
+      "architecture"
+    ],
+    "key_artifacts": [
+      "src/ticket_to_code/skills/project-architecture/setup_architecture.py"
+    ]
+  },
+  {
+    "directory_path": "src/ticket_to_code/storage",
+    "business_domain": "Ticket To Code / Storage",
+    "technical_role": "Source Module",
+    "core_responsibilities": "Source files under src/ticket_to_code/storage",
+    "intent_terms": [
+      "init",
+      "evidence",
+      "graph",
+      "NodeType",
+      "RelationType",
+      "EvidenceNode",
+      "EvidenceEdge",
+      "EvidenceGraph",
+      "call",
+      "workspace",
+      "registry",
+      "ProjectInfo",
+      "WorkspaceRegistry",
+      "WorkspaceRegistryManager"
+    ],
+    "key_artifacts": [
+      "src/ticket_to_code/storage/__init__.py",
+      "src/ticket_to_code/storage/evidence_graph.py",
+      "src/ticket_to_code/storage/workspace_registry.py"
+    ]
+  },
+  {
+    "directory_path": "src/ticket_to_code/strategy",
+    "business_domain": "Ticket To Code / Strategy",
+    "technical_role": "Source Module",
+    "core_responsibilities": "Source files under src/ticket_to_code/strategy",
+    "intent_terms": [
+      "init",
+      "adaptive",
+      "replanner",
+      "FailureCategory",
+      "StrategySwitch",
+      "ReplanDecision",
+      "AdaptiveReplanner",
+      "strategy",
+      "engine",
+      "StrategyEngine"
+    ],
+    "key_artifacts": [
+      "src/ticket_to_code/strategy/__init__.py",
+      "src/ticket_to_code/strategy/adaptive_replanner.py",
+      "src/ticket_to_code/strategy/strategy_engine.py"
+    ]
+  },
+  {
+    "directory_path": "src/ticket_to_code/tracing",
+    "business_domain": "Ticket To Code / Tracing",
+    "technical_role": "Source Module",
+    "core_responsibilities": "Source files under src/ticket_to_code/tracing",
+    "intent_terms": [
+      "init",
+      "paths",
+      "step",
+      "report",
+      "tracer",
+      "ExecutionTracer"
+    ],
+    "key_artifacts": [
+      "src/ticket_to_code/tracing/__init__.py",
+      "src/ticket_to_code/tracing/paths.py",
+      "src/ticket_to_code/tracing/step_report.py",
+      "src/ticket_to_code/tracing/tracer.py"
+    ]
+  },
+  {
+    "directory_path": "src/ticket_to_code/utils",
+    "business_domain": "Ticket To Code / Utils",
+    "technical_role": "Source Module",
+    "core_responsibilities": "Source files under src/ticket_to_code/utils",
+    "intent_terms": [
+      "companion",
+      "resolver",
+      "dependency",
+      "graph",
+      "ModuleNode",
+      "ModuleGraph",
+      "DependencyGraphProvider",
+      "MavenDependencyGraphProvider",
+      "error",
+      "normalization",
+      "file",
+      "filters"
+    ],
+    "key_artifacts": [
+      "src/ticket_to_code/utils/companion_resolver.py",
+      "src/ticket_to_code/utils/dependency_graph.py",
+      "src/ticket_to_code/utils/error_normalization.py",
+      "src/ticket_to_code/utils/file_filters.py"
+    ]
+  },
+  {
+    "directory_path": "src/ticket_to_code/verification",
+    "business_domain": "Ticket To Code / Verification",
+    "technical_role": "Source Module",
+    "core_responsibilities": "Source files under src/ticket_to_code/verification",
+    "intent_terms": [
+      "init",
+      "auth",
+      "state",
+      "baseline",
+      "verifier",
+      "DifferentialStatus",
+      "FailureSignature",
+      "BaselineReport",
+      "DifferentialVerificationResult",
+      "BaselineDifferentialVerifier",
+      "environment",
+      "manager",
+      "ServiceEndpoint",
+      "EnvironmentCapabilities",
+      "VerificationEnvironmentManager",
+      "oscillation",
+      "detector",
+      "VerificationTransition",
+      "NormalizedDiagnostic",
+      "TransitionEvaluation",
+      "OscillationDetector",
+      "playwright",
+      "UIAssertion",
+      "UIVerificationResult"
+    ],
+    "key_artifacts": [
+      "src/ticket_to_code/verification/__init__.py",
+      "src/ticket_to_code/verification/auth_state.py",
+      "src/ticket_to_code/verification/baseline_verifier.py",
+      "src/ticket_to_code/verification/environment_manager.py",
+      "src/ticket_to_code/verification/oscillation_detector.py",
+      "src/ticket_to_code/verification/playwright_verifier.py",
+      "src/ticket_to_code/verification/tdd_reproduction_harness.py",
+      "src/ticket_to_code/verification/two_tier_verifier.py",
+      "src/ticket_to_code/verification/ui_verification.py"
+    ]
+  },
+  {
+    "directory_path": "tests",
+    "business_domain": "Tests",
+    "technical_role": "Source Module",
+    "core_responsibilities": "Source files under tests",
+    "intent_terms": [
+      "init",
+      "conftest",
+      "AviatorStubFinder",
+      "test",
+      "5",
+      "pillar",
+      "production",
+      "harness",
+      "MemberController",
+      "MemberService",
+      "OrderController",
+      "OrderService",
+      "PaymentController",
+      "BrokenController",
+      "Routes",
+      "App",
+      "Broken",
+      "UserBadge",
+      "Card",
+      "getActiveMembers",
+      "advanced",
+      "capabilities",
+      "DeleteCoordinatorComponent",
+      "IssueCount"
+    ],
+    "key_artifacts": [
+      "tests/__init__.py",
+      "tests/conftest.py",
+      "tests/test_5_pillar_production_harness.py",
+      "tests/test_advanced_capabilities.py",
+      "tests/test_agent_harness.py",
+      "tests/test_angular_template_microsyntax.py",
+      "tests/test_architectural_features.py",
+      "tests/test_architectural_hardening_pass.py",
+      "tests/test_architectural_invariants.py",
+      "tests/test_backend_security_hardening.py",
+      "tests/test_behavioral_understanding.py",
+      "tests/test_benchmark_3cfb6459_invariants.py",
+      "tests/test_benchmark_honesty_and_scope.py",
+      "tests/test_brain_refresh.py",
+      "tests/test_build_provenance_routing.py",
+      "tests/test_call_chain_tracer.py",
+      "tests/test_canonical_path.py",
+      "tests/test_capability_reuse_enforcement.py",
+      "tests/test_change_authorization.py",
+      "tests/test_change_target_and_patch_scope.py",
+      "tests/test_code_generator_patch_tightening.py",
+      "tests/test_code_generator_workspace_coherence.py",
+      "tests/test_companion_contract_parity.py",
+      "tests/test_companion_resolver.py",
+      "tests/test_compiler_gate.py",
+      "tests/test_component_contract.py",
+      "tests/test_container_sandbox_engine.py",
+      "tests/test_context_budget_and_llm_limits.py",
+      "tests/test_cross_file_coherence.py",
+      "tests/test_cross_file_reference_validation.py",
+      "tests/test_deductive_blackboard.py",
+      "tests/test_diagnostic_context_builder_runtime.py",
+      "tests/test_diagnostic_error_slicer.py",
+      "tests/test_diagnostic_localization.py",
+      "tests/test_edit_loop_agent.py",
+      "tests/test_end_to_end_architecture_wiring.py",
+      "tests/test_episodic_verification_level.py",
+      "tests/test_error_normalization.py",
+      "tests/test_evidence_10x_enhancements.py",
+      "tests/test_evidence_discovery_chain.py",
+      "tests/test_evidence_follow.py",
+      "tests/test_evidence_rag_promotion.py",
+      "tests/test_fast_ide_engine.py",
+      "tests/test_fast_path_routing.py",
+      "tests/test_fast_repo_map.py",
+      "tests/test_fast_workflow_integration.py",
+      "tests/test_file_filters.py",
+      "tests/test_full_product_wiring.py",
+      "tests/test_generation_readiness_gates.py",
+      "tests/test_genuine_build_and_module_resolution.py",
+      "tests/test_golden_50_harness.py",
+      "tests/test_harness_loop_fixes.py",
+      "tests/test_harness_optimizations.py",
+      "tests/test_investigation_and_diagnosis_enhancements.py",
+      "tests/test_jato_localization.py",
+      "tests/test_language_scope.py",
+      "tests/test_large_file_handling.py",
+      "tests/test_lean_path.py",
+      "tests/test_lean_vs_monolith_benchmark.py",
+      "tests/test_line_slicing_and_stage_caching.py"
+    ]
+  },
+  {
+    "directory_path": "tests/benchmarks",
+    "business_domain": "Tests / Benchmarks",
+    "technical_role": "Source Module",
+    "core_responsibilities": "Source files under tests/benchmarks",
+    "intent_terms": [
+      "init",
+      "analyze",
+      "report",
+      "cc4e",
+      "scope",
+      "localization",
+      "generate",
+      "git",
+      "answer",
+      "key",
+      "extractor",
+      "golden",
+      "50",
+      "harness",
+      "Tier0AssertionResult",
+      "TicketSpec",
+      "TicketExecutionResult",
+      "BenchmarkReport"
+    ],
+    "key_artifacts": [
+      "tests/benchmarks/__init__.py",
+      "tests/benchmarks/analyze_report.py",
+      "tests/benchmarks/cc4e_scope_localization.py",
+      "tests/benchmarks/generate_git_answer_key.py",
+      "tests/benchmarks/git_answer_key_extractor.py",
+      "tests/benchmarks/golden_50_harness.py"
+    ]
+  },
+  {
+    "directory_path": "tests/reasoning",
+    "business_domain": "Tests / Reasoning",
+    "technical_role": "Source Module",
+    "core_responsibilities": "Source files under tests/reasoning",
+    "intent_terms": [
+      "test",
+      "skills",
+      "routing"
+    ],
+    "key_artifacts": [
+      "tests/reasoning/test_skills_routing.py"
+    ]
+  },
+  {
+    "directory_path": "workspace/CloudForge-Commerce/order-service/src/main/java/com/cloudforge/commerce/order",
+    "business_domain": "Commerce / Order",
+    "technical_role": "Source Module",
+    "core_responsibilities": "Source files under workspace/CloudForge-Commerce/order-service/src/main/java/com/cloudforge/commerce/order",
+    "intent_terms": [
+      "OrderServiceApplication"
+    ],
+    "key_artifacts": [
+      "workspace/CloudForge-Commerce/order-service/src/main/java/com/cloudforge/commerce/order/OrderServiceApplication.java"
+    ]
+  },
+  {
+    "directory_path": "workspace/CloudForge-Commerce/order-service/src/main/java/com/cloudforge/commerce/order/controller",
+    "business_domain": "Order / Controller",
+    "technical_role": "Source Module",
+    "core_responsibilities": "Source files under workspace/CloudForge-Commerce/order-service/src/main/java/com/cloudforge/commerce/order/controller",
+    "intent_terms": [
+      "OrderController"
+    ],
+    "key_artifacts": [
+      "workspace/CloudForge-Commerce/order-service/src/main/java/com/cloudforge/commerce/order/controller/OrderController.java"
+    ]
+  },
+  {
+    "directory_path": "workspace/CloudForge-Commerce/order-service/src/main/java/com/cloudforge/commerce/order/model",
+    "business_domain": "Order / Model",
+    "technical_role": "Source Module",
+    "core_responsibilities": "Source files under workspace/CloudForge-Commerce/order-service/src/main/java/com/cloudforge/commerce/order/model",
+    "intent_terms": [
+      "Order",
+      "OrderStatus",
+      "PaymentReservation",
+      "ReservationStatus"
+    ],
+    "key_artifacts": [
+      "workspace/CloudForge-Commerce/order-service/src/main/java/com/cloudforge/commerce/order/model/Order.java",
+      "workspace/CloudForge-Commerce/order-service/src/main/java/com/cloudforge/commerce/order/model/OrderStatus.java",
+      "workspace/CloudForge-Commerce/order-service/src/main/java/com/cloudforge/commerce/order/model/PaymentReservation.java",
+      "workspace/CloudForge-Commerce/order-service/src/main/java/com/cloudforge/commerce/order/model/ReservationStatus.java"
+    ]
+  },
+  {
+    "directory_path": "workspace/CloudForge-Commerce/order-service/src/main/java/com/cloudforge/commerce/order/repository",
+    "business_domain": "Order / Repository",
+    "technical_role": "Source Module",
+    "core_responsibilities": "Source files under workspace/CloudForge-Commerce/order-service/src/main/java/com/cloudforge/commerce/order/repository",
+    "intent_terms": [
+      "OrderRepository",
+      "PaymentReservationRepository"
+    ],
+    "key_artifacts": [
+      "workspace/CloudForge-Commerce/order-service/src/main/java/com/cloudforge/commerce/order/repository/OrderRepository.java",
+      "workspace/CloudForge-Commerce/order-service/src/main/java/com/cloudforge/commerce/order/repository/PaymentReservationRepository.java"
+    ]
+  },
+  {
+    "directory_path": "workspace/CloudForge-Commerce/order-service/src/main/java/com/cloudforge/commerce/order/service",
+    "business_domain": "Order / Service",
+    "technical_role": "Source Module",
+    "core_responsibilities": "Source files under workspace/CloudForge-Commerce/order-service/src/main/java/com/cloudforge/commerce/order/service",
+    "intent_terms": [
+      "OrderService",
+      "PaymentLedgerService"
+    ],
+    "key_artifacts": [
+      "workspace/CloudForge-Commerce/order-service/src/main/java/com/cloudforge/commerce/order/service/OrderService.java",
+      "workspace/CloudForge-Commerce/order-service/src/main/java/com/cloudforge/commerce/order/service/PaymentLedgerService.java"
+    ]
+  },
+  {
+    "directory_path": "workspace/CloudForge-Commerce/order-service/src/test/java/com/cloudforge/commerce/order",
+    "business_domain": "Commerce / Order",
+    "technical_role": "Source Module",
+    "core_responsibilities": "Source files under workspace/CloudForge-Commerce/order-service/src/test/java/com/cloudforge/commerce/order",
+    "intent_terms": [
+      "OrderServiceTest"
+    ],
+    "key_artifacts": [
+      "workspace/CloudForge-Commerce/order-service/src/test/java/com/cloudforge/commerce/order/OrderServiceTest.java"
+    ]
+  },
+  {
+    "directory_path": "workspace/CloudForge-Commerce/settlement-service/src/main/java/com/cloudforge/commerce/settlement",
+    "business_domain": "Commerce / Settlement",
+    "technical_role": "Source Module",
+    "core_responsibilities": "Source files under workspace/CloudForge-Commerce/settlement-service/src/main/java/com/cloudforge/commerce/settlement",
+    "intent_terms": [
+      "SettlementServiceApplication"
+    ],
+    "key_artifacts": [
+      "workspace/CloudForge-Commerce/settlement-service/src/main/java/com/cloudforge/commerce/settlement/SettlementServiceApplication.java"
+    ]
+  },
+  {
+    "directory_path": "workspace/CloudForge-Commerce/settlement-service/src/main/java/com/cloudforge/commerce/settlement/controller",
+    "business_domain": "Settlement / Controller",
+    "technical_role": "Source Module",
+    "core_responsibilities": "Source files under workspace/CloudForge-Commerce/settlement-service/src/main/java/com/cloudforge/commerce/settlement/controller",
+    "intent_terms": [
+      "SettlementController"
+    ],
+    "key_artifacts": [
+      "workspace/CloudForge-Commerce/settlement-service/src/main/java/com/cloudforge/commerce/settlement/controller/SettlementController.java"
+    ]
+  },
+  {
+    "directory_path": "workspace/CloudForge-Commerce/settlement-service/src/main/java/com/cloudforge/commerce/settlement/model",
+    "business_domain": "Settlement / Model",
+    "technical_role": "Source Module",
+    "core_responsibilities": "Source files under workspace/CloudForge-Commerce/settlement-service/src/main/java/com/cloudforge/commerce/settlement/model",
+    "intent_terms": [
+      "SettlementBatch",
+      "SettlementLedgerEntry",
+      "SettlementStatus"
+    ],
+    "key_artifacts": [
+      "workspace/CloudForge-Commerce/settlement-service/src/main/java/com/cloudforge/commerce/settlement/model/SettlementBatch.java",
+      "workspace/CloudForge-Commerce/settlement-service/src/main/java/com/cloudforge/commerce/settlement/model/SettlementLedgerEntry.java",
+      "workspace/CloudForge-Commerce/settlement-service/src/main/java/com/cloudforge/commerce/settlement/model/SettlementStatus.java"
+    ]
+  },
+  {
+    "directory_path": "workspace/CloudForge-Commerce/settlement-service/src/main/java/com/cloudforge/commerce/settlement/repository",
+    "business_domain": "Settlement / Repository",
+    "technical_role": "Source Module",
+    "core_responsibilities": "Source files under workspace/CloudForge-Commerce/settlement-service/src/main/java/com/cloudforge/commerce/settlement/repository",
+    "intent_terms": [
+      "SettlementBatchRepository"
+    ],
+    "key_artifacts": [
+      "workspace/CloudForge-Commerce/settlement-service/src/main/java/com/cloudforge/commerce/settlement/repository/SettlementBatchRepository.java"
+    ]
+  },
+  {
+    "directory_path": "workspace/CloudForge-Commerce/settlement-service/src/main/java/com/cloudforge/commerce/settlement/service",
+    "business_domain": "Settlement / Service",
+    "technical_role": "Source Module",
+    "core_responsibilities": "Source files under workspace/CloudForge-Commerce/settlement-service/src/main/java/com/cloudforge/commerce/settlement/service",
+    "intent_terms": [
+      "SettlementReconciliationService"
+    ],
+    "key_artifacts": [
+      "workspace/CloudForge-Commerce/settlement-service/src/main/java/com/cloudforge/commerce/settlement/service/SettlementReconciliationService.java"
+    ]
+  },
+  {
+    "directory_path": "workspace/CloudForge-Commerce/store-ui",
+    "business_domain": "Cloudforge Commerce / Store Ui",
+    "technical_role": "Source Module",
+    "core_responsibilities": "Source files under workspace/CloudForge-Commerce/store-ui",
+    "intent_terms": [
+      "vite",
+      "config"
+    ],
+    "key_artifacts": [
+      "workspace/CloudForge-Commerce/store-ui/index.html",
+      "workspace/CloudForge-Commerce/store-ui/vite.config.ts"
+    ]
+  },
+  {
+    "directory_path": "workspace/CloudForge-Commerce/store-ui/src",
+    "business_domain": "Store Ui / Src",
+    "technical_role": "Source Module",
+    "core_responsibilities": "Source files under workspace/CloudForge-Commerce/store-ui/src",
+    "intent_terms": [
+      "App",
+      "handleCancelOrder",
+      "targetOrder",
+      "handleRefundOrder",
+      "resetDemo",
+      "activeReservationsCount",
+      "orphanedCount",
+      "linkedOrder",
+      "isOrphaned"
+    ],
+    "key_artifacts": [
+      "workspace/CloudForge-Commerce/store-ui/src/App.tsx",
+      "workspace/CloudForge-Commerce/store-ui/src/index.css",
+      "workspace/CloudForge-Commerce/store-ui/src/main.tsx"
+    ]
+  },
+  {
+    "directory_path": "workspace/CloudForge-Commerce/store-ui/src/components",
+    "business_domain": "Src / Components",
+    "technical_role": "Source Module",
+    "core_responsibilities": "Source files under workspace/CloudForge-Commerce/store-ui/src/components",
+    "intent_terms": [
+      "OrderManagement",
+      "handleCancel",
+      "handleRefund"
+    ],
+    "key_artifacts": [
+      "workspace/CloudForge-Commerce/store-ui/src/components/OrderManagement.tsx"
+    ]
+  },
+  {
+    "directory_path": "workspace/CloudForge-Commerce/store-ui/src/types",
+    "business_domain": "Src / Types",
+    "technical_role": "Source Module",
+    "core_responsibilities": "Source files under workspace/CloudForge-Commerce/store-ui/src/types",
+    "intent_terms": [
+      "order",
+      "OrderStatus",
+      "ReservationStatus",
+      "Order",
+      "PaymentReservation"
+    ],
+    "key_artifacts": [
+      "workspace/CloudForge-Commerce/store-ui/src/types/order.ts"
+    ]
+  }
+]

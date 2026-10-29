@@ -1,0 +1,68 @@
+{
+  "dataset_name": "cc4e_production_readiness_100",
+  "version": "1.0",
+  "notes": "Representative benchmark template. Fill to 100 tickets using target_distribution. expected_changed_files/expected_owner_files are required for localization scoring.",
+  "target_distribution": {
+    "single_file_bug": 20,
+    "multi_file_bug": 20,
+    "config_or_version": 20,
+    "ui_responsive_or_layout": 20,
+    "backend_or_service": 20
+  },
+  "tickets": [
+    {
+      "ticket_id": "4157705",
+      "title": "Core for Supplier Exchange - Make user email address case insensitive",
+      "description": "API currently treats email case as sensitive and returns 400 for different casing. Fix server-side behavior.",
+      "priority": "high",
+      "labels": ["backend", "api", "bug"],
+      "category": "backend_or_service",
+      "complexity": "medium",
+      "repo_scope": "C:/Users/dmadgani/Desktop/My_Aviator/aviator-platform",
+      "technology": "java",
+      "acceptance_criteria": [
+        "Email comparison is case-insensitive",
+        "Existing behavior unchanged for valid users"
+      ],
+      "expected_changed_files": [],
+      "expected_owner_files": [],
+      "forbidden_files": [],
+      "human_acceptance": "unknown"
+    },
+    {
+      "ticket_id": "4162805",
+      "title": "JATO tabs inaccessible on window resize",
+      "description": "On deliverables page, resizing hides right-side tabs and horizontal scroll is missing.",
+      "priority": "high",
+      "labels": ["ui", "responsive", "bug"],
+      "category": "ui_responsive_or_layout",
+      "complexity": "medium",
+      "repo_scope": "C:/Users/dmadgani/Desktop/My_Aviator/aviator-plugin-sample/chatbot/frontend",
+      "technology": "angular",
+      "acceptance_criteria": [
+        "Tabs remain accessible after resize",
+        "Horizontal navigation exists when tabs overflow"
+      ],
+      "expected_changed_files": [],
+      "expected_owner_files": [],
+      "forbidden_files": [],
+      "human_acceptance": "unknown"
+    },
+    {
+      "ticket_id": "TEMPLATE-0003",
+      "title": "<fill>",
+      "description": "<fill>",
+      "priority": "medium",
+      "labels": [],
+      "category": "single_file_bug",
+      "complexity": "small",
+      "repo_scope": "C:/Users/dmadgani/Desktop/My_Aviator/aviator-plugin-sample",
+      "technology": "<java|java-maven|java-gradle|dotnet|csharp|nodejs|angular>",
+      "acceptance_criteria": ["<fill>"],
+      "expected_changed_files": ["<relative/path/file.ext>"],
+      "expected_owner_files": ["<relative/path/file.ext>"],
+      "forbidden_files": [],
+      "human_acceptance": "unknown"
+    }
+  ]
+}

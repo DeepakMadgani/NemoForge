@@ -1,0 +1,26 @@
+[
+  {
+    "ticket_id": "TW-0001",
+    "title": "TransparentWorkflow has markdown fence artifact breaking component parsing",
+    "description": "TransparentWorkflow output includes markdown code fences and parsing artifacts that leak into rendered component content. Ensure parser and generated patch logic remove fence artifacts and keep component parsing deterministic without unrelated changes.",
+    "category": "single_file_bug",
+    "complexity": "small",
+    "priority": "high",
+    "labels": ["frontend", "nodejs", "ui", "bug"],
+    "technology": "nodejs",
+    "repo_scope": "C:/Users/dmadgani/Desktop/My_Aviator/aviator-plugin-sample/chatbot/frontend",
+    "acceptance_criteria": [
+      "Markdown fence artifacts no longer appear in component output",
+      "Parser behavior is deterministic and does not regress other components",
+      "Only required files are changed"
+    ],
+    "expected_changed_files": [
+      "src/app/components/transparent-workflow/transparent-workflow.component.ts"
+    ],
+    "expected_owner_files": [
+      "src/app/components/transparent-workflow/transparent-workflow.component.ts"
+    ],
+    "max_fix_attempts": 1,
+    "human_acceptance": "unknown"
+  }
+]

@@ -1,0 +1,18 @@
+{
+  "id": "java",
+  "name": "Java / Spring Boot",
+  "extensions": [".java", ".xml"],
+  "manifest": "pom.xml",
+  "build_command": "mvn clean compile -DskipTests",
+  "test_command": "mvn test -Dtest={test_class}",
+  "test_file_pattern": "{name}Test.java",
+  "companion_rules": [
+    {
+      "src_prefix": "src/main/java",
+      "test_prefix": "src/test/java",
+      "test_suffix": "Test.java"
+    }
+  ],
+  "verifier": "maven-surefire",
+  "comment_syntax": "//"
+}

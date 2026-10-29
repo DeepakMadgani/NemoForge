@@ -1,0 +1,259 @@
+# CC4E Architecture Model — Domain Ownership Definitions
+# 
+# PROJECT-SPECIFIC CONFIGURATION for the CC4E codebase.
+# Other projects should create their own architecture_model.yaml.
+# See: config/architecture_model.template.yaml for a blank template.
+#
+# This file defines the bounded contexts, capabilities, and ownership
+# rules for the CC4E microservice architecture. It is the single source
+# of truth for the Domain Ownership layer.
+#
+# Provenance levels:
+#   DECLARATIVE  — Developer-maintained, high confidence → hard blocks
+#   DISCOVERED   — Auto-discovered from repo structure → soft warnings
+#   LLM_INFERRED — Inferred by LLM → soft warnings, needs verification
+#   VERIFIED     — Was discovered/inferred, then confirmed → hard blocks
+#
+# Modification policies derived from verdicts:
+#   PRIMARY_OWNER          → ALLOW
+#   SECONDARY_PARTICIPANT  → ALLOW_WITH_EVIDENCE
+#   REFERENCE_ONLY         → REFERENCE_ONLY (read but don't modify)
+#   WRONG_DOMAIN           → DO_NOT_MODIFY (hard block)
+#   UNKNOWN                → REQUIRE_VERIFICATION (investigate)
+
+services:
+  # ── project-service ─────────────────────────────────────────────────
+  - name: project-service
+    path_prefix: project-service/
+    domain: "Project CRUD, lifecycle, project membership, project settings"
+    capabilities:
+      - name: project-membership
+        keywords:
+          - member
+          - membership
+          - project member
+          - add member
+          - existing member
+          - organization name
+          - org name
+          - member check
+          - project membership
+        primary_owners: [project-service]
+        secondary_participants: [issues-service]
+        reference_only: [area-service, xchange-ui]
+        provenance: DECLARATIVE
+        confidence: 1.0
+
+      - name: project-crud
+        keywords:
+          - create project
+          - delete project
+          - project settings
+          - project lifecycle
+          - project initialization
+        primary_owners: [project-service]
+        secondary_participants: [sagas-service]
+        reference_only: []
+        provenance: DECLARATIVE
+        confidence: 1.0
+
+  # ── area-service ────────────────────────────────────────────────────
+  - name: area-service
+    path_prefix: area-service/
+    domain: "Areas, transmittals, taxonomy, area membership, metadata"
+    capabilities:
+      - name: area-membership
+        keywords:
+          - area member
+          - area user
+          - area assignment
+          - area membership
+        primary_owners: [area-service]
+        secondary_participants: []
+        reference_only: [project-service]
+        provenance: DECLARATIVE
+        confidence: 1.0
+
+      - name: taxonomy
+        keywords:
+          - taxonomy
+          - metadata definition
+          - classification
+          - metadata config
+        primary_owners: [area-service]
+        secondary_participants: []
+        reference_only: []
+        provenance: DECLARATIVE
+        confidence: 0.9
+
+      - name: transmittals
+        keywords:
+          - transmittal
+          - transmittal routing
+          - transmittal creation
+        primary_owners: [area-service]
+        secondary_participants: [sagas-service]
+        reference_only: [xchange-ui]
+        provenance: DECLARATIVE
+        confidence: 0.9
+
+      - name: area-config
+        keywords:
+          - area config
+          - area configuration
+          - area settings
+        primary_owners: [area-service]
+        secondary_participants: []
+        reference_only: []
+        provenance: DECLARATIVE
+        confidence: 0.9
+
+  # ── issues-service ──────────────────────────────────────────────────
+  - name: issues-service
+    path_prefix: issues-service/
+    domain: "Ticketing, comments, issue tracking"
+    capabilities:
+      - name: issue-management
+        keywords:
+          - issue
+          - ticket
+          - comment
+          - issue tracking
+          - issue creation
+        primary_owners: [issues-service]
+        secondary_participants: []
+        reference_only: []
+        provenance: DECLARATIVE
+        confidence: 0.9
+
+  # ── sagas-service ───────────────────────────────────────────────────
+  - name: sagas-service
+    path_prefix: sagas-service/
+    domain: "Distributed transaction orchestration (Sagas)"
+    capabilities:
+      - name: saga-orchestration
+        keywords:
+          - saga
+          - distributed transaction
+          - saga coordinator
+          - saga definition
+          - saga event
+        primary_owners: [sagas-service]
+        secondary_participants: [project-service, area-service]
+        reference_only: []
+        provenance: DECLARATIVE
+        confidence: 0.9
+
+  # ── ene-load-service ────────────────────────────────────────────────
+  - name: ene-load-service
+    path_prefix: ene-load-service/
+    domain: "Heavy data loading, ETL, batch processing"
+    capabilities:
+      - name: data-loading
+        keywords:
+          - data loading
+          - ETL
+          - batch processing
+          - bulk import
+          - load job
+        primary_owners: [ene-load-service]
+        secondary_participants: []
+        reference_only: []
+        provenance: DECLARATIVE
+        confidence: 0.9
+
+  # ── bim-gateway ─────────────────────────────────────────────────────
+  - name: bim-gateway
+    path_prefix: bim-gateway/
+    domain: "API Gateway — routing, auth, rate limiting"
+    capabilities:
+      - name: api-gateway
+        keywords:
+          - gateway
+          - routing
+          - auth
+          - rate limit
+          - API gateway
+        primary_owners: [bim-gateway]
+        secondary_participants: []
+        reference_only: []
+        provenance: DECLARATIVE
+        confidence: 0.9
+
+  # ── se-connector-apis ───────────────────────────────────────────────
+  - name: se-connector-apis
+    path_prefix: se-connector-apis/
+    domain: "External integrations (Documentum, Core Share, ERP)"
+    capabilities:
+      - name: external-integration
+        keywords:
+          - external integration
+          - Documentum
+          - Core Share
+          - ERP
+          - connector
+        primary_owners: [se-connector-apis]
+        secondary_participants: []
+        reference_only: []
+        provenance: DECLARATIVE
+        confidence: 0.9
+
+  # ── xchange-ui (Angular Frontend) ───────────────────────────────────
+  - name: xchange-ui
+    path_prefix: xchange-ui/
+    domain: "All frontend UI (Angular)"
+    capabilities:
+      - name: ui-deliverables
+        keywords:
+          - deliverable
+          - deliverable set
+          - submit deliverable
+          - deliverable properties
+        primary_owners: [xchange-ui]
+        secondary_participants: []
+        reference_only: []
+        provenance: DECLARATIVE
+        confidence: 0.9
+
+      - name: ui-members
+        keywords:
+          - members UI
+          - add member UI
+          - member list
+          - member panel
+        primary_owners: [xchange-ui]
+        secondary_participants: []
+        reference_only: []
+        provenance: DECLARATIVE
+        confidence: 0.9
+
+      - name: ui-contracts
+        keywords:
+          - contract
+          - contract list
+          - contract details
+        primary_owners: [xchange-ui]
+        secondary_participants: []
+        reference_only: []
+        provenance: DECLARATIVE
+        confidence: 0.9
+
+      - name: ui-tasks
+        keywords:
+          - task
+          - task assignment
+          - task workflow
+          - task status
+        primary_owners: [xchange-ui]
+        secondary_participants: []
+        reference_only: []
+        provenance: DECLARATIVE
+        confidence: 0.9
+
+      - name: ui-general
+        keywords: []
+        primary_owners: [xchange-ui]
+        secondary_participants: []
+        reference_only: []
+        provenance: DECLARATIVE
+        confidence: 0.5

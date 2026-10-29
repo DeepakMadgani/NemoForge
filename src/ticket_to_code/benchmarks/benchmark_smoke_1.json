@@ -1,0 +1,23 @@
+{
+  "dataset_name": "smoke_1",
+  "version": "1.0",
+  "tickets": [
+    {
+      "ticket_id": "SMOKE-0001",
+      "title": "Smoke benchmark ticket for runner validation",
+      "description": "Run the autonomous workflow once to validate benchmark execution, reporting, and metric extraction.",
+      "priority": "medium",
+      "labels": ["benchmark", "smoke"],
+      "category": "single_file_bug",
+      "complexity": "small",
+      "repo_scope": "C:/Users/dmadgani/Desktop/My_Aviator/aviator-plugin-sample",
+      "acceptance_criteria": [
+        "Benchmark run completes and writes output report files"
+      ],
+      "expected_changed_files": [],
+      "expected_owner_files": [],
+      "forbidden_files": [],
+      "human_acceptance": "unknown"
+    }
+  ]
+}

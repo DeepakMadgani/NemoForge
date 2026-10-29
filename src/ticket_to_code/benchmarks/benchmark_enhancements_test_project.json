@@ -1,0 +1,415 @@
+{
+  "dataset_name": "enhancement_validation_suite_test_project",
+  "version": "1.0",
+  "notes": "Validation suite for 13 core enhancements plus multimodal vision support, scoped to enhancement-test-project.",
+  "target_distribution": {
+    "single_file_bug": 3,
+    "multi_file_bug": 4,
+    "config_or_version": 4,
+    "ui_responsive_or_layout": 1,
+    "backend_or_service": 2
+  },
+  "tickets": [
+    {
+      "ticket_id": "ENH-0001",
+      "title": "Runtime logs show unhandled JSON parse failure in order creation",
+      "description": "Use runtime logs under traces to identify the root source file and patch error handling so malformed request bodies return a clean 400 response instead of crashing.",
+      "priority": "high",
+      "labels": ["runtime", "logs", "python", "bug"],
+      "category": "backend_or_service",
+      "complexity": "medium",
+      "repo_scope": "C:/Users/dmadgani/Desktop/My_Aviator/enhancement-test-project",
+      "technology": "python",
+      "acceptance_criteria": [
+        "Runtime stack trace is mapped to concrete source location",
+        "Malformed JSON requests are handled without process crash",
+        "A deterministic error response is returned"
+      ],
+      "expected_changed_files": [
+        "src/app.py"
+      ],
+      "expected_owner_files": [
+        "src/app.py"
+      ],
+      "forbidden_files": [],
+      "human_acceptance": "unknown"
+    },
+    {
+      "ticket_id": "ENH-0002",
+      "title": "Cross-system trace shows wrong downstream notification endpoint",
+      "description": "Trace service-to-service calls and fix endpoint wiring so order confirmation targets the configured notification service URL across startup and runtime paths.",
+      "priority": "high",
+      "labels": ["cross-system", "service", "routing"],
+      "category": "multi_file_bug",
+      "complexity": "medium",
+      "repo_scope": "C:/Users/dmadgani/Desktop/My_Aviator/enhancement-test-project",
+      "technology": "python",
+      "acceptance_criteria": [
+        "Cross-service endpoint usage is discovered from code and configuration",
+        "Notification service URL is consistent across runtime path",
+        "No hardcoded conflicting URL remains"
+      ],
+      "expected_changed_files": [
+        "src/app.py",
+        "config/settings.json"
+      ],
+      "expected_owner_files": [
+        "src/app.py"
+      ],
+      "forbidden_files": [],
+      "human_acceptance": "unknown"
+    },
+    {
+      "ticket_id": "ENH-0003",
+      "title": "Incorrect tax output requires causal chain root-cause fix",
+      "description": "A symptom appears as wrong final order totals. Resolve by identifying root cause across calculation and model handling rather than patching output formatting only.",
+      "priority": "high",
+      "labels": ["reasoning", "causal-chain", "backend"],
+      "category": "multi_file_bug",
+      "complexity": "medium",
+      "repo_scope": "C:/Users/dmadgani/Desktop/My_Aviator/enhancement-test-project",
+      "technology": "python",
+      "acceptance_criteria": [
+        "Fix addresses root cause, not only symptom",
+        "Order total and tax fields are consistent",
+        "Tests covering corrected flow pass"
+      ],
+      "expected_changed_files": [
+        "src/app.py",
+        "src/models.py",
+        "tests/test_orders.py"
+      ],
+      "expected_owner_files": [
+        "src/app.py"
+      ],
+      "forbidden_files": [],
+      "human_acceptance": "unknown"
+    },
+    {
+      "ticket_id": "ENH-0004",
+      "title": "Primary fix path fails; switch strategy to configuration remediation",
+      "description": "If direct code edit cannot pass validation, pivot to a config-first remediation that satisfies the same requirement without retrying the same failed edit pattern.",
+      "priority": "medium",
+      "labels": ["adaptive", "replanner", "config"],
+      "category": "config_or_version",
+      "complexity": "medium",
+      "repo_scope": "C:/Users/dmadgani/Desktop/My_Aviator/enhancement-test-project",
+      "technology": "python",
+      "acceptance_criteria": [
+        "Execution shows strategy pivot after failed path",
+        "Final solution is implemented through valid alternate files",
+        "No repeated identical failed patch attempts"
+      ],
+      "expected_changed_files": [
+        "config/settings.json",
+        "src/app.py"
+      ],
+      "expected_owner_files": [
+        "config/settings.json"
+      ],
+      "forbidden_files": [],
+      "human_acceptance": "unknown"
+    },
+    {
+      "ticket_id": "ENH-0005",
+      "title": "Windows startup script fails on path and shell semantics",
+      "description": "Make startup behavior platform-aware for Windows PowerShell by fixing script assumptions and path handling differences from bash-like environments.",
+      "priority": "high",
+      "labels": ["windows", "platform", "powershell"],
+      "category": "config_or_version",
+      "complexity": "small",
+      "repo_scope": "C:/Users/dmadgani/Desktop/My_Aviator/enhancement-test-project",
+      "technology": "python",
+      "acceptance_criteria": [
+        "PowerShell script runs without shell syntax errors on Windows",
+        "Path separators and env var usage are Windows-safe",
+        "Service startup command succeeds"
+      ],
+      "expected_changed_files": [
+        "scripts/start.ps1"
+      ],
+      "expected_owner_files": [
+        "scripts/start.ps1"
+      ],
+      "forbidden_files": [],
+      "human_acceptance": "unknown"
+    },
+    {
+      "ticket_id": "ENH-0006",
+      "title": "Workspace index misses repository root compose and nested compose relationship",
+      "description": "Ensure indexing and retrieval capture both docker-compose files (root and src) and their relationship so planning uses correct deployment context.",
+      "priority": "medium",
+      "labels": ["indexing", "workspace", "retrieval"],
+      "category": "multi_file_bug",
+      "complexity": "small",
+      "repo_scope": "C:/Users/dmadgani/Desktop/My_Aviator/enhancement-test-project",
+      "technology": "python",
+      "acceptance_criteria": [
+        "Both compose files are discoverable with grounded evidence",
+        "Planner can distinguish root vs src deployment role",
+        "No false missing-file classification for root compose"
+      ],
+      "expected_changed_files": [
+        "docker-compose.yml",
+        "src/docker-compose.yml"
+      ],
+      "expected_owner_files": [
+        "docker-compose.yml"
+      ],
+      "forbidden_files": [],
+      "human_acceptance": "unknown"
+    },
+    {
+      "ticket_id": "ENH-0007",
+      "title": "Build passes but runtime fails; feed verifier output into correction loop",
+      "description": "After initial patch, runtime behavior still fails. Use runtime verification feedback to re-plan and apply a second corrective patch.",
+      "priority": "high",
+      "labels": ["runtime", "feedback-loop", "verification"],
+      "category": "backend_or_service",
+      "complexity": "medium",
+      "repo_scope": "C:/Users/dmadgani/Desktop/My_Aviator/enhancement-test-project",
+      "technology": "python",
+      "acceptance_criteria": [
+        "Runtime verifier output is captured and used",
+        "A follow-up corrective patch is generated",
+        "Final runtime check passes"
+      ],
+      "expected_changed_files": [
+        "src/app.py",
+        "tests/test_orders.py"
+      ],
+      "expected_owner_files": [
+        "src/app.py"
+      ],
+      "forbidden_files": [],
+      "human_acceptance": "unknown"
+    },
+    {
+      "ticket_id": "ENH-0008",
+      "title": "Use attached screenshot to infer broken UI-state expectation in API payload",
+      "description": "A screenshot indicates a mismatched UI status label. Use visual evidence to update backend payload field mapping so returned status matches expected UI state.",
+      "priority": "medium",
+      "labels": ["vision", "screenshot", "ui"],
+      "category": "ui_responsive_or_layout",
+      "complexity": "small",
+      "repo_scope": "C:/Users/dmadgani/Desktop/My_Aviator/enhancement-test-project",
+      "technology": "python",
+      "acceptance_criteria": [
+        "Visual signal is incorporated into ticket reasoning",
+        "Status mapping in API response is corrected",
+        "No unrelated schema fields are changed"
+      ],
+      "expected_changed_files": [
+        "src/models.py",
+        "src/app.py"
+      ],
+      "expected_owner_files": [
+        "src/models.py"
+      ],
+      "forbidden_files": [],
+      "human_acceptance": "unknown"
+    },
+    {
+      "ticket_id": "ENH-0009",
+      "title": "Regression introduced by recent commit in order validation flow",
+      "description": "Use git history and blame context to identify a recent regression in order validation and restore expected behavior with minimal file touch.",
+      "priority": "high",
+      "labels": ["git", "regression", "history"],
+      "category": "single_file_bug",
+      "complexity": "small",
+      "repo_scope": "C:/Users/dmadgani/Desktop/My_Aviator/enhancement-test-project",
+      "technology": "python",
+      "acceptance_criteria": [
+        "Regression point is identified from git history",
+        "Fix is applied in the true owner file",
+        "Behavior matches pre-regression expectation"
+      ],
+      "expected_changed_files": [
+        "src/app.py"
+      ],
+      "expected_owner_files": [
+        "src/app.py"
+      ],
+      "forbidden_files": [],
+      "human_acceptance": "unknown"
+    },
+    {
+      "ticket_id": "ENH-0010",
+      "title": "Service health probe fails for exposed endpoint contract",
+      "description": "Use live probing to validate service endpoint and fix mismatched route behavior so health and orders endpoints return expected status codes.",
+      "priority": "high",
+      "labels": ["service-prober", "healthcheck", "api"],
+      "category": "single_file_bug",
+      "complexity": "small",
+      "repo_scope": "C:/Users/dmadgani/Desktop/My_Aviator/enhancement-test-project",
+      "technology": "python",
+      "acceptance_criteria": [
+        "HTTP probe identifies failing endpoint contract",
+        "Endpoint behavior is corrected",
+        "Probe passes post-fix"
+      ],
+      "expected_changed_files": [
+        "src/app.py"
+      ],
+      "expected_owner_files": [
+        "src/app.py"
+      ],
+      "forbidden_files": [],
+      "human_acceptance": "unknown"
+    },
+    {
+      "ticket_id": "ENH-0011",
+      "title": "TAX_RATE mismatch between env files and runtime use",
+      "description": "Trace TAX_RATE propagation across .env, docker-compose, startup scripts, and runtime code, then align the source-of-truth value usage.",
+      "priority": "high",
+      "labels": ["env", "propagation", "config"],
+      "category": "config_or_version",
+      "complexity": "medium",
+      "repo_scope": "C:/Users/dmadgani/Desktop/My_Aviator/enhancement-test-project",
+      "technology": "python",
+      "acceptance_criteria": [
+        "All TAX_RATE definitions are traced",
+        "Runtime value source is consistent and intentional",
+        "Compose/script/env references are aligned"
+      ],
+      "expected_changed_files": [
+        ".env",
+        "docker-compose.yml",
+        "scripts/start.ps1",
+        "src/app.py"
+      ],
+      "expected_owner_files": [
+        "src/app.py"
+      ],
+      "forbidden_files": [],
+      "human_acceptance": "unknown"
+    },
+    {
+      "ticket_id": "ENH-0012",
+      "title": "Missing dependency causes ModuleNotFoundError at startup",
+      "description": "Resolve missing runtime dependency by identifying correct package mapping and updating dependency manifest used by this project.",
+      "priority": "high",
+      "labels": ["dependency", "resolver", "python"],
+      "category": "config_or_version",
+      "complexity": "small",
+      "repo_scope": "C:/Users/dmadgani/Desktop/My_Aviator/enhancement-test-project",
+      "technology": "python",
+      "acceptance_criteria": [
+        "Missing module is mapped to correct package",
+        "Dependency manifest is updated",
+        "Startup no longer fails with ModuleNotFoundError"
+      ],
+      "expected_changed_files": [
+        "requirements.txt"
+      ],
+      "expected_owner_files": [
+        "requirements.txt"
+      ],
+      "forbidden_files": [],
+      "human_acceptance": "unknown"
+    },
+    {
+      "ticket_id": "ENH-0013",
+      "title": "Align tax rate configuration between docker-compose and settings.json",
+      "description": "docker-compose.yml sets the app service environment variable TAX_RATE=0.10, but config/settings.json has no matching tax_rate field, causing configuration drift between the container and the application settings. Add a top-level numeric field \"tax_rate\": 0.10 to config/settings.json, and keep docker-compose.yml's TAX_RATE=0.10 so both sources agree. Edit only these two configuration files directly — do NOT create any new Python module or validation framework. Both files must remain syntactically valid after the edit.",
+      "priority": "high",
+      "labels": ["config", "infra", "yaml", "json", "env"],
+      "category": "config_or_version",
+      "complexity": "small",
+      "repo_scope": "C:/Users/dmadgani/Desktop/My_Aviator/enhancement-test-project",
+      "technology": "python",
+      "acceptance_criteria": [
+        "config/settings.json contains a numeric top-level tax_rate field equal to 0.10",
+        "docker-compose.yml app service still sets TAX_RATE=0.10",
+        "Both YAML and JSON remain syntactically valid after the edit",
+        "No new Python validator module or wrapper file is created"
+      ],
+      "expected_changed_files": [
+        "config/settings.json",
+        "docker-compose.yml"
+      ],
+      "expected_owner_files": [
+        "config/settings.json"
+      ],
+      "forbidden_files": [
+        "src/config_validators.py"
+      ],
+      "human_acceptance": "unknown"
+    },
+    {
+      "ticket_id": "ENH-0014",
+      "title": "Multimodal ticket with architecture diagram requires index alignment",
+      "description": "Using attached architecture diagram, align service naming and index mapping so discovered components match visual flow labels used in tickets.",
+      "priority": "medium",
+      "labels": ["multimodal", "vision", "architecture"],
+      "category": "config_or_version",
+      "complexity": "small",
+      "repo_scope": "C:/Users/dmadgani/Desktop/My_Aviator/enhancement-test-project",
+      "technology": "python",
+      "acceptance_criteria": [
+        "Visual architecture labels are reflected in project config/index metadata",
+        "Discovery uses aligned service names",
+        "No unrelated runtime logic changes"
+      ],
+      "expected_changed_files": [
+        "config/settings.json"
+      ],
+      "expected_owner_files": [
+        "config/settings.json"
+      ],
+      "forbidden_files": [],
+      "human_acceptance": "unknown"
+    },
+    {
+      "ticket_id": "ENH-0015",
+      "title": "Refactor discount threshold in calculation logic without removing existing models or deleting schemas",
+      "description": "Update the discount calculation in src/models.py to apply a 15% discount for orders over $100. Do NOT delete or remove src/models.py, and do NOT drop or delete any existing schema fields or database configurations. Keep all other class definitions intact and edit only the discount helper function directly.",
+      "priority": "high",
+      "labels": ["negative-constraint", "models", "discount", "bug"],
+      "category": "single_file_bug",
+      "complexity": "small",
+      "repo_scope": "C:/Users/dmadgani/Desktop/My_Aviator/enhancement-test-project",
+      "technology": "python",
+      "acceptance_criteria": [
+        "src/models.py is modified, NOT deleted or removed",
+        "Discount calculation applies 15% discount for orders over $100",
+        "All existing models and schemas remain fully intact without deletion"
+      ],
+      "expected_changed_files": [
+        "src/models.py"
+      ],
+      "expected_owner_files": [
+        "src/models.py"
+      ],
+      "forbidden_files": [],
+      "human_acceptance": "unknown"
+    },
+    {
+      "ticket_id": "ENH-0016",
+      "title": "Remove deprecated notification feature flag from config and clean up obsolete ContractMember model",
+      "description": "Remove the deprecated \"enable_notifications\" field from the features object in config/settings.json. In src/models.py, delete the obsolete ContractMember class definition while keeping ProjectMember, CustomerModel, and OrderModel intact. Ensure config/settings.json remains syntactically valid JSON after the removal.",
+      "priority": "medium",
+      "labels": ["refactoring", "cleanup", "removal", "models", "config"],
+      "category": "multi_file_bug",
+      "complexity": "small",
+      "repo_scope": "C:/Users/dmadgani/Desktop/My_Aviator/enhancement-test-project",
+      "technology": "python",
+      "acceptance_criteria": [
+        "config/settings.json no longer contains enable_notifications under features",
+        "src/models.py no longer contains the ContractMember class",
+        "ProjectMember, CustomerModel, and OrderModel remain fully functional and intact",
+        "config/settings.json remains syntactically valid JSON"
+      ],
+      "expected_changed_files": [
+        "config/settings.json",
+        "src/models.py"
+      ],
+      "expected_owner_files": [
+        "config/settings.json",
+        "src/models.py"
+      ],
+      "forbidden_files": [],
+      "human_acceptance": "unknown"
+    }
+  ]
+}
