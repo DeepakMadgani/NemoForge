@@ -96,7 +96,11 @@ BACKEND_DOMAIN_TAXONOMY: Set[str] = {
     # Microservices & Processing
     "service", "services", "impl", "processor", "handler", "handlers", "saga",
     "workflow", "queue", "kafka", "rabbitmq", "topic", "worker", "batch", "cron",
-    "daemon", "microservice", "backend", "server"
+    "daemon", "microservice", "backend", "server",
+    # Exceptions, Guards & Java Semantics
+    "exception", "exceptions", "throw", "throws", "guard", "validation", "validator",
+    "illegalstateexception", "illegalargumentexception", "nullpointerexception",
+    "status", "enum", "bigdecimal", "autowired", "transactional"
 }
 
 
@@ -391,6 +395,15 @@ class FastIDEEngine:
 
         ui_score = float(len(matched_ui))
         backend_score = float(len(matched_backend))
+
+        # Explicit Java/Backend markers give decisive backend priority
+        java_backend_markers = (
+            "illegalstateexception", "illegalargumentexception", "nullpointerexception",
+            "exception", "throw", "throws", "bigdecimal", "autowired", "transactional",
+            "guard", "validation", "validator"
+        )
+        if any(marker in text.lower() for marker in java_backend_markers):
+            backend_score += 15.0
 
         is_strong_ui = ui_score >= 2 and ui_score > backend_score * 1.2
         is_strong_backend = backend_score >= 2 and backend_score > ui_score * 1.2
@@ -1343,6 +1356,13 @@ class FastIDEEngine:
             if comp_rel not in candidate_scores:
                 candidate_scores[comp_rel] = comp_score
                 candidate_matches.setdefault(comp_rel, []).append("companion_group_member")
+
+        # Strongly suppress frontend UI files if the ticket explicitly mandates Java backend exceptions
+        has_java_exception = any(exc in full_text.lower() for exc in ["illegalstateexception", "illegalargumentexception", "nullpointerexception", "throw new", "throws"])
+        if has_java_exception:
+            for rel_p in list(candidate_scores.keys()):
+                if not rel_p.endswith((".java", ".kt", ".scala", ".xml", ".properties")):
+                    candidate_scores[rel_p] *= 0.05
 
         # ── Step 3.5: Wise Domain-Aware Subproject Scoring Multiplier ──
         # Multiplies UI subproject & template scores when ticket has UI intent,
