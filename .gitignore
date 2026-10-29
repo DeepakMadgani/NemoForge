@@ -62,6 +62,11 @@ chatbot/backend/projects.json
 # MCP server config holds per-user secrets; commit mcp_servers.example.json instead
 chatbot/backend/mcp_servers.json
 bin/*.exe
+*.state
+
+# Build Artifacts
+target/
+**/target/
 
 # Node & Frontend
 node_modules/
