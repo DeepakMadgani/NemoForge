@@ -31,6 +31,8 @@ _SKIP_DIRS = {
     "node_modules", ".git", ".svn", "bin", "obj", "build", "dist",
     "target", "__pycache__", ".idea", ".vs", ".vscode", ".aviator",
     "packages", "vendor", ".gradle", ".mvn",
+    ".venv", "venv", "env", ".env", ".pytest_cache", ".tox",
+    ".nemoforge", ".ticket_to_code",
 }
 
 # Max file size to index (500KB)
@@ -257,8 +259,9 @@ def index_repository(
                 stats["files_indexed"] += 1
                 stats["symbols_found"] += result.get("symbols", 0)
             
-            if progress_callback:
-                progress_callback(fpath, i, total)
+            progress_cb = progress_callback or kwargs.get('progress')
+            if progress_cb:
+                progress_cb(fpath, i, total)
         except Exception as exc:
             stats["errors"].append(f"{fpath}: {exc}")
             logger.warning("Index error on %s: %s", fpath, exc)

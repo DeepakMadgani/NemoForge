@@ -643,7 +643,7 @@ async def index_project(project_id: str):
                 return index_repository(
                     Path(repo_path),
                     store,
-                    progress=progress_callback
+                    progress_callback=progress_callback
                 )
             finally:
                 # Close the store connection
@@ -729,7 +729,7 @@ async def index_project(project_id: str):
                 brain_llm = LLMRegistry.get_llm()
             except Exception:
                 brain_llm = None
-            return ensure_repository_brain(str(repo_path), llm=brain_llm)
+            return ensure_repository_brain(str(repo_path), llm=brain_llm, enrich=False)
 
         try:
             brain_summary = await asyncio.to_thread(run_brain_generation)
