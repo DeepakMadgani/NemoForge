@@ -69,47 +69,66 @@ Unlike superficial coding assistants that rely on fuzzy vector retrieval and pro
 
 ---
 
-## 🚀 Quick Start
+## 🚀 Quick Start (1-Click Launch)
 
 ### Prerequisites
-- Python 3.13+
-- Node.js 18+ & npm
-- Nebius Token Factory API Key ([Get Nebius Key](https://tokenfactory.nebius.com))
+- **Python 3.10+** (Python 3.12 or 3.13 recommended)
+- **Node.js 18+** & npm
+- **Nebius Token Factory API Key** ([Get your key here](https://tokenfactory.nebius.com))
 
-### 1. Clone & Setup
+---
+
+### Step 1: Clone the Repository
 ```bash
-git clone https://github.com/YourUsername/NemoForge-NVIDIA.git
-cd NemoForge-NVIDIA
+git clone https://github.com/DeepakMadgani/NemoForge.git
+cd NemoForge
 ```
 
-### 2. Configure Environment
-Copy the example environment file:
+---
+
+### Step 2: Run 1-Click Setup
+
+#### On Windows:
+Double-click **`setup.bat`** (or run in PowerShell/CMD):
+```powershell
+.\setup.bat
+```
+
+#### On Linux / macOS:
 ```bash
-cp .env.example .env.local
-```
-Or simply launch the app and enter your key in the UI:
-```env
-LLM_PROVIDER=nebius
-NEBIUS_API_KEY=your_nebius_api_key_here
-NEBIUS_BASE_URL=https://api.tokenfactory.nebius.com/v1/
-LLM_MODEL=nebius/nvidia/nemotron-3-super-120b-a12b
+chmod +x setup.sh start.sh
+./setup.sh
 ```
 
-### 3. Start Backend & UI
-In terminal 1 (Backend):
+*This automatically provisions the Python virtual environment (`.venv`), installs all backend dependencies, and installs frontend npm packages.*
+
+---
+
+### Step 3: 1-Click Start
+
+#### On Windows:
+Double-click **`start.bat`** (or run in PowerShell/CMD):
+```powershell
+.\start.bat
+```
+
+#### On Linux / macOS:
 ```bash
-cd chatbot/backend
-python -m uvicorn main:app --host 0.0.0.0 --port 8002
+./start.sh
 ```
 
-In terminal 2 (Frontend):
-```bash
-cd chatbot/frontend
-npm install
-npm run dev
-```
+*This automatically launches both:*
+- **Backend API Server** on `http://localhost:8002`
+- **Frontend Dashboard** on `http://localhost:3000`
+- Automatically opens `http://localhost:3000` in your default browser!
 
-Open your browser to **`http://localhost:3000`**.
+---
+
+### Step 4: Configure Nebius API Key in the UI
+1. Once the dashboard opens at `http://localhost:3000`, click **⚙️ Settings** in the top navigation bar.
+2. Enter your **Nebius Token Factory API Key** (`nebius-...`).
+3. Select **NVIDIA Nemotron 3 Super (120B MoE)** or **NVIDIA Nemotron 70B Instruct**.
+4. Click **Save & Test Connection**. You are ready to autonomously solve tickets!
 
 ---
 
